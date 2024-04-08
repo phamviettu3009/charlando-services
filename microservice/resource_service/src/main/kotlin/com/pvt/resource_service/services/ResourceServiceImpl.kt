@@ -37,9 +37,13 @@ class ResourceServiceImpl(
 
     @RabbitListener(queues = [RabbitMQ.Listener.MSCMN_GET_RESOURCE_BY_ID_AND_USERID])
     private fun createRecordLevelAccess(data: RabbitMessageDTO<Map<String, Any>>) {
-        val attachmentIDs = data.message?.get("attachmentIDs") as List<String>
-        val userID = UUID.fromString(data.message["userID"] as String)
-        val resources = resourceRepository.findAllByIDsAndUserID(attachmentIDs.map { UUID.fromString(it) }, userID)
-        rabbitMQProducer.sendMessage(resources, RabbitMQ.MSCMN_GET_RESOURCE_BY_ID_AND_USERID.callbackRoute())
+        try {
+            val attachmentIDs = data.message?.get("attachmentIDs") as List<String>
+            val userID = UUID.fromString(data.message["userID"] as String)
+            val resources = resourceRepository.findAllByIDsAndUserID(attachmentIDs.map { UUID.fromString(it) }, userID)
+            rabbitMQProducer.sendMessage(resources, RabbitMQ.MSCMN_GET_RESOURCE_BY_ID_AND_USERID.callbackRoute())
+        } catch (e: Exception) {
+            println("Error processing message: ${e.message}")
+        }
     }
 }

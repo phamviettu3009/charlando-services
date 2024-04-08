@@ -78,6 +78,7 @@ class DownloadServiceImpl: DownloadService {
     private fun sizeOptions(sizeOption: String?): Map<String, Int>? {
         return when(sizeOption) {
             "mobile-avatar" ->  mapOf("width" to 200, "height" to 200)
+            "mobile-image" -> mapOf("width" to 1000, "height" to 1000)
             else -> null
         }
     }

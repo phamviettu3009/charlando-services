@@ -15,4 +15,6 @@ interface MessageReadersRepository: JpaRepository<MessageReadersEntity, UUID> {
         WHERE mr.message_id IN (:messageIDs)
     """, nativeQuery = true)
     fun findAllByMessageIDs(@Param("messageIDs") messageIDs: List<UUID>): List<MessageReadersEntity>
+
+    fun findByMessageIDAndUserID(messageID: UUID, userID: UUID): Optional<MessageReadersEntity>
 }

@@ -213,4 +213,30 @@ class FriendServiceImpl: FriendService {
         )
         return ListResponseDTO(users.content.map { it.asUserResponseDTO() }, meta)
     }
+
+    override fun getListRequestAddFriend(request: RequestDTO<ListRequestDTO>): ListResponseDTO<UserResponseDTO> {
+        val ownerID = request.jwtBody.userID ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val listRequestParams = request.payload ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        if (listRequestParams.page == 0) throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val page = listRequestParams.page - 1
+        val sizePerPage = listRequestParams.sizePerPage
+        val pageRequest = PageRequest.of(page, sizePerPage)
+
+        val users = userRepository.findAllFriendByUserIDAndRecordStatusKeyword(
+            ownerID,
+            Friend.RecordStatus.WAIT_FOR_CONFIRMATION,
+            keyword = listRequestParams.keyword,
+            pageable = pageRequest
+        )
+
+        val meta = Meta(
+            totalElements = users.totalElements,
+            totalPages = users.totalPages,
+            sizePerPage = users.pageable.pageSize,
+            currentPage = users.pageable.pageNumber + 1,
+            numberOfElements = users.numberOfElements,
+            last = users.isLast
+        )
+        return ListResponseDTO(users.content.map { it.asUserResponseDTO() }, meta)
+    }
 }

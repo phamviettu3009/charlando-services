@@ -13,6 +13,7 @@ class MessageServiceImpl(val socketIOService: SocketIOService): MessageService {
         val message = data.message?.message ?: throw Exception("Message not found!")
         val endpoint = data.message.endpoint
         val receiver = data.message.receiverID
+
         socketIOService.sendMessage(message, endpoint, receiver)
     }
 }

@@ -118,12 +118,13 @@ data class MessageEntity(
         )
     }
 
-    fun asResponseShortenMessageDTO(): ResponseShortenMessageDTO {
+    fun asResponseShortenMessageDTO(ownerID: UUID): ResponseShortenMessageDTO {
         return ResponseShortenMessageDTO(
             id = id,
             type = type,
-            message = message,
-            subMessage = subMessage,
+            recordStatus = contentRecordStatus(ownerID),
+            message = contentDisplay(ownerID, message),
+            subMessage = subMessageDisplay(ownerID),
             iconMessage = iconMessage,
             makerDate = makerDate!!,
             timeOfMessageSentDisplay = DateTimeConverter.convertDisplay(makerDate),

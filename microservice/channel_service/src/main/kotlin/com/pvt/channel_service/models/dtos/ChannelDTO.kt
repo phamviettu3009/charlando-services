@@ -27,7 +27,7 @@ fun ChannelDTO.asResponseChannelDTO(
         type = type,
         avatars =  channelModifier[channelIDKey]?.get("channelAvatar") as List<String>,
         recordStatus = recordStatus,
-        isRead = isRead,
+        read = isRead,
         online = channelModifier[channelIDKey]?.get("online") as Boolean,
         message = messageModifier[channelIDKey],
         readers = readers,

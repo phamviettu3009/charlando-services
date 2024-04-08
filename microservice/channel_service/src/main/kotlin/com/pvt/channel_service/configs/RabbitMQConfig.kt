@@ -1,5 +1,7 @@
 package com.pvt.channel_service.configs
 
+import com.fasterxml.jackson.databind.ObjectMapper
+import com.fasterxml.jackson.databind.SerializationFeature
 import com.pvt.channel_service.constants.RabbitMQ
 import org.springframework.amqp.core.*
 import org.springframework.amqp.rabbit.connection.ConnectionFactory
@@ -186,8 +188,36 @@ class RabbitMQConfig {
     }
 
     @Bean
+    fun updateOnlineStatusUserRecordMSCQueue(): Queue {
+        return Queue(RabbitMQ.MSC_UPDATE_ONLINE_STATUS_RECORD_USER.queue())
+    }
+
+    @Bean
+    fun updateOnlineStatusUserRecordMSCBinding(): Binding {
+        return BindingBuilder
+            .bind(updateOnlineStatusUserRecordMSCQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSC_UPDATE_ONLINE_STATUS_RECORD_USER.route())
+    }
+
+    @Bean
+    fun callbackUpdateOnlineStatusUserRecordMSCQueue(): Queue {
+        return Queue(RabbitMQ.MSC_UPDATE_ONLINE_STATUS_RECORD_USER.callbackQueue())
+    }
+
+    @Bean
+    fun callbackUpdateOnlineStatusUserRecordMSCBinding(): Binding {
+        return BindingBuilder
+            .bind(callbackUpdateOnlineStatusUserRecordMSCQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSC_UPDATE_ONLINE_STATUS_RECORD_USER.callbackRoute())
+    }
+
+    @Bean
     fun converter(): MessageConverter {
-        return Jackson2JsonMessageConverter()
+        val mapper = ObjectMapper()
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)
+        return Jackson2JsonMessageConverter(mapper)
     }
 
     @Bean

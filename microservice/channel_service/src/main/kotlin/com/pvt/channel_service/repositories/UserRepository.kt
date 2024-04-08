@@ -60,6 +60,23 @@ interface UserRepository: JpaRepository<UserEntity, UUID> {
     ): Page<UserEntity>
 
     @Query(value = """
+        SELECT u.* FROM user_info u 
+        INNER JOIN friend f 
+        ON u.id = f.friend_id
+        WHERE (LOWER(full_name) LIKE LOWER('%'||:keyword||'%') OR LOWER(phone) = LOWER(:keyword)) 
+        AND f.user_id = :userID
+        AND f.record_status = :recordStatus
+        AND f.auth_status = 'ACTIVE'
+        AND u.auth_status = 'ACTIVE'
+    """, nativeQuery = true)
+    fun findAllFriendByUserIDAndRecordStatusKeyword(
+        @Param("userID") userID: UUID,
+        @Param("recordStatus") recordStatus: String,
+        @Param("keyword") keyword: String,
+        pageable: Pageable
+    ): Page<UserEntity>
+
+    @Query(value = """
         SELECT * FROM user_info
         WHERE (LOWER(full_name) LIKE LOWER('%'||:keyword||'%') OR LOWER(phone) = LOWER(:keyword)) 
         AND auth_status = 'ACTIVE'

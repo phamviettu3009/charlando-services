@@ -1,7 +1,6 @@
 package com.pvt.channel_service.models.dtos
 
-import java.util.Date
-import java.util.UUID
+import java.util.*
 
 data class ResponseChannelDTO(
     val id: UUID,
@@ -9,7 +8,7 @@ data class ResponseChannelDTO(
     var type: Int,
     var avatars: List<String>,
     var recordStatus: String?,
-    val isRead: Boolean? = false,
+    val read: Boolean? = false,
     val online: Boolean? = false,
     val message: ResponseShortenMessageDTO?,
     val readers: MutableList<AvatarDTO>,

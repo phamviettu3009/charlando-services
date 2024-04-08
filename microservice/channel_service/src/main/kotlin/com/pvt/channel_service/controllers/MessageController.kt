@@ -36,7 +36,7 @@ class MessageController {
         request: HttpServletRequest,
         @PathVariable id: String,
         @RequestBody icon: MessageReactionRequestDTO
-    ): ResponseEntity<Any> {
+    ): ResponseEntity<ResponseMessageDTO> {
         val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
         val requestDTO = RequestDTO(jwtBody, icon, id = id.asUUID())
         return ResponseEntity(messageReactionService.createMessageReaction(requestDTO), HttpStatus.OK)

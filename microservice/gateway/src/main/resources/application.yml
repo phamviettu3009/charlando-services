@@ -60,6 +60,7 @@ spring:
             - Path=/api/v1/user/**
           filters:
             - AuthFilter
+
       default-filters:
         - DedupeResponseHeader=Access-Control-Allow-Credentials Acess-Control-Allow-Origin
       globalcors:

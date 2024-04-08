@@ -196,7 +196,7 @@ class ChannelServiceImpl: ChannelService {
         var membersInChannel: List<MemberInChannelDTO> = channelRepository.findAllByChannelIDs(
             ids = listOf(channel.id)
         )
-        val lastMessages = messageRepository.findAlLastMessagesByChannelIDs(listOf(channel.id)).map { it.asResponseShortenMessageDTO() }
+        val lastMessages = messageRepository.findAlLastMessagesByChannelIDs(listOf(channel.id)).map { it.asResponseShortenMessageDTO(ownerID) }
         val messageReaderModifierHashMap = getMessageReaders(lastMessages.map { it.id })
         val ownerInChannel = memberRepository.findAllByChannelIDsAndUserID(listOf(channel.id), ownerID)
         val channelModifierHashMap = ChannelModifier.getChannelModifierMap(membersInChannel, ownerID)
@@ -286,10 +286,8 @@ class ChannelServiceImpl: ChannelService {
             last = channels.isLast
         )
 
-        var membersInChannel: List<MemberInChannelDTO> = channelRepository.findAllByChannelIDs(
-            ids = channelIDs
-        )
-        val lastMessages = messageRepository.findAlLastMessagesByChannelIDs(channelIDs).map { it.asResponseShortenMessageDTO() }
+        val membersInChannel: List<MemberInChannelDTO> = channelRepository.findAllByChannelIDs(ids = channelIDs)
+        val lastMessages = messageRepository.findAlLastMessagesByChannelIDs(channelIDs).map { it.asResponseShortenMessageDTO(ownerID) }
         val messageReaderModifierHashMap = getMessageReaders(lastMessages.map { it.id })
         val ownerInChannel = memberRepository.findAllByChannelIDsAndUserID(channelIDs, ownerID)
         val channelModifierHashMap = ChannelModifier.getChannelModifierMap(membersInChannel, ownerID)

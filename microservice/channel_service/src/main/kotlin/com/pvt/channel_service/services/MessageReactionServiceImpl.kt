@@ -2,10 +2,7 @@ package com.pvt.channel_service.services
 
 import com.pvt.channel_service.constants.RabbitMQ
 import com.pvt.channel_service.constants.RealtimeEndpoint
-import com.pvt.channel_service.models.dtos.MessageReactionDTO
-import com.pvt.channel_service.models.dtos.MessageReactionRequestDTO
-import com.pvt.channel_service.models.dtos.RealtimeMessageDTO
-import com.pvt.channel_service.models.dtos.RequestDTO
+import com.pvt.channel_service.models.dtos.*
 import com.pvt.channel_service.models.entitys.MessageEntity
 import com.pvt.channel_service.models.entitys.MessageReactionEntity
 import com.pvt.channel_service.publisher.RabbitMQProducer
@@ -24,16 +21,17 @@ class MessageReactionServiceImpl: MessageReactionService {
     private lateinit var messageReactionRepository: MessageReactionRepository
 
     @Autowired
-    private lateinit var messageRepository: MessageRepository
-
-    @Autowired
     private lateinit var memberService: MemberService
 
     @Autowired
     private lateinit var rabbitMQProducer: RabbitMQProducer
 
-    private fun sendRealtimeMessageReaction(userIDs: List<UUID>, message: Any, endpoint: String) {
+    @Autowired
+    private  lateinit var messageService: MessageService
+
+    private fun sendRealtimeMessageReaction(userIDs: List<UUID>, messageID: UUID, endpoint: String) {
         for (userID in userIDs) {
+            val message = messageService.getMessage(messageID, userID)
             val realtimeMessage = RealtimeMessageDTO(message, endpoint, userID)
             rabbitMQProducer.sendMessage(realtimeMessage, RabbitMQ.MSCMN_SEND_REALTIME_MESSAGE.route())
         }
@@ -60,30 +58,18 @@ class MessageReactionServiceImpl: MessageReactionService {
     }
 
     @Transactional
-    override fun createMessageReaction(request: RequestDTO<MessageReactionRequestDTO>): Any {
+    override fun createMessageReaction(request: RequestDTO<MessageReactionRequestDTO>): ResponseMessageDTO {
         val ownerID = request.jwtBody.userID ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
         val messageID = request.id ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
         val icon = request.payload?.icon ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
-        val messageRecord = messageRepository.findById(messageID).orElseThrow {
-            throw ResponseStatusException(HttpStatus.BAD_REQUEST)
-        }
+        val messageRecord = messageService.getMessage(messageID, ownerID)
         memberService.findByChannelIDAndUserID(messageRecord.channelID,  ownerID)
         val membersInChannel = memberService.findAllByChannelID(messageRecord.channelID)
         val userIDs = membersInChannel.map { it.userID }.filter { it != ownerID }
         createMessageReaction(icon, ownerID, messageID)
-        val response = messageReactionRepository.countByMessageIDAndIconWithMakerID(messageID, icon, ownerID)
-        val quantity = response.quantity
-        val toOwn = response.toOwn
-        val messageReactionResponse = mapOf("messageID" to messageID, "reaction" to MessageReactionDTO(icon, quantity, toOwn))
+        val message = messageService.getMessage(messageID, ownerID)
         val endpoint = RealtimeEndpoint.MESSAGE_REACTION_BY_CHANNEL + messageRecord.channelID
-        sendRealtimeMessageReaction(userIDs, messageReactionResponse, endpoint)
-        return messageReactionResponse
-    }
-
-    override fun getMessageReactions(
-        messageIDs: List<UUID>,
-        userID: UUID
-    ): List<MessageReactionRepository.MultiCountReaction> {
-        return messageReactionRepository.countAllByMessageIDsWithMakerID(messageIDs, userID)
+        sendRealtimeMessageReaction(userIDs, messageID, endpoint)
+        return message
     }
 }

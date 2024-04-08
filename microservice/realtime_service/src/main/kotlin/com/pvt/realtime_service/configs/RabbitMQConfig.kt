@@ -56,6 +56,32 @@ class RabbitMQConfig {
     }
 
     @Bean
+    fun updateOnlineStatusUserRecordMSCQueue(): Queue {
+        return Queue(RabbitMQ.MSC_UPDATE_ONLINE_STATUS_RECORD_USER.queue())
+    }
+
+    @Bean
+    fun updateOnlineStatusUserRecordMSCBinding(): Binding {
+        return BindingBuilder
+            .bind(updateOnlineStatusUserRecordMSCQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSC_UPDATE_ONLINE_STATUS_RECORD_USER.route())
+    }
+
+    @Bean
+    fun callbackUpdateOnlineStatusUserRecordMSCQueue(): Queue {
+        return Queue(RabbitMQ.MSC_UPDATE_ONLINE_STATUS_RECORD_USER.callbackQueue())
+    }
+
+    @Bean
+    fun callbackUpdateOnlineStatusUserRecordMSCBinding(): Binding {
+        return BindingBuilder
+            .bind(callbackUpdateOnlineStatusUserRecordMSCQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSC_UPDATE_ONLINE_STATUS_RECORD_USER.callbackRoute())
+    }
+
+    @Bean
     fun converter(): MessageConverter {
         return Jackson2JsonMessageConverter()
     }

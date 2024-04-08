@@ -11,6 +11,7 @@ object RabbitMQ {
 
     val MSC_CREATE_RECORD_USER = RabbitQMAutoGenerate("cru", "msc")
     val MSC_UPDATE_RECORD_USER = RabbitQMAutoGenerate("uru", "msc")
+    val MSC_UPDATE_ONLINE_STATUS_RECORD_USER = RabbitQMAutoGenerate("uosru", "msc")
 
     object Listener {
         const val MSCMN_CREATE_RECORD_LEVEL_ACCESS = "mscmn.crla_queue"
@@ -20,6 +21,7 @@ object RabbitMQ {
         const val MSCMN_CALLBACK_RESOURCE_BY_ID_AND_USERID = "mscmn.grbiau_callback_queue"
         const val MSC_CREATE_RECORD_USER = "msc.cru_queue"
         const val MSC_UPDATE_RECORD_USER = "msc.uru_queue"
+        const val MSC_UPDATE_ONLINE_STATUS_RECORD_USER = "msc.uosru_queue"
     }
 
     object Exchange {

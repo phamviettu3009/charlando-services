@@ -62,4 +62,14 @@ class UserController {
         val requestDTO = RequestDTO(jwtBody, Unit, id.asUUID())
         return ResponseEntity(userService.getUserInfo(requestDTO), HttpStatus.OK)
     }
+
+    @PutMapping("/self")
+    fun updateUser(
+        request: HttpServletRequest,
+        @RequestBody userUpdateRequestDTO: UserUpdateRequestDTO
+    ): ResponseEntity<UserResponseDTO> {
+        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
+        val requestDTO = RequestDTO(jwtBody, userUpdateRequestDTO)
+        return ResponseEntity(userService.updateUser(requestDTO), HttpStatus.OK)
+    }
 }

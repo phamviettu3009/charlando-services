@@ -7,12 +7,10 @@ import com.pvt.channel_service.constants.RealtimeEndpoint
 import com.pvt.channel_service.models.dtos.*
 import com.pvt.channel_service.models.entitys.MemberEntity
 import com.pvt.channel_service.models.entitys.MessageEntity
+import com.pvt.channel_service.models.entitys.MessageReactionEntity
 import com.pvt.channel_service.models.entitys.MessageReadersEntity
 import com.pvt.channel_service.publisher.RabbitMQProducer
-import com.pvt.channel_service.repositories.ChannelRepository
-import com.pvt.channel_service.repositories.MemberRepository
-import com.pvt.channel_service.repositories.MessageReadersRepository
-import com.pvt.channel_service.repositories.MessageRepository
+import com.pvt.channel_service.repositories.*
 import com.pvt.channel_service.utils.MessageModifier
 import com.pvt.channel_service.utils.converter.DateTimeConverter
 import com.pvt.channel_service.utils.extension.asUUID
@@ -35,7 +33,7 @@ class MessageServiceImpl : MessageService {
     private lateinit var attachmentService: AttachmentService
 
     @Autowired
-    private lateinit var messageReactionService: MessageReactionService
+    private lateinit var messageReactionRepository: MessageReactionRepository
 
     @Autowired
     private lateinit var userService: UserService
@@ -169,6 +167,13 @@ class MessageServiceImpl : MessageService {
         rabbitMQProducer.sendMessage(realtimeMessage, RabbitMQ.MSCMN_SEND_REALTIME_MESSAGE.route())
     }
 
+    private fun sendRealtimeReaders(readers: MutableList<AvatarDTO>, endpoint: String) {
+        for (reader in readers) {
+            val realtimeMessage = RealtimeMessageDTO(readers, endpoint, reader.userID)
+            rabbitMQProducer.sendMessage(realtimeMessage, RabbitMQ.MSCMN_SEND_REALTIME_MESSAGE.route())
+        }
+    }
+
     @Transactional
     private fun createAttachments(attachmentIDs: List<String>?, userID: UUID, messageID: UUID) {
         if (attachmentIDs == null || attachmentIDs.isEmpty()) return
@@ -184,7 +189,15 @@ class MessageServiceImpl : MessageService {
     @Transactional
     private fun createReaction(icon: String?, userID: UUID, messageID: UUID) {
         if (icon == null) return
-        messageReactionService.createMessageReaction(icon, userID, messageID)
+        val reaction = messageReactionRepository.findByMessageIDAndIconAndMakerIDAndAuthStatus(messageID = messageID, icon = icon, makerID = userID)
+            .orElse(null)
+
+        if (reaction == null) {
+            val newRecord = MessageReactionEntity(messageID = messageID, icon = icon, makerID = userID)
+            messageReactionRepository.saveAndFlush(newRecord)
+            return
+        }
+        messageReactionRepository.delete(reaction)
     }
 
     private fun verifyReply(replyID: UUID?, channelID: UUID) {
@@ -203,7 +216,7 @@ class MessageServiceImpl : MessageService {
 
         val attachments = attachmentService.getAttachments(messageIDs)
         val attachmentModifier = MessageModifier.getAttachmentModifier(attachments)
-        val reactions = messageReactionService.getMessageReactions(messageIDs, ownerID)
+        val reactions = messageReactionRepository.countAllByMessageIDsWithMakerID(messageIDs, ownerID)
         val reactionsModifier = MessageModifier.getReactionModifier(reactions)
         val users = userService.findAllByIDs(makerIDs)
         val userModifier = MessageModifier.getUserModifier(users)
@@ -274,6 +287,7 @@ class MessageServiceImpl : MessageService {
         createRecordUnreadCounter(membersInChannel, ownerID)
         channel.lastMessageTime = Date()
         channelRepository.saveAndFlush(channel)
+        readMessage(ownerID, messageRecord.id)
         val endpoint = RealtimeEndpoint.NEW_MESSAGE_BY_CHANNEL + channelID
         sendRealtimeMessage(userIDs, messageRecord, endpoint)
         return convertResponseMessageDTO(messageRecord, ownerID, syncID)
@@ -355,6 +369,13 @@ class MessageServiceImpl : MessageService {
         )
     }
 
+    override fun getMessage(messageID: UUID, ownerID: UUID): ResponseMessageDTO {
+        val messageEntity =  messageRepository.findById(messageID).orElseThrow {
+            throw ResponseStatusException(HttpStatus.NOT_FOUND)
+        }
+        return convertResponseMessageDTO(messageEntity, ownerID)
+    }
+
     @Transactional
     override fun deleteMessage(request: RequestDTO<String>): ResponseMessageDTO {
         val ownerID = request.jwtBody.userID ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
@@ -385,9 +406,14 @@ class MessageServiceImpl : MessageService {
     override fun readMessage(request: RequestDTO<Unit>): MutableList<AvatarDTO> {
         val ownerID = request.jwtBody.userID ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
         val messageID = request.id ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        return readMessage(ownerID, messageID)
+    }
+
+    private fun readMessage(ownerID: UUID, messageID: UUID): MutableList<AvatarDTO> {
         val messageRecord = messageRepository.findById(messageID).orElseThrow {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST)
         }
+
         val memberRecord = memberService.findByChannelIDAndUserID(messageRecord.channelID, ownerID)
         memberRecord.unreadCounter = 0
         val messageReaders = MessageReadersEntity(
@@ -395,9 +421,21 @@ class MessageServiceImpl : MessageService {
             channelID = messageRecord.channelID,
             userID = ownerID
         )
-        messageReadersRepository.saveAndFlush(messageReaders)
-        memberRepository.saveAndFlush(memberRecord)
+
+        val hasReader = messageReadersRepository.findByMessageIDAndUserID(messageID, ownerID).orElse(null)
+        if (hasReader == null) {
+            messageReadersRepository.saveAndFlush(messageReaders)
+            memberRepository.saveAndFlush(memberRecord)
+        }
+
         val messageReader = channelService.getMessageReaders(listOf(messageID))
-        return messageReader[messageRecord.channelID.toString()] ?: mutableListOf()
+        val readers = messageReader[messageRecord.channelID.toString()] ?: mutableListOf()
+
+        if (readers.isNotEmpty()) {
+            val endpoint = RealtimeEndpoint.READER_MESSAGE_BY_CHANNEL + messageRecord.channelID
+            sendRealtimeReaders(readers, endpoint)
+        }
+
+        return readers
     }
 }

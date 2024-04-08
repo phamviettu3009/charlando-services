@@ -14,4 +14,5 @@ interface FriendService {
     fun rejectFriendRequest(request: RequestDTO<UUID>): Any
     fun getFriends(request: RequestDTO<ListRequestDTO>): ListResponseDTO<UserResponseDTO>
     fun getFriendsOutsideChannel(request: RequestDTO<ListRequestDTO>): ListResponseDTO<UserResponseDTO>
+    fun getListRequestAddFriend(request: RequestDTO<ListRequestDTO>): ListResponseDTO<UserResponseDTO>
 }

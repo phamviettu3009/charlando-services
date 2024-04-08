@@ -39,12 +39,16 @@ class UserServiceImpl(val userRepository: UserRepository): UserService {
 
     @RabbitListener(queues = [RabbitMQ.Listener.MSCMN_GET_USER_BY_ID])
     private fun getUserByID(message: RabbitMessageDTO<UUID>) {
-        val id = message.message!!
-        val user = userRepository.findById(id).orElse(null)
-        if (user != null) {
-            rabbitMQProducer.sendMessage(user, RabbitMQ.MSCMN_GET_USER_BY_ID.callbackRoute())
-        } else {
-            rabbitMQProducer.sendNullMessage(RabbitMQ.MSCMN_GET_USER_BY_ID.callbackRoute())
+        try {
+            val id = message.message!!
+            val user = userRepository.findById(id).orElse(null)
+            if (user != null) {
+                rabbitMQProducer.sendMessage(user, RabbitMQ.MSCMN_GET_USER_BY_ID.callbackRoute())
+            } else {
+                rabbitMQProducer.sendNullMessage(RabbitMQ.MSCMN_GET_USER_BY_ID.callbackRoute())
+            }
+        } catch (e: Exception) {
+            println("Error processing message: ${e.message}")
         }
     }
 }

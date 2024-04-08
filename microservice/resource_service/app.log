@@ -1,27 +1,38 @@
-2024-03-17 21:38:31.213  INFO 7789 --- [main] c.p.r.ResourceServiceApplicationKt       : Starting ResourceServiceApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 7789 (/Users/macad/Documents/Project/microservice/resource_service/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice/resource_service)
-2024-03-17 21:38:31.227  INFO 7789 --- [main] c.p.r.ResourceServiceApplicationKt       : No active profile set, falling back to 1 default profile: "default"
-2024-03-17 21:38:32.755  INFO 7789 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2024-03-17 21:38:32.896  INFO 7789 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 120 ms. Found 2 JPA repository interfaces.
-2024-03-17 21:38:33.850  INFO 7789 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5501 (http)
-2024-03-17 21:38:33.867  INFO 7789 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
-2024-03-17 21:38:33.868  INFO 7789 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
-2024-03-17 21:38:34.025  INFO 7789 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
-2024-03-17 21:38:34.026  INFO 7789 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2673 ms
-2024-03-17 21:38:34.370  INFO 7789 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
-2024-03-17 21:38:34.461  INFO 7789 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
-2024-03-17 21:38:34.790  INFO 7789 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
-2024-03-17 21:38:34.957  INFO 7789 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
-2024-03-17 21:38:36.149  INFO 7789 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
-2024-03-17 21:38:36.167  INFO 7789 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
-2024-03-17 21:38:36.823  INFO 7789 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
-2024-03-17 21:38:36.838  INFO 7789 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
-2024-03-17 21:38:38.274  WARN 7789 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2024-03-17 21:38:38.869  INFO 7789 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5501 (http) with context path ''
-2024-03-17 21:38:38.871  INFO 7789 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
-2024-03-17 21:38:38.981  INFO 7789 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#4f55a864:0/SimpleConnection@34cb1310 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 50269]
-2024-03-17 21:38:39.052  INFO 7789 --- [main] c.p.r.ResourceServiceApplicationKt       : Started ResourceServiceApplicationKt in 8.694 seconds (JVM running for 9.457)
-2024-03-17 21:38:39.068  INFO 7789 --- [main] c.p.r.services.UploadServiceImpl         : Created folder resource successfully
-2024-03-17 22:04:36.246  WARN 7789 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=29s848ms), soft-evicting connections from pool.
-2024-03-17 23:50:23.022  INFO 7789 --- [http-nio-0.0.0.0-5501-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
-2024-03-17 23:50:23.024  INFO 7789 --- [http-nio-0.0.0.0-5501-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
-2024-03-17 23:50:23.033  INFO 7789 --- [http-nio-0.0.0.0-5501-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 9 ms
+2024-04-08 02:15:12.318  INFO 1078 --- [http-nio-0.0.0.0-5501-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-04-08 02:15:12.324  INFO 1078 --- [http-nio-0.0.0.0-5501-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-04-08 02:15:12.336  INFO 1078 --- [http-nio-0.0.0.0-5501-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 12 ms
+2024-04-08 03:31:24.708  INFO 1078 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-04-08 03:31:25.516  INFO 1078 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-04-08 03:31:27.541  INFO 1078 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-04-08 03:31:27.546  INFO 1078 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-08 03:31:27.549  INFO 1078 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-08 03:31:28.353  INFO 1078 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-04-08 22:18:03.806  INFO 4168 --- [main] c.p.r.ResourceServiceApplicationKt       : Starting ResourceServiceApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 4168 (/Users/macad/Documents/Project/microservice-git/microservice/resource_service/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/resource_service)
+2024-04-08 22:18:03.812  INFO 4168 --- [main] c.p.r.ResourceServiceApplicationKt       : No active profile set, falling back to 1 default profile: "default"
+2024-04-08 22:18:05.048  INFO 4168 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-04-08 22:18:05.162  INFO 4168 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 96 ms. Found 2 JPA repository interfaces.
+2024-04-08 22:18:06.101  INFO 4168 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5501 (http)
+2024-04-08 22:18:06.114  INFO 4168 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-04-08 22:18:06.115  INFO 4168 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-04-08 22:18:06.234  INFO 4168 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-04-08 22:18:06.234  INFO 4168 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2298 ms
+2024-04-08 22:18:06.476  INFO 4168 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-04-08 22:18:06.525  INFO 4168 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-04-08 22:18:06.740  INFO 4168 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-04-08 22:18:06.859  INFO 4168 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-04-08 22:18:08.061  INFO 4168 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-04-08 22:18:08.077  INFO 4168 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+2024-04-08 22:18:08.606  INFO 4168 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-04-08 22:18:08.616  INFO 4168 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-04-08 22:18:09.527  WARN 4168 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-04-08 22:18:09.934  INFO 4168 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5501 (http) with context path ''
+2024-04-08 22:18:09.936  INFO 4168 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2024-04-08 22:18:09.989  INFO 4168 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#3370be55:0/SimpleConnection@1c879f07 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 49466]
+2024-04-08 22:18:10.045  INFO 4168 --- [main] c.p.r.ResourceServiceApplicationKt       : Started ResourceServiceApplicationKt in 7.128 seconds (JVM running for 8.118)
+2024-04-08 22:18:10.058  INFO 4168 --- [main] c.p.r.services.UploadServiceImpl         : Created folder resource successfully
+2024-04-08 23:16:22.527  INFO 4168 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-04-08 23:16:23.180  INFO 4168 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-04-08 23:16:23.219  INFO 4168 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-04-08 23:16:23.225  INFO 4168 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-04-08 23:16:23.230  INFO 4168 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-04-08 23:16:23.905  INFO 4168 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

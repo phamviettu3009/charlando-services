@@ -79,4 +79,18 @@ class FriendController {
         val requestDTO = RequestDTO(jwtBody, listRequestParams, id.asUUID())
         return ResponseEntity(fiendService.getFriendsOutsideChannel(requestDTO), HttpStatus.OK)
     }
+
+    @GetMapping("/request-add-friend")
+    fun getListRequestAddFriend(
+        request: HttpServletRequest,
+        @RequestParam(defaultValue = "1") page: Int,
+        @RequestParam(defaultValue = "20") sizePerPage: Int,
+        @RequestParam(defaultValue = "") sortBy: String,
+        @RequestParam(defaultValue = "") keyword: String
+    ): ResponseEntity<ListResponseDTO<UserResponseDTO>> {
+        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
+        val listRequestParams = ListRequestDTO(page, sizePerPage, sortBy, keyword)
+        val requestDTO = RequestDTO(jwtBody, listRequestParams)
+        return ResponseEntity(fiendService.getListRequestAddFriend(requestDTO), HttpStatus.OK)
+    }
 }

@@ -8,6 +8,25 @@ import com.pvt.channel_service.models.entitys.MessageReadersEntity
 import java.util.UUID
 
 object ChannelModifier {
+    fun getChannelOnlineStatusModifierMap(membersInChannel: List<MemberInChannelDTO>, userID: UUID): MutableMap<String, Boolean> {
+        var channelModifierHashMap = mutableMapOf<String, Boolean>()
+
+        for (member in membersInChannel) {
+            val channelID = member.channelID.toString()
+
+            if (member.channelType == Channel.Type.SINGLE_TYPE && member.userID == userID) {
+                channelModifierHashMap[channelID] = member.online
+                continue
+            }
+
+            if (member.channelType == Channel.Type.GROUP_TYPE) {
+                channelModifierHashMap[channelID] = true
+            }
+        }
+
+        return channelModifierHashMap
+    }
+
     fun getChannelModifierMap(membersInChannel: List<MemberInChannelDTO>, ownerID: UUID): MutableMap<String, MutableMap<String, Any?>> {
         var channelModifierHashMap = mutableMapOf<String, MutableMap<String, Any?>>()
 
