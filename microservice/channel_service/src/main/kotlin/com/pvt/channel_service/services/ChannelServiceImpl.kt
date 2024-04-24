@@ -11,6 +11,7 @@ import com.pvt.channel_service.publisher.RabbitMQProducer
 import com.pvt.channel_service.repositories.*
 import com.pvt.channel_service.utils.ChannelModifier
 import com.pvt.channel_service.utils.extension.asUUID
+import org.springframework.amqp.rabbit.annotation.RabbitListener
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.PageRequest
 import org.springframework.http.HttpStatus
@@ -20,18 +21,15 @@ import org.springframework.web.server.ResponseStatusException
 import java.util.*
 
 @Service
-class ChannelServiceImpl: ChannelService {
+class ChannelServiceImpl(
+    val memberRepository: MemberRepository,
+    val rabbitMQProducer: RabbitMQProducer
+): ChannelService {
     @Autowired
     private lateinit var channelRepository: ChannelRepository
 
     @Autowired
-    private lateinit var memberRepository: MemberRepository
-
-    @Autowired
     private lateinit var userRepository: UserRepository
-
-    @Autowired
-    private lateinit var rabbitMQProducer: RabbitMQProducer
 
     @Autowired
     private lateinit var messageRepository: MessageRepository
@@ -205,9 +203,9 @@ class ChannelServiceImpl: ChannelService {
         return channel.asResponseChannelDTO(channelModifierHashMap, messageModifierHashMap, messageReaderModifierHashMap, unreadCounterModifierHashMap, ownerID)
     }
 
-    private fun sendRealtimeChannel(channelEntity: ChannelEntity, ownerID: UUID) {
+    private fun sendRealtimeChannel(channelEntity: ChannelEntity) {
         val membersInChannel = memberService.findAllByChannelID(channelEntity.id)
-        val userIDs = membersInChannel.map { it.userID }.filter { it != ownerID }
+        val userIDs = membersInChannel.map { it.userID }
 
         for (userID in userIDs) {
             val payload = convertResponseChannelDTO(channelEntity, userID)
@@ -241,7 +239,7 @@ class ChannelServiceImpl: ChannelService {
         )
         memberRepository.saveAllAndFlush(members)
         createRecordLevelAccessForSingleChannel(channel.id, ownerID, listOf(friend.id))
-        sendRealtimeChannel(channel, ownerID)
+        sendRealtimeChannel(channel)
         return channel
     }
 
@@ -325,7 +323,7 @@ class ChannelServiceImpl: ChannelService {
         val ownerMember = MemberEntity(userID = ownerID, channelID = channel.id, role = Member.Role.OWNER)
         memberRepository.saveAllAndFlush(users.map { it.toNewRecordMemberEntity(channelID = channel.id) } + ownerMember)
         createRecordLevelAccessForGroupChannel(channel.id, ownerID, userIDs)
-        sendRealtimeChannel(channel, ownerID)
+        sendRealtimeChannel(channel)
         return convertResponseChannelDTO(channel, ownerID)
     }
 
@@ -351,7 +349,7 @@ class ChannelServiceImpl: ChannelService {
             channel.avatar = groupAvatar
         }
         val updated = channelRepository.saveAndFlush(channel)
-        sendRealtimeChannel(updated, ownerID)
+        sendRealtimeChannel(updated)
         return convertResponseChannelDTO(updated, ownerID)
     }
 
@@ -373,7 +371,7 @@ class ChannelServiceImpl: ChannelService {
         memberRepository.saveAllAndFlush(users.map { it.toNewRecordMemberEntity(channelID = channel.id) })
         val userIDs = users.map { it.id }
         createRecordLevelAccessForGroupChannel(channel.id, ownerID, userIDs)
-        sendRealtimeChannel(channel, ownerID)
+        sendRealtimeChannel(channel)
         return convertResponseChannelDTO(channel, ownerID)
     }
 
@@ -547,5 +545,16 @@ class ChannelServiceImpl: ChannelService {
         memberRepository.saveAllAndFlush(listOf(owner, memberInGroup))
 
         return "successful"
+    }
+
+    @RabbitListener(queues = [RabbitMQ.Listener.MSC_TYPING])
+    private fun typing(data: RabbitMessageDTO<TypingDTO>) {
+        try {
+            val payload = data.message ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
+            val users = memberRepository.findAllUserByChannelID(payload.channelID).map { it.asUserResponseDTO() }
+            rabbitMQProducer.sendMessage(users, RabbitMQ.MSC_TYPING.callbackRoute())
+        } catch (e: Exception) {
+
+        }
     }
 }

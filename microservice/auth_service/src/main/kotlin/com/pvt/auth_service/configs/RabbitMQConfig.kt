@@ -173,6 +173,32 @@ class RabbitMQConfig {
     }
 
     @Bean
+    fun getDevicesQueue(): Queue {
+        return Queue(RabbitMQ.MSCMN_GET_DEVICE.queue())
+    }
+
+    @Bean
+    fun getDevicesBinding(): Binding {
+        return BindingBuilder
+            .bind(getDevicesQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSCMN_GET_DEVICE.route())
+    }
+
+    @Bean
+    fun callbackGetDevicesQueue(): Queue {
+        return Queue(RabbitMQ.MSCMN_GET_DEVICE.callbackQueue())
+    }
+
+    @Bean
+    fun callbackGetDevicesBinding(): Binding {
+        return BindingBuilder
+            .bind(callbackGetDevicesQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSCMN_GET_DEVICE.callbackRoute())
+    }
+
+    @Bean
     fun converter(): MessageConverter {
         return Jackson2JsonMessageConverter()
     }

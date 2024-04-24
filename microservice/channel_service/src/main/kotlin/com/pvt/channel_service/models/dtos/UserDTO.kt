@@ -24,4 +24,13 @@ data class UserDTO(
             avatar = avatar,
         )
     }
+
+    fun asUserResponseDTO(): UserResponseDTO {
+        return UserResponseDTO(
+            id = id,
+            fullName = fullName,
+            avatar = avatar,
+            online = online
+        )
+    }
 }

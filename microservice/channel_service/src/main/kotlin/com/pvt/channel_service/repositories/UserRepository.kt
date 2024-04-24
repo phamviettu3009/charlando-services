@@ -76,6 +76,20 @@ interface UserRepository: JpaRepository<UserEntity, UUID> {
         pageable: Pageable
     ): Page<UserEntity>
 
+    @Query("""
+        SELECT COUNT(*) FROM user_info u 
+        INNER JOIN friend f 
+        ON u.id = f.friend_id
+        WHERE f.user_id = :userID
+        AND f.record_status = :recordStatus
+        AND f.auth_status = 'ACTIVE'
+        AND u.auth_status = 'ACTIVE'
+    """, nativeQuery = true)
+    fun countAllFriendByUserIDAndRecordStatus(
+        @Param("userID") userID: UUID,
+        @Param("recordStatus") recordStatus: String
+    ): Optional<Long>
+
     @Query(value = """
         SELECT * FROM user_info
         WHERE (LOWER(full_name) LIKE LOWER('%'||:keyword||'%') OR LOWER(phone) = LOWER(:keyword)) 

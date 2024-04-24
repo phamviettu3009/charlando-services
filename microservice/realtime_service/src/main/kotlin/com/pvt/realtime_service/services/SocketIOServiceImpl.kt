@@ -2,28 +2,27 @@ package com.pvt.realtime_service.services
 
 import com.corundumstudio.socketio.SocketIOClient
 import com.corundumstudio.socketio.SocketIOServer
-import com.pvt.realtime_service.constants.RabbitMQ
-import com.pvt.realtime_service.models.dtos.OnlineStatusDTO
-import com.pvt.realtime_service.models.dtos.RabbitMessageDTO
+import com.google.gson.Gson
+import com.pvt.realtime_service.models.dtos.*
 import com.pvt.realtime_service.utils.SocketIOSessionIDStore
 import com.pvt.realtime_service.utils.extension.asUUID
-import org.springframework.amqp.rabbit.annotation.RabbitListener
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
-import org.springframework.web.server.ResponseStatusException
 import java.util.UUID
 
 @Service
 class SocketIOServiceImpl(
     val socketIOServer: SocketIOServer
 ): SocketIOService {
+    val gson: Gson = Gson()
+
     @Autowired
     private lateinit var onlineService: OnlineService
 
     override fun run() {
         connectionListener()
         disconnectionListener()
+        typingListener()
         socketIOServer.start()
     }
 
@@ -31,7 +30,8 @@ class SocketIOServiceImpl(
         try {
             val sessionID = SocketIOSessionIDStore.findByUserID(receiver)
             if (sessionID != null) {
-                socketIOServer.getClient(sessionID).sendEvent(endpoint, message)
+                val json = gson.toJson(message)
+                socketIOServer.getClient(sessionID).sendEvent(endpoint, json)
             }
         } catch (e: Exception) {
             println("Error processing message: ${e.message}")
@@ -54,6 +54,21 @@ class SocketIOServiceImpl(
             println("socket.io disconnection: $userID")
             onlineService.onlineStatus(OnlineStatusDTO(userID, false))
             SocketIOSessionIDStore.removeSession(userID)
+        }
+    }
+
+    private fun typingListener() {
+        socketIOServer.addEventListener("typing", String::class.java) { client, data, _ ->
+            val userID = extractUserID(client)
+            val typing: TypingDTO = gson.fromJson(data, TypingDTO::class.java)
+            val channelID = typing.channelID
+
+            val users = onlineService.typing(typing)
+            for (user in users) {
+                val sessionID: UUID = SocketIOSessionIDStore.findByUserID(user.id) ?: continue
+                val responseJson = gson.toJson(typing.asTypingResponseDTO(user))
+                socketIOServer.getClient(sessionID).sendEvent("typing/channel/$channelID", responseJson)
+            }
         }
     }
 

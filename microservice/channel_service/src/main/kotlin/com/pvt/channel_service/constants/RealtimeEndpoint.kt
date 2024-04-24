@@ -9,4 +9,7 @@ object RealtimeEndpoint {
     const val DELETE_CHANNEL_BY_USER = "delete-channel/user/"
     const val READER_MESSAGE_BY_CHANNEL = "reader-message/channel/"
     const val CHANNEL_ONLINE_STATUS_BY_USER = "channel-online-status/user/"
+    const val COUNT_REQUEST_ADD_FRIEND = "count-request-add-friend"
+    const val REQUEST_ADD_FRIEND = "request-add-friend"
+    const val CANCEL_REQUEST_ADD_FRIEND = "cancel-request-add-friend"
 }

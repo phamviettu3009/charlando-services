@@ -93,4 +93,11 @@ class FriendController {
         val requestDTO = RequestDTO(jwtBody, listRequestParams)
         return ResponseEntity(fiendService.getListRequestAddFriend(requestDTO), HttpStatus.OK)
     }
+
+    @GetMapping("/number-request-add-friend")
+    fun getNumberRequestAddFriend(request: HttpServletRequest) : ResponseEntity<Long> {
+        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
+        val requestDTO = RequestDTO(jwtBody, Unit)
+        return ResponseEntity(fiendService.getNumberRequestAddFriend(requestDTO), HttpStatus.OK)
+    }
 }

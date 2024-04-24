@@ -1,8 +1,11 @@
 package com.pvt.channel_service.services
 
 import com.pvt.channel_service.constants.Friend
+import com.pvt.channel_service.constants.RabbitMQ
+import com.pvt.channel_service.constants.RealtimeEndpoint
 import com.pvt.channel_service.models.dtos.*
 import com.pvt.channel_service.models.entitys.FriendEntity
+import com.pvt.channel_service.publisher.RabbitMQProducer
 import com.pvt.channel_service.repositories.FriendRepository
 import com.pvt.channel_service.repositories.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
@@ -29,6 +32,9 @@ class FriendServiceImpl: FriendService {
 
     @Autowired
     lateinit var memberService: MemberService
+
+    @Autowired
+    private lateinit var rabbitMQProducer: RabbitMQProducer
 
     private fun findByUserIDAndFriendID(userID: UUID, friendID: UUID): Optional<FriendEntity> {
         return friendRepository.findByUserIDAndFriendID(userID, friendID)
@@ -65,6 +71,11 @@ class FriendServiceImpl: FriendService {
             friendRepository.save(friend)
         }
 
+        val endpoint = RealtimeEndpoint.REQUEST_ADD_FRIEND
+        val realtimeMessage = RealtimeMessageDTO(user.asUserResponseDTO(), endpoint, user.id)
+        rabbitMQProducer.sendMessage(realtimeMessage, RabbitMQ.MSCMN_SEND_REALTIME_MESSAGE.route())
+        getNumberRequestAddFriend(userID = user.id)
+
         return mapOf("userID" to user.id, "status" to Friend.RecordStatus.WAIT_FOR_CONFIRMATION)
     }
 
@@ -90,6 +101,7 @@ class FriendServiceImpl: FriendService {
         friend.recordStatus = Friend.RecordStatus.UNFRIEND
 
         friendRepository.saveAll(listOf(owner, friend))
+
         return mapOf("userID" to user.id, "status" to Friend.RecordStatus.UNFRIEND)
     }
 
@@ -116,6 +128,8 @@ class FriendServiceImpl: FriendService {
 
         friendRepository.saveAll(listOf(owner, friend))
         channelService.createSingleChannel(ownerID, friendID)
+        getNumberRequestAddFriend(userID = ownerID)
+
         return mapOf("userID" to user.id, "status" to Friend.RecordStatus.FRIEND)
     }
 
@@ -140,6 +154,12 @@ class FriendServiceImpl: FriendService {
         friend.recordStatus = Friend.RecordStatus.UNFRIEND
 
         friendRepository.saveAll(listOf(owner, friend))
+
+        val endpoint = RealtimeEndpoint.CANCEL_REQUEST_ADD_FRIEND
+        val realtimeMessage = RealtimeMessageDTO(user.asUserResponseDTO(), endpoint, user.id)
+        rabbitMQProducer.sendMessage(realtimeMessage, RabbitMQ.MSCMN_SEND_REALTIME_MESSAGE.route())
+        getNumberRequestAddFriend(userID = user.id)
+
         return mapOf("userID" to user.id, "status" to Friend.RecordStatus.UNFRIEND)
     }
 
@@ -164,6 +184,8 @@ class FriendServiceImpl: FriendService {
         friend.recordStatus = Friend.RecordStatus.UNFRIEND
 
         friendRepository.saveAll(listOf(owner, friend))
+        getNumberRequestAddFriend(userID = ownerID)
+
         return mapOf("userID" to user.id, "status" to Friend.RecordStatus.UNFRIEND)
     }
 
@@ -238,5 +260,23 @@ class FriendServiceImpl: FriendService {
             last = users.isLast
         )
         return ListResponseDTO(users.content.map { it.asUserResponseDTO() }, meta)
+    }
+
+    override fun getNumberRequestAddFriend(request: RequestDTO<Unit>): Long {
+        val ownerID = request.jwtBody.userID ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        return getNumberRequestAddFriend(userID = ownerID)
+    }
+
+    fun getNumberRequestAddFriend(userID: UUID): Long {
+        val number = userRepository.countAllFriendByUserIDAndRecordStatus(
+            userID,
+            Friend.RecordStatus.WAIT_FOR_CONFIRMATION
+        ).orElseThrow()
+
+        val endpoint = RealtimeEndpoint.COUNT_REQUEST_ADD_FRIEND
+        val realtimeMessage = RealtimeMessageDTO(number, endpoint, userID)
+        rabbitMQProducer.sendMessage(realtimeMessage, RabbitMQ.MSCMN_SEND_REALTIME_MESSAGE.route())
+
+        return number
     }
 }

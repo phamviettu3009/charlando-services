@@ -62,7 +62,9 @@ class AuthFilter : AbstractGatewayFilterFactory<AuthFilter.Config>(Config::class
             "/api/v1/auth/register-with-email",
             "/api/v1/auth/verify-account",
             "/api/v1/auth/get-new-access-token",
-            "/api/v1/auth/resend-verify-code"
+            "/api/v1/auth/resend-verify-code",
+            "/api/v1/auth/request-forgot-password",
+            "/api/v1/auth/forgot-password"
         )
 
         return !exclusionList.contains(requestPath)

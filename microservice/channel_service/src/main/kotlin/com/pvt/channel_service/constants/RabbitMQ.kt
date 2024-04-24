@@ -8,10 +8,12 @@ object RabbitMQ {
     val MSCMN_GET_USER_BY_ID = RabbitQMAutoGenerate("gubi", "mscmn")
     val MSCMN_GET_RESOURCE_BY_ID_AND_USERID = RabbitQMAutoGenerate("grbiau", "mscmn")
     val MSCMN_SEND_REALTIME_MESSAGE = RabbitQMAutoGenerate("srm", "mscmn")
+    val MSCMN_SEND_NOTIFICATION_MESSAGE = RabbitQMAutoGenerate("snm", "mscmn")
 
     val MSC_CREATE_RECORD_USER = RabbitQMAutoGenerate("cru", "msc")
     val MSC_UPDATE_RECORD_USER = RabbitQMAutoGenerate("uru", "msc")
     val MSC_UPDATE_ONLINE_STATUS_RECORD_USER = RabbitQMAutoGenerate("uosru", "msc")
+    val MSC_TYPING = RabbitQMAutoGenerate("typing", "msc")
 
     object Listener {
         const val MSCMN_CREATE_RECORD_LEVEL_ACCESS = "mscmn.crla_queue"
@@ -22,6 +24,7 @@ object RabbitMQ {
         const val MSC_CREATE_RECORD_USER = "msc.cru_queue"
         const val MSC_UPDATE_RECORD_USER = "msc.uru_queue"
         const val MSC_UPDATE_ONLINE_STATUS_RECORD_USER = "msc.uosru_queue"
+        const val MSC_TYPING = "msc.typing_queue"
     }
 
     object Exchange {

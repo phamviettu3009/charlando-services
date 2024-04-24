@@ -15,4 +15,5 @@ interface FriendService {
     fun getFriends(request: RequestDTO<ListRequestDTO>): ListResponseDTO<UserResponseDTO>
     fun getFriendsOutsideChannel(request: RequestDTO<ListRequestDTO>): ListResponseDTO<UserResponseDTO>
     fun getListRequestAddFriend(request: RequestDTO<ListRequestDTO>): ListResponseDTO<UserResponseDTO>
+    fun getNumberRequestAddFriend(request: RequestDTO<Unit>): Long
 }

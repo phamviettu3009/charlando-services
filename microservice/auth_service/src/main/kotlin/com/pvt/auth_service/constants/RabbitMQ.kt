@@ -7,6 +7,7 @@ object RabbitMQ {
     val MSCMN_REVOKE_RECORD_LEVEL_ACCESS_FOR_MEMBERS = RabbitQMAutoGenerate("rrlafm", "mscmn")
     val MSCMN_GET_USER_BY_ID = RabbitQMAutoGenerate("gubi", "mscmn")
     val MSCMN_VALIDATION_JWT = RabbitQMAutoGenerate("vj", "mscmn")
+    val MSCMN_GET_DEVICE = RabbitQMAutoGenerate("gd", "mscmn")
 
     val MSC_CREATE_RECORD_USER = RabbitQMAutoGenerate("cru", "msc")
     val MSC_UPDATE_RECORD_USER = RabbitQMAutoGenerate("uru", "msc")
@@ -17,6 +18,7 @@ object RabbitMQ {
         const val MSCMN_REVOKE_RECORD_LEVEL_ACCESS_FOR_MEMBERS = "mscmn.rrlafm_queue"
         const val MSCMN_GET_USER_BY_ID = "mscmn.gubi_queue"
         const val MSCMN_VALIDATION_JWT = "mscmn.vj_queue"
+        const val MSCMN_GET_DEVICE = "mscmn.gd_queue"
     }
 
     object Exchange {

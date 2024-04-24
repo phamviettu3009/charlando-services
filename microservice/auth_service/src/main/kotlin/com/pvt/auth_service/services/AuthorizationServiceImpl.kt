@@ -43,6 +43,11 @@ class AuthorizationServiceImpl(
         val listRoleLabel = listOf(
             DomainLevelAccessEntity(accessContent = "/auth/logout-device", method = "POST"),
             DomainLevelAccessEntity(accessContent = "/auth/logout-all-device", method = "POST"),
+            DomainLevelAccessEntity(accessContent = "/auth/devices", method = "GET"),
+            DomainLevelAccessEntity(accessContent = "/auth/change-password", method = "POST"),
+            DomainLevelAccessEntity(accessContent = "/auth/forgot-password", method = "POST"),
+            DomainLevelAccessEntity(accessContent = "/auth/request-forgot-password", method = "POST"),
+            DomainLevelAccessEntity(accessContent = "/auth/update-firebase-token", method = "POST"),
             DomainLevelAccessEntity(accessContent = "/resource/upload/private/multi", method = "POST"),
             DomainLevelAccessEntity(accessContent = "/resource/upload/public/multi", method = "POST"),
             DomainLevelAccessEntity(accessContent = "/resource/upload/public/avatar", method = "POST"),
@@ -57,6 +62,7 @@ class AuthorizationServiceImpl(
             DomainLevelAccessEntity(accessContent = "/friend/unfriend/[a-fA-F0-9\\\\-]+", method = "POST"),
             DomainLevelAccessEntity(accessContent = "/friend/cancel-request-add-friend/[a-fA-F0-9\\\\-]+", method = "POST"),
             DomainLevelAccessEntity(accessContent = "/friend/reject-friend-request/[a-fA-F0-9\\\\-]+", method = "POST"),
+            DomainLevelAccessEntity(accessContent = "/friend/number-request-add-friend", method = "GET"),
             DomainLevelAccessEntity(accessContent = "/user", method = "GET"),
             DomainLevelAccessEntity(accessContent = "/user/self", method = "PUT"),
             DomainLevelAccessEntity(accessContent = "/user/[a-fA-F0-9\\\\-]+", method = "GET"),
@@ -201,7 +207,7 @@ class AuthorizationServiceImpl(
         }
     }
 
-    private fun createRecordLevelAccess(payload: RecordLevelAccessPayloadDTO) {
+    override fun createRecordLevelAccess(payload: RecordLevelAccessPayloadDTO) {
         val recordLevelAccess = recordLevelAccessRepository.findByAccessContentAndMethodAndAuthStatus(
             payload.accessContent,
             payload.method

@@ -173,6 +173,13 @@ class UserServiceImpl(val userRepository: UserRepository): UserService {
         return updated.asUserResponseDTO()
     }
 
+    override fun getUserByID(userID: UUID): UserResponseDTO {
+        val user = userRepository.findById(userID).orElseThrow {
+            throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        }
+        return user.asUserResponseDTO()
+    }
+
     private fun sendRealtimeOnlineStatusChannel(userID: UUID) {
         val page = 0
         val sizePerPage = 50

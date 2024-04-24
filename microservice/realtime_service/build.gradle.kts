@@ -20,6 +20,7 @@ repositories {
 }
 
 dependencies {
+	implementation("com.google.firebase:firebase-admin:9.2.0")
 	implementation("com.corundumstudio.socketio:netty-socketio:2.0.6")
 	implementation("org.springframework.boot:spring-boot-starter-amqp:2.7.8")
 	implementation("com.google.code.gson:gson:2.10")

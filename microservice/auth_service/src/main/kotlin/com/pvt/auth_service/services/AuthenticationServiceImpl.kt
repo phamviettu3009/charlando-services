@@ -133,11 +133,15 @@ class AuthenticationServiceImpl(
         userID: UUID,
         tenantCode: String,
         deviceID: String,
-        authenticationID: UUID
+        authenticationID: UUID,
+        deviceSystemName: String,
+        deviceName: String,
+        os: String,
+        description: String
     ): AuthenticationSuccessResponseDTO {
         val now = Date()
         // 3600000 = 1 hour
-        val expirationAccessToken = Date(now.time + 3600000 * 24 * 3)
+        val expirationAccessToken = Date(now.time + 3600000 * 24 * 1)
         val expirationRefreshToken = Date(now.time + 3600000 * 24 * 15)
 
         val jwtBody = JWTBodyDTO(
@@ -170,6 +174,10 @@ class AuthenticationServiceImpl(
                     authenticationID = authenticationID,
                     accessToken = accessToken,
                     refreshToken = refreshToken,
+                    deviceName = deviceName,
+                    deviceSystemName = deviceSystemName,
+                    os = os,
+                    description = description
                 )
             )
         }
@@ -182,6 +190,7 @@ class AuthenticationServiceImpl(
 
         deviceUpdate.accessToken = accessToken
         deviceUpdate.refreshToken = refreshToken
+        deviceUpdate.mostRecentLoginTime = Date()
         deviceRepository.saveAndFlush(deviceUpdate)
 
         return AuthenticationSuccessResponseDTO(accessToken, refreshToken)
@@ -202,8 +211,18 @@ class AuthenticationServiceImpl(
             val hashedPassword: String = HashString.hashString(password, salt)
             val verifyCode = VerificationCode.generateVerificationCode()
 
-            val user = UserEntity(id = UUID.randomUUID(), fullName = userName)
+            val avatar = "b1b696bb-ddb9-4ad9-89c3-f39f81f14157" // empty_avatar (common)
+            val user = UserEntity(id = UUID.randomUUID(), fullName = userName, avatar = avatar)
             val userCreated = userService.createUser(user)
+
+            val recordLevelAccessPayload = RecordLevelAccessPayloadDTO(
+                accessContent = "/resource/get/$avatar",
+                method = "GET",
+                recordStatus = "public",
+                ownerID = userCreated.id,
+                userAccessIDs = listOf()
+            )
+            authorizationService.createRecordLevelAccess(recordLevelAccessPayload)
 
             val authentication = AuthenticationEntity(
                 userName = userName,
@@ -265,6 +284,10 @@ class AuthenticationServiceImpl(
         val userName = accountPassword.user
         val password = accountPassword.password
         val deviceID = accountPassword.deviceID
+        val deviceSystemName = accountPassword.deviceSystemName
+        val deviceName = accountPassword.deviceName
+        val os = accountPassword.os
+        val description = accountPassword.description
         val salt: String = Common.SALT + userName
         val authInfo: AuthenticationEntity =
             authRepository.findByUserNameAndTenantCode(userName = userName, tenantCode = tenantCode)
@@ -282,27 +305,27 @@ class AuthenticationServiceImpl(
         val isVerify = HashString.verifyString(password, authInfo.hashPassword.toString(), salt)
         if (isVerify) {
             JWTCache.removeCacheByUserIDAndDeviceIDAndTenantCode(userID, deviceID, tenantCode)
-            return makeToken(userName, userID, tenantCode, deviceID, authenticationID)
+            return makeToken(userName, userID, tenantCode, deviceID, authenticationID, deviceSystemName, deviceName, os, description)
         } else {
             throw ResponseStatusException(HttpStatus.UNAUTHORIZED, "Incorrect username or password!")
         }
     }
 
-    override fun getNewAccessToken(refreshToken: JwtDTO): JwtDTO {
-        val validate = JwtUtils.validateToken(token = refreshToken.token)
+    override fun getNewAccessToken(refreshToken: String): String {
+        val validate = JwtUtils.validateToken(token = refreshToken)
 
         if (validate is Boolean) {
-            val jwtBody = JwtUtils.getBodyFromToken(refreshToken.token!!)
+            val jwtBody = JwtUtils.getBodyFromToken(refreshToken)
             if (jwtBody.type == "refresh") {
                 val now = Date()
-                val expirationAccessToken = Date(now.time + 3600000 * 1)
+                val expirationAccessToken = Date(now.time + 3600000 * 24 * 1)
                 val userID = jwtBody.userID!!
                 val tenantCode = jwtBody.tenantCode!!
 
                 val account = findAccountByUserIDAndTenantCode(userID, tenantCode)
                 isAuthStatusActive(account.authStatus)
 
-                val device = deviceRepository.findByRefreshToken(refreshToken.token).orElseThrow {
+                val device = deviceRepository.findByRefreshToken(refreshToken).orElseThrow {
                     throw ResponseStatusException(HttpStatus.UNAUTHORIZED, "Refresh token invalid!")
                 }
                 isAuthStatusActive(device.authStatus)
@@ -327,7 +350,7 @@ class AuthenticationServiceImpl(
                 val deviceUpdated = deviceRepository.saveAndFlush(device)
 
                 if (deviceUpdated.accessToken == accessToken) {
-                    return JwtDTO(token = accessToken)
+                    return accessToken
                 }
             }
         }
@@ -360,16 +383,15 @@ class AuthenticationServiceImpl(
     }
 
     @Transactional
-    override fun changePassword(account: AccountChangePasswordDTO): String {
-        val userName = account.user
+    override fun changePassword(userID: UUID, account: AccountChangePasswordDTO): String {
         val tenantCode = account.tenantCode
         val oldPassword = account.oldPassword
         val newPassword = account.newPassword
 
-        val account = findAccountByUserNameAndTenantCode(userName, tenantCode)
+        val account = findAccountByUserIDAndTenantCode(userID, tenantCode)
         isAuthStatusActive(account.authStatus)
 
-        val salt: String = Common.SALT + userName
+        val salt: String = Common.SALT + account.userName
         val isVerify = HashString.verifyString(oldPassword, account.hashPassword.toString(), salt)
 
         if (isVerify) {
@@ -430,6 +452,7 @@ class AuthenticationServiceImpl(
         for (device in devices) {
             device.refreshToken = null
             device.accessToken = null
+            device.mostRecentLogoutTime = Date()
             deviceRepository.save(device)
         }
 
@@ -453,6 +476,7 @@ class AuthenticationServiceImpl(
 
         device.refreshToken = null
         device.accessToken = null
+        device.mostRecentLogoutTime = Date()
         deviceRepository.save(device)
 
         removeJWTCacheByUserIDAndDeviceIDAndTenantCode(device.userID!! ,deviceID, tenantCode)
@@ -466,6 +490,11 @@ class AuthenticationServiceImpl(
         val jwtUser = jwtBody.asJWTUser(jwtToken!!)
         validationUserContentAccessPermission(jwtUser.userID, path, method)
         return jwtBody
+    }
+
+    override fun getDevices(userID: UUID): List<DeviceDTO> {
+        val devices = deviceRepository.findAllByUserID(userID)
+        return devices.map { it.asDeviceDTO() }
     }
 
     private fun validationJWT(jwtToken: String?): JWTBodyDTO {

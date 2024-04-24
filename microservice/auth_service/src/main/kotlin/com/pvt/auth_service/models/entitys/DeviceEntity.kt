@@ -1,8 +1,10 @@
 package com.pvt.auth_service.models.entitys
 
 import com.pvt.auth_service.constants.AuthStatus
+import com.pvt.auth_service.models.dtos.DeviceDTO
 import com.pvt.auth_service.models.dtos.DeviceDetailConverter
 import com.pvt.auth_service.models.dtos.DeviceDetailDTO
+import com.pvt.auth_service.models.dtos.DeviceFirebaseTokenDTO
 import org.hibernate.annotations.ColumnTransformer
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.GenericGenerator
@@ -34,6 +36,9 @@ data class DeviceEntity(
     @Column(name = "device_name")
     var deviceName: String? = "",
 
+    @Column(name = "device_system_name")
+    var deviceSystemName: String? = "",
+
     @Column(name = "os")
     var os: String? = "",
 
@@ -62,4 +67,33 @@ data class DeviceEntity(
 
     @Column(name = "auth_status")
     var authStatus: String? = AuthStatus.ACTIVE,
+
+    @Column(name = "description")
+    var description: String? = "",
+
+    @Column(name = "most_recent_login_time")
+    var mostRecentLoginTime: Date? = null,
+
+    @Column(name = "most_recent_logout_time")
+    var mostRecentLogoutTime: Date? = null,
+
+    @Column(name = "firebase_token")
+    var firebaseToken: String? = null
 )
+
+fun DeviceEntity.asDeviceDTO(): DeviceDTO {
+    return DeviceDTO(
+        deviceID = deviceID!!,
+        deviceName = deviceName ?: "",
+        deviceSystemName = deviceSystemName ?: "",
+        os = os ?: "",
+        userID = userID!!,
+        login = (accessToken != null && refreshToken != null),
+        mostRecentLoginTime = mostRecentLoginTime,
+        mostRecentLogoutTime = mostRecentLogoutTime
+    )
+}
+
+fun DeviceEntity.asDeviceFirebaseToken(): DeviceFirebaseTokenDTO {
+    return DeviceFirebaseTokenDTO(fcmtoken = firebaseToken, userID = userID!!)
+}

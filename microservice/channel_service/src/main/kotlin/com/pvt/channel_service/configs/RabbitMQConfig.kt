@@ -188,6 +188,19 @@ class RabbitMQConfig {
     }
 
     @Bean
+    fun sendNotificationMessageQueue(): Queue {
+        return Queue(RabbitMQ.MSCMN_SEND_NOTIFICATION_MESSAGE.queue())
+    }
+
+    @Bean
+    fun sendNotificationMessageBinding(): Binding {
+        return BindingBuilder
+            .bind(sendNotificationMessageQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSCMN_SEND_NOTIFICATION_MESSAGE.route())
+    }
+
+    @Bean
     fun updateOnlineStatusUserRecordMSCQueue(): Queue {
         return Queue(RabbitMQ.MSC_UPDATE_ONLINE_STATUS_RECORD_USER.queue())
     }
@@ -211,6 +224,32 @@ class RabbitMQConfig {
             .bind(callbackUpdateOnlineStatusUserRecordMSCQueue())
             .to(exchange())
             .with(RabbitMQ.MSC_UPDATE_ONLINE_STATUS_RECORD_USER.callbackRoute())
+    }
+
+    @Bean
+    fun typingMSCQueue(): Queue {
+        return Queue(RabbitMQ.MSC_TYPING.queue())
+    }
+
+    @Bean
+    fun typingMSCBinding(): Binding {
+        return BindingBuilder
+            .bind(typingMSCQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSC_TYPING.route())
+    }
+
+    @Bean
+    fun callbackTypingMSCQueue(): Queue {
+        return Queue(RabbitMQ.MSC_TYPING.callbackQueue())
+    }
+
+    @Bean
+    fun callbackTypingMSCBinding(): Binding {
+        return BindingBuilder
+            .bind(callbackTypingMSCQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSC_TYPING.callbackRoute())
     }
 
     @Bean

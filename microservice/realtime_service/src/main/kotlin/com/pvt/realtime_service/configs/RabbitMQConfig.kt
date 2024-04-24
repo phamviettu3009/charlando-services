@@ -82,6 +82,59 @@ class RabbitMQConfig {
     }
 
     @Bean
+    fun typingMSCQueue(): Queue {
+        return Queue(RabbitMQ.MSC_TYPING.queue())
+    }
+
+    @Bean
+    fun typingMSCBinding(): Binding {
+        return BindingBuilder
+            .bind(typingMSCQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSC_TYPING.route())
+    }
+
+    @Bean
+    fun callbackTypingMSCQueue(): Queue {
+        return Queue(RabbitMQ.MSC_TYPING.callbackQueue())
+    }
+
+    @Bean
+    fun callbackTypingMSCBinding(): Binding {
+        return BindingBuilder
+            .bind(callbackTypingMSCQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSC_TYPING.callbackRoute())
+    }
+
+
+    @Bean
+    fun getDevicesQueue(): Queue {
+        return Queue(RabbitMQ.MSCMN_GET_DEVICE.queue())
+    }
+
+    @Bean
+    fun getDevicesBinding(): Binding {
+        return BindingBuilder
+            .bind(getDevicesQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSCMN_GET_DEVICE.route())
+    }
+
+    @Bean
+    fun callbackGetDevicesQueue(): Queue {
+        return Queue(RabbitMQ.MSCMN_GET_DEVICE.callbackQueue())
+    }
+
+    @Bean
+    fun callbackGetDevicesBinding(): Binding {
+        return BindingBuilder
+            .bind(callbackGetDevicesQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSCMN_GET_DEVICE.callbackRoute())
+    }
+
+    @Bean
     fun converter(): MessageConverter {
         return Jackson2JsonMessageConverter()
     }

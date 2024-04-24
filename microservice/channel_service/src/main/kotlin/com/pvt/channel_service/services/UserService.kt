@@ -12,4 +12,5 @@ interface UserService {
     fun getUsersInChannel(request: RequestDTO<ListRequestDTO>): ListResponseDTO<MemberResponseDTO>
     fun getUserInfo(request: RequestDTO<Unit>): UserInfoResponseDTO
     fun updateUser(request: RequestDTO<UserUpdateRequestDTO>): UserResponseDTO
+    fun getUserByID(userID: UUID): UserResponseDTO
 }

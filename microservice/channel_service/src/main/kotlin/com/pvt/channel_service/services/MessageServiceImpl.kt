@@ -1,14 +1,8 @@
 package com.pvt.channel_service.services
 
-import com.pvt.channel_service.constants.AuthStatus
-import com.pvt.channel_service.constants.Message
-import com.pvt.channel_service.constants.RabbitMQ
-import com.pvt.channel_service.constants.RealtimeEndpoint
+import com.pvt.channel_service.constants.*
 import com.pvt.channel_service.models.dtos.*
-import com.pvt.channel_service.models.entitys.MemberEntity
-import com.pvt.channel_service.models.entitys.MessageEntity
-import com.pvt.channel_service.models.entitys.MessageReactionEntity
-import com.pvt.channel_service.models.entitys.MessageReadersEntity
+import com.pvt.channel_service.models.entitys.*
 import com.pvt.channel_service.publisher.RabbitMQProducer
 import com.pvt.channel_service.repositories.*
 import com.pvt.channel_service.utils.MessageModifier
@@ -151,11 +145,42 @@ class MessageServiceImpl : MessageService {
         return messageEntity.asResponseMessageDTO(attachmentModifier, reactionsModifier, replyModifier, userModifier, ownerID, syncID)
     }
 
-    private fun sendRealtimeMessage(userIDs: List<UUID>, messageEntity: MessageEntity, endpoint: String) {
+    private fun getMessageContent(messageEntity: MessageEntity): String {
+        return when (messageEntity.type) {
+            Message.Type.MESSAGE -> messageEntity.message ?: ""
+            Message.Type.ATTACHMENT -> "[Attachment]"
+            Message.Type.ICON_MESSAGE -> messageEntity.iconMessage ?: ""
+            else -> ""
+        }
+    }
+
+    private fun getChannelName(channelEntity: ChannelEntity, ownerID: UUID): String {
+        val owner = userService.getUserByID(ownerID)
+        val ownerName = owner.fullName
+
+        return when (channelEntity.type) {
+            Channel.Type.GROUP_TYPE -> "[${channelEntity.name}] $ownerName"
+            Channel.Type.SINGLE_TYPE -> ownerName ?: ""
+            else -> ""
+        }
+    }
+
+    private fun sendNotificationMessage(messageEntity: MessageEntity, channelEntity: ChannelEntity, userIDs: List<UUID>) {
+        val message = getMessageContent(messageEntity)
+        val channelName = getChannelName(channelEntity, messageEntity.makerID)
+        val channelID = messageEntity.channelID.toString()
+        val payload = mapOf("title" to channelName, "body" to message, "channelID" to channelID)
+        val notificationMessage = NotificationMessageDTO(payload, userIDs)
+        rabbitMQProducer.sendMessage(notificationMessage, RabbitMQ.MSCMN_SEND_NOTIFICATION_MESSAGE.route())
+    }
+
+    private fun sendRealtimeMessage(userIDs: List<UUID>, ownerID: UUID, messageEntity: MessageEntity, endpoint: String) {
         for (userID in userIDs) {
-            val payload = convertResponseMessageDTO(messageEntity, userID)
-            val realtimeMessage = RealtimeMessageDTO(payload, endpoint, userID)
-            rabbitMQProducer.sendMessage(realtimeMessage, RabbitMQ.MSCMN_SEND_REALTIME_MESSAGE.route())
+            if (userID != ownerID) {
+                val payload = convertResponseMessageDTO(messageEntity, userID)
+                val realtimeMessage = RealtimeMessageDTO(payload, endpoint, userID)
+                rabbitMQProducer.sendMessage(realtimeMessage, RabbitMQ.MSCMN_SEND_REALTIME_MESSAGE.route())
+            }
             sendRealtimeChannel(messageEntity.channelID, userID)
         }
     }
@@ -281,7 +306,7 @@ class MessageServiceImpl : MessageService {
         createAttachments(attachmentIDs, ownerID, messageRecord.id)
         createReaction(messageReaction, ownerID, messageRecord.id)
         val membersInChannel = memberService.findAllByChannelID(channel.id)
-        val userIDs = membersInChannel.map { it.userID }.filter { it != ownerID }
+        val userIDs = membersInChannel.map { it.userID }
         createRecordLevelAccessForMembers(messageRecord.id, ownerID, userIDs)
         createRecordLevelAccessAttachmentForMembers(attachmentIDs, userIDs)
         createRecordUnreadCounter(membersInChannel, ownerID)
@@ -289,7 +314,8 @@ class MessageServiceImpl : MessageService {
         channelRepository.saveAndFlush(channel)
         readMessage(ownerID, messageRecord.id)
         val endpoint = RealtimeEndpoint.NEW_MESSAGE_BY_CHANNEL + channelID
-        sendRealtimeMessage(userIDs, messageRecord, endpoint)
+        sendRealtimeMessage(userIDs, ownerID, messageRecord, endpoint)
+        sendNotificationMessage(messageRecord, channel, userIDs)
         return convertResponseMessageDTO(messageRecord, ownerID, syncID)
     }
 
@@ -313,7 +339,7 @@ class MessageServiceImpl : MessageService {
         }
 
         val membersInChannel = memberService.findAllByChannelID(messageRecord.channelID)
-        val userIDs = membersInChannel.map { it.userID }.filter { it != ownerID }
+        val userIDs = membersInChannel.map { it.userID }
 
         messageRecord.message = message
         messageRecord.deviceLocalTime = deviceLocalTime
@@ -323,7 +349,7 @@ class MessageServiceImpl : MessageService {
 
         val updated = messageRepository.saveAndFlush(messageRecord)
         val endpoint = RealtimeEndpoint.UPDATE_MESSAGE_BY_CHANNEL + messageRecord.channelID
-        sendRealtimeMessage(userIDs, updated, endpoint)
+        sendRealtimeMessage(userIDs, ownerID, updated, endpoint)
         return convertResponseMessageDTO(updated, ownerID)
     }
 
@@ -392,13 +418,13 @@ class MessageServiceImpl : MessageService {
         }
 
         val membersInChannel = memberService.findAllByChannelID(messageRecord.channelID)
-        val userIDs = membersInChannel.map { it.userID }.filter { it != ownerID }
+        val userIDs = membersInChannel.map { it.userID }
 
         messageRecord.recordStatus = recordStatus
         messageRecord.subMessage = payload
         val updated = messageRepository.saveAndFlush(messageRecord)
         val endpoint = RealtimeEndpoint.DELETE_MESSAGE_BY_CHANNEL + messageRecord.channelID
-        sendRealtimeMessage(userIDs, updated, endpoint)
+        sendRealtimeMessage(userIDs, ownerID, updated, endpoint)
         return convertResponseMessageDTO(updated, ownerID)
     }
 

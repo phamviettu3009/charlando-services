@@ -1,6 +1,7 @@
 package com.pvt.channel_service.repositories
 
 import com.pvt.channel_service.models.entitys.MemberEntity
+import com.pvt.channel_service.models.entitys.UserEntity
 import org.springframework.data.jpa.repository.JpaRepository
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
@@ -10,6 +11,13 @@ import java.util.*
 @Repository
 interface MemberRepository: JpaRepository<MemberEntity, UUID> {
     fun findAllByChannelID(channelID: UUID): List<MemberEntity>
+
+    @Query("""
+        SELECT u FROM UserEntity u
+        INNER JOIN MemberEntity m ON u.id = m.userID
+        WHERE m.channelID = :channelID
+    """)
+    fun findAllUserByChannelID(@Param("channelID") channelID: UUID): List<UserEntity>
 
     @Query("""
         SELECT m FROM MemberEntity m WHERE m.channelID = :channelID AND m.userID IN (:userIDs)
