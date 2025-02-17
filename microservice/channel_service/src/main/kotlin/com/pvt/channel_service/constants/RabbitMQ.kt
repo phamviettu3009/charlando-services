@@ -9,6 +9,7 @@ object RabbitMQ {
     val MSCMN_GET_RESOURCE_BY_ID_AND_USERID = RabbitQMAutoGenerate("grbiau", "mscmn")
     val MSCMN_SEND_REALTIME_MESSAGE = RabbitQMAutoGenerate("srm", "mscmn")
     val MSCMN_SEND_NOTIFICATION_MESSAGE = RabbitQMAutoGenerate("snm", "mscmn")
+    val MSCMN_WAKE_UP_DEVICES = RabbitQMAutoGenerate("wud", "mscmn")
 
     val MSC_CREATE_RECORD_USER = RabbitQMAutoGenerate("cru", "msc")
     val MSC_UPDATE_RECORD_USER = RabbitQMAutoGenerate("uru", "msc")

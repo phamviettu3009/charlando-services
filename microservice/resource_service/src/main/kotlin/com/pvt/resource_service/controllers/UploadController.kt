@@ -30,7 +30,7 @@ import java.util.UUID
 import javax.servlet.http.HttpServletRequest
 
 @RestController
-@RequestMapping("/api/v1/resource/upload")
+@RequestMapping("/api/v1/resources/upload")
 class UploadController {
     @Autowired
     private lateinit var uploadService: UploadService
@@ -159,7 +159,6 @@ class UploadController {
         }
 
         if (result["type"] == null || result["destination"] == null) {
-            println("vo")
             throw ResponseStatusException(HttpStatus.BAD_REQUEST)
         }
 

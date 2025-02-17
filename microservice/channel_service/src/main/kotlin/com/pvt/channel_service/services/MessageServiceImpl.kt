@@ -169,9 +169,36 @@ class MessageServiceImpl : MessageService {
         val message = getMessageContent(messageEntity)
         val channelName = getChannelName(channelEntity, messageEntity.makerID)
         val channelID = messageEntity.channelID.toString()
-        val payload = mapOf("title" to channelName, "body" to message, "channelID" to channelID)
+        val payload = mapOf(
+            "title" to channelName,
+            "body" to message,
+            "deepLink" to "appCharlando://message-screen?channelID=$channelID",
+            "messageID" to messageEntity.id.toString()
+        )
         val notificationMessage = NotificationMessageDTO(payload, userIDs)
         rabbitMQProducer.sendMessage(notificationMessage, RabbitMQ.MSCMN_SEND_NOTIFICATION_MESSAGE.route())
+    }
+
+    private fun deleteNotification(deleteNotifyID: UUID, userIDs: List<UUID>) {
+        val payload = mapOf("deleteNotifyID" to deleteNotifyID.toString())
+        val notificationMessage = NotificationMessageDTO(payload, userIDs)
+        rabbitMQProducer.sendMessage(notificationMessage, RabbitMQ.MSCMN_SEND_NOTIFICATION_MESSAGE.route())
+    }
+
+    private fun extractURLsFromString(message: String?): List<String>? {
+        if (message == null) return emptyList()
+
+        val urls = mutableListOf<String>()
+        val regexPattern = "https?://[a-zA-Z0-9./?=&_-]+".toRegex(RegexOption.IGNORE_CASE)
+        try {
+            val matches = regexPattern.findAll(message)
+            for (match in matches) {
+                urls.add(match.value)
+            }
+        } catch (e: Exception) {
+            println("Invalid regex pattern")
+        }
+        return if (urls.isEmpty()) null else urls
     }
 
     private fun sendRealtimeMessage(userIDs: List<UUID>, ownerID: UUID, messageEntity: MessageEntity, endpoint: String) {
@@ -265,9 +292,8 @@ class MessageServiceImpl : MessageService {
         return messageRepository.findLastMessageByChannelID(channelID).orElse(null)
     }
 
-    private fun getConsecutiveMessage(preMessage: MessageEntity?, ownerID: UUID, makerDate: Date): Boolean {
+    private fun getConsecutiveMessage(preMessage: MessageEntity?, makerDate: Date): Boolean {
         if (preMessage == null) return false
-        if (preMessage.makerID != ownerID) return false
         return DateTimeConverter.convertConsecutiveMessage(makerDate, preMessage.makerDate!!)
     }
 
@@ -289,6 +315,7 @@ class MessageServiceImpl : MessageService {
         verifyReply(replyID, channel.id)
         val preMessage = getPreviousMessage(channel.id)
         val makerDate = Date()
+        val urlsPreview = extractURLsFromString(message)?.joinToString(",")
         val newMessageRecord = MessageEntity(
             channelID = channel.id,
             message = message,
@@ -298,8 +325,9 @@ class MessageServiceImpl : MessageService {
             iconMessage = iconMessage,
             makerID = ownerID,
             makerDate = makerDate,
-            consecutiveMessages = getConsecutiveMessage(preMessage, ownerID, makerDate),
-            type = messageTypeHandler(attachmentIDs, iconMessage)
+            consecutiveMessages = getConsecutiveMessage(preMessage, makerDate),
+            type = messageTypeHandler(attachmentIDs, iconMessage),
+            urlsPreview = urlsPreview
         )
 
         val messageRecord = messageRepository.saveAndFlush(newMessageRecord)
@@ -315,7 +343,7 @@ class MessageServiceImpl : MessageService {
         readMessage(ownerID, messageRecord.id)
         val endpoint = RealtimeEndpoint.NEW_MESSAGE_BY_CHANNEL + channelID
         sendRealtimeMessage(userIDs, ownerID, messageRecord, endpoint)
-        sendNotificationMessage(messageRecord, channel, userIDs)
+        sendNotificationMessage(messageRecord, channel, userIDs.filter { it != ownerID })
         return convertResponseMessageDTO(messageRecord, ownerID, syncID)
     }
 
@@ -332,6 +360,7 @@ class MessageServiceImpl : MessageService {
             throw ResponseStatusException(HttpStatus.NOT_FOUND)
         }
         memberService.findByChannelIDAndUserID(messageRecord.channelID, ownerID)
+        val channelEntity = channelService.getChannel(messageRecord.channelID)
         if (messageRecord.recordStatus == Message.RecordStatus.DELETE_FOR_ALL ||
             messageRecord.recordStatus == Message.RecordStatus.DELETE_FOR_OWNER
         ) {
@@ -340,16 +369,21 @@ class MessageServiceImpl : MessageService {
 
         val membersInChannel = memberService.findAllByChannelID(messageRecord.channelID)
         val userIDs = membersInChannel.map { it.userID }
+        val userIDsWithoutOwner = userIDs.filter { it != ownerID }
+        val urlsPreview = extractURLsFromString(message)?.joinToString(",")
 
         messageRecord.message = message
         messageRecord.deviceLocalTime = deviceLocalTime
         messageRecord.messageLocation = messageLocation
         messageRecord.subMessage = "updated"
         messageRecord.edited = true
+        messageRecord.urlsPreview = urlsPreview
 
         val updated = messageRepository.saveAndFlush(messageRecord)
         val endpoint = RealtimeEndpoint.UPDATE_MESSAGE_BY_CHANNEL + messageRecord.channelID
         sendRealtimeMessage(userIDs, ownerID, updated, endpoint)
+        deleteNotification(messageID, userIDsWithoutOwner)
+        sendNotificationMessage(messageRecord, channelEntity, userIDsWithoutOwner)
         return convertResponseMessageDTO(updated, ownerID)
     }
 
@@ -425,6 +459,11 @@ class MessageServiceImpl : MessageService {
         val updated = messageRepository.saveAndFlush(messageRecord)
         val endpoint = RealtimeEndpoint.DELETE_MESSAGE_BY_CHANNEL + messageRecord.channelID
         sendRealtimeMessage(userIDs, ownerID, updated, endpoint)
+
+        if (recordStatus == Message.RecordStatus.DELETE_FOR_ALL) {
+            deleteNotification(messageID, userIDs.filter { it != ownerID })
+        }
+
         return convertResponseMessageDTO(updated, ownerID)
     }
 

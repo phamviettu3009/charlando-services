@@ -12,16 +12,18 @@ data class UserDTO(
     @JsonProperty("phone") var phone: String?,
     @JsonProperty("avatar") var avatar: String?,
     @JsonProperty("online") var online: Boolean,
+    @JsonProperty("cover_photo") var coverPhoto: String?
 ) {
     fun asUserEntity(): UserEntity {
         return UserEntity(
             id = id,
             fullName = fullName,
             gender = gender,
-            dateOfBirth = dateOfBirth,
+            dob = dateOfBirth,
             phone = phone,
             email = "",
             avatar = avatar,
+            coverPhoto = coverPhoto
         )
     }
 
@@ -30,7 +32,8 @@ data class UserDTO(
             id = id,
             fullName = fullName,
             avatar = avatar,
-            online = online
+            online = online,
+            coverPhoto = coverPhoto
         )
     }
 }

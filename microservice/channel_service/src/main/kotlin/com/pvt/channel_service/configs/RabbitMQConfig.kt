@@ -253,6 +253,32 @@ class RabbitMQConfig {
     }
 
     @Bean
+    fun wakeUpDevicesMSCQueue(): Queue {
+        return Queue(RabbitMQ.MSCMN_WAKE_UP_DEVICES.queue())
+    }
+
+    @Bean
+    fun wakeUpDevicesMSCBinding(): Binding {
+        return BindingBuilder
+            .bind(wakeUpDevicesMSCQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSCMN_WAKE_UP_DEVICES.route())
+    }
+
+    @Bean
+    fun callbackWakeUpDevicesMSCQueue(): Queue {
+        return Queue(RabbitMQ.MSCMN_WAKE_UP_DEVICES.callbackQueue())
+    }
+
+    @Bean
+    fun callbackWakeUpDevicesMSCBinding(): Binding {
+        return BindingBuilder
+            .bind(callbackWakeUpDevicesMSCQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSCMN_WAKE_UP_DEVICES.callbackRoute())
+    }
+
+    @Bean
     fun converter(): MessageConverter {
         val mapper = ObjectMapper()
         mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS)

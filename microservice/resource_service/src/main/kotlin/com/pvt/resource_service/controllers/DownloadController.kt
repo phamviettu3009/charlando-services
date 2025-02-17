@@ -16,12 +16,12 @@ import java.util.*
 import javax.servlet.http.HttpServletRequest
 
 @RestController
-@RequestMapping("/api/v1/resource")
+@RequestMapping("/api/v1/resources")
 class DownloadController {
     @Autowired
     private lateinit var downloadService: DownloadService
 
-    @GetMapping("/download/{id}")
+    @GetMapping("/{id}/download")
     @ResponseBody
     fun download(request: HttpServletRequest, @PathVariable id: UUID): ResponseEntity<out Any> {
         val requestPayload = RequestPayloadDTO(jwtBody = request.asRequestAttribute(), id)
@@ -33,7 +33,7 @@ class DownloadController {
         }
     }
 
-    @GetMapping("/get/{id}")
+    @GetMapping("/{id}")
     @ResponseBody
     fun getResource(
         request: HttpServletRequest,
@@ -63,7 +63,7 @@ class DownloadController {
         }
     }
 
-    @GetMapping("/get/{id}/thumbnail")
+    @GetMapping("/{id}/thumbnail")
     @ResponseBody
     fun getThumbnail(request: HttpServletRequest, @PathVariable id: UUID): ResponseEntity<ByteArray> {
         val requestPayload = RequestPayloadDTO(jwtBody = request.asRequestAttribute(), id)

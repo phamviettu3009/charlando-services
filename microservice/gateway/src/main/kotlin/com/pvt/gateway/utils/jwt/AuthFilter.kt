@@ -48,7 +48,7 @@ class AuthFilter : AbstractGatewayFilterFactory<AuthFilter.Config>(Config::class
 
     private fun validation(jwtToken: String?, path: String, method: String): JWTBodyDTO {
         val jwtBody = okHttp.executePost(
-            "http://localhost:5500/api/v1/auth/validation-jwt",
+            "http://auth-service:5500/api/v1/auth/validation-jwt",
             JwtValidationDTO(token = jwtToken, path = path, method = method),
             JWTBodyDTO::class.java
         )

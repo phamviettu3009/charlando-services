@@ -1,0 +1,35 @@
+2024-07-11 13:00:32.338  INFO 3440 --- [main] c.p.r.ResourceServiceApplicationKt       : Starting ResourceServiceApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 3440 (/Users/macad/Documents/Project/microservice-git/microservice/resource_service/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/resource_service)
+2024-07-11 13:00:32.348  INFO 3440 --- [main] c.p.r.ResourceServiceApplicationKt       : No active profile set, falling back to 1 default profile: "default"
+2024-07-11 13:00:33.353  INFO 3440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-07-11 13:00:33.448  INFO 3440 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 82 ms. Found 2 JPA repository interfaces.
+2024-07-11 13:00:34.242  INFO 3440 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5501 (http)
+2024-07-11 13:00:34.258  INFO 3440 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-11 13:00:34.259  INFO 3440 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-07-11 13:00:34.412  INFO 3440 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-11 13:00:34.412  INFO 3440 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1984 ms
+2024-07-11 13:00:34.732  INFO 3440 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-07-11 13:00:34.812  INFO 3440 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-07-11 13:00:35.101  INFO 3440 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-07-11 13:00:35.266  INFO 3440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-07-11 13:00:36.276  INFO 3440 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-07-11 13:00:36.300  INFO 3440 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+2024-07-11 13:00:36.927  INFO 3440 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-07-11 13:00:36.940  INFO 3440 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-07-11 13:00:38.143  WARN 3440 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-07-11 13:00:38.739  INFO 3440 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5501 (http) with context path ''
+2024-07-11 13:00:38.742  INFO 3440 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2024-07-11 13:00:38.833  INFO 3440 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#220f6a3c:0/SimpleConnection@118f2486 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 52136]
+2024-07-11 13:00:38.898  INFO 3440 --- [main] c.p.r.ResourceServiceApplicationKt       : Started ResourceServiceApplicationKt in 7.164 seconds (JVM running for 7.679)
+2024-07-11 13:00:38.913  INFO 3440 --- [main] c.p.r.services.UploadServiceImpl         : Created folder resource successfully
+2024-07-11 13:26:44.122  INFO 3440 --- [http-nio-0.0.0.0-5501-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-07-11 13:26:44.141  INFO 3440 --- [http-nio-0.0.0.0-5501-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-07-11 13:26:44.211  INFO 3440 --- [http-nio-0.0.0.0-5501-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 69 ms
+2024-07-11 14:17:02.739  WARN 3440 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=55s913ms).
+2024-07-11 14:18:27.357  WARN 3440 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=54s605ms).
+2024-07-11 16:16:58.045  WARN 3440 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Retrograde clock change detected (housekeeper delta=29s862ms), soft-evicting connections from pool.
+2024-07-11 16:39:19.738  INFO 3440 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-07-11 16:39:19.955  INFO 3440 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-07-11 16:39:20.002  INFO 3440 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-07-11 16:39:20.088  INFO 3440 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-07-11 16:39:20.146  INFO 3440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-07-11 16:39:20.152  INFO 3440 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

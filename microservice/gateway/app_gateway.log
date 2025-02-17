@@ -1,0 +1,1298 @@
+2024-09-21 18:38:22.109  INFO 25435 --- [main] com.pvt.gateway.GatewayApplicationKt     : Starting GatewayApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 25435 (/Users/macad/Documents/Project/microservice-git/microservice/gateway/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/gateway)
+2024-09-21 18:38:22.127  INFO 25435 --- [main] com.pvt.gateway.GatewayApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2024-09-21 18:38:22.959  INFO 25435 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-21 18:38:22.975  INFO 25435 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JPA repository interfaces.
+2024-09-21 18:38:23.133  INFO 25435 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=634ace50-63fd-326a-9562-4f33b8810d27
+2024-09-21 18:38:23.617  INFO 25435 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8443 (http)
+2024-09-21 18:38:23.626  INFO 25435 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-21 18:38:23.627  INFO 25435 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-21 18:38:23.833  INFO 25435 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-21 18:38:24.078  INFO 25435 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-21 18:38:24.136  INFO 25435 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-21 18:38:24.201  INFO 25435 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-21 18:38:24.393  INFO 25435 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-21 18:38:24.521  INFO 25435 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-21 18:38:24.748  INFO 25435 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-21 18:38:24.760  INFO 25435 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:38:25.533  INFO 25435 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2024-09-21 18:38:25.534  INFO 25435 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2024-09-21 18:38:25.534  INFO 25435 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2024-09-21 18:38:25.534  INFO 25435 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2024-09-21 18:38:25.534  INFO 25435 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2024-09-21 18:38:25.534  INFO 25435 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2024-09-21 18:38:25.534  INFO 25435 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2024-09-21 18:38:25.534  INFO 25435 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2024-09-21 18:38:25.534  INFO 25435 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2024-09-21 18:38:25.534  INFO 25435 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2024-09-21 18:38:25.534  INFO 25435 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2024-09-21 18:38:25.534  INFO 25435 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2024-09-21 18:38:25.535  INFO 25435 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2024-09-21 18:38:25.535  INFO 25435 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2024-09-21 18:38:25.831  INFO 25435 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8443 (http) with context path ''
+2024-09-21 18:38:25.907 ERROR 25435 --- [main] o.s.c.gateway.route.CachingRouteLocator  : Refresh routes error !!!
+
+java.lang.IllegalStateException: Could not create URI object: Expected scheme-specific part at index 5: http:
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:527) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.Route$AbstractBuilder.uri(Route.java:193) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.Route.async(Route.java:88) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:119) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:489) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:422) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:432) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerComplete(FluxMergeSequential.java:328) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:552) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4490) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribeWith(Mono.java:4605) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4457) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4393) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4365) ~[reactor-core-3.4.28.jar:3.4.28]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:81) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:40) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:73) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:50) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:940) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.10.jar:2.7.10]
+	at com.pvt.gateway.GatewayApplicationKt.main(GatewayApplication.kt:13) ~[main/:na]
+Caused by: java.net.URISyntaxException: Expected scheme-specific part at index 5: http:
+	at java.base/java.net.URI$Parser.fail(URI.java:2913) ~[na:na]
+	at java.base/java.net.URI$Parser.failExpecting(URI.java:2919) ~[na:na]
+	at java.base/java.net.URI$Parser.parse(URI.java:3119) ~[na:na]
+	at java.base/java.net.URI.<init>(URI.java:685) ~[na:na]
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:523) ~[spring-web-5.3.26.jar:5.3.26]
+	... 53 common frames omitted
+
+2024-09-21 18:38:25.920  INFO 25435 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-21 18:38:25.930  INFO 25435 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-09-21 18:38:25.952 ERROR 25435 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Could not create URI object: Expected scheme-specific part at index 5: http:
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:527) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.Route$AbstractBuilder.uri(Route.java:193) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.Route.async(Route.java:88) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:119) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:489) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:422) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:432) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerComplete(FluxMergeSequential.java:328) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:552) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.InternalFluxOperator.subscribe(InternalFluxOperator.java:62) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxDefer.subscribe(FluxDefer.java:54) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.blockLast(Flux.java:2760) ~[reactor-core-3.4.28.jar:3.4.28]
+	at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.lambda$onApplicationEvent$0(WeightCalculatorWebFilter.java:133) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider.ifAvailable(DefaultListableBeanFactory.java:2046) ~[spring-beans-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.onApplicationEvent(WeightCalculatorWebFilter.java:133) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:73) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:50) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:940) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.10.jar:2.7.10]
+	at com.pvt.gateway.GatewayApplicationKt.main(GatewayApplication.kt:13) ~[main/:na]
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:99) ~[reactor-core-3.4.28.jar:3.4.28]
+		at reactor.core.publisher.Flux.blockLast(Flux.java:2761) ~[reactor-core-3.4.28.jar:3.4.28]
+		... 24 common frames omitted
+Caused by: java.net.URISyntaxException: Expected scheme-specific part at index 5: http:
+	at java.base/java.net.URI$Parser.fail(URI.java:2913) ~[na:na]
+	at java.base/java.net.URI$Parser.failExpecting(URI.java:2919) ~[na:na]
+	at java.base/java.net.URI$Parser.parse(URI.java:3119) ~[na:na]
+	at java.base/java.net.URI.<init>(URI.java:685) ~[na:na]
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:523) ~[spring-web-5.3.26.jar:5.3.26]
+	... 53 common frames omitted
+
+2024-09-21 18:38:25.964  INFO 25435 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:38:25.964  INFO 25435 --- [main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-09-21 18:38:25.966  INFO 25435 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-21 18:38:25.970  INFO 25435 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-21 18:40:42.483  INFO 26187 --- [main] com.pvt.gateway.GatewayApplicationKt     : Starting GatewayApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 26187 (/Users/macad/Documents/Project/microservice-git/microservice/gateway/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/gateway)
+2024-09-21 18:40:42.495  INFO 26187 --- [main] com.pvt.gateway.GatewayApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2024-09-21 18:40:43.264  INFO 26187 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-21 18:40:43.279  INFO 26187 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JPA repository interfaces.
+2024-09-21 18:40:43.417  INFO 26187 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=634ace50-63fd-326a-9562-4f33b8810d27
+2024-09-21 18:40:43.862  INFO 26187 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8443 (http)
+2024-09-21 18:40:43.873  INFO 26187 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-21 18:40:43.874  INFO 26187 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-21 18:40:44.084  INFO 26187 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-21 18:40:44.339  INFO 26187 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-21 18:40:44.408  INFO 26187 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-21 18:40:44.475  INFO 26187 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-21 18:40:44.656  INFO 26187 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-21 18:40:44.789  INFO 26187 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-21 18:40:45.023  INFO 26187 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-21 18:40:45.036  INFO 26187 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:40:45.750  INFO 26187 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2024-09-21 18:40:45.750  INFO 26187 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2024-09-21 18:40:45.750  INFO 26187 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2024-09-21 18:40:45.750  INFO 26187 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2024-09-21 18:40:45.750  INFO 26187 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2024-09-21 18:40:45.750  INFO 26187 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2024-09-21 18:40:45.750  INFO 26187 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2024-09-21 18:40:45.750  INFO 26187 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2024-09-21 18:40:45.750  INFO 26187 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2024-09-21 18:40:45.750  INFO 26187 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2024-09-21 18:40:45.751  INFO 26187 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2024-09-21 18:40:45.751  INFO 26187 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2024-09-21 18:40:45.751  INFO 26187 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2024-09-21 18:40:45.751  INFO 26187 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2024-09-21 18:40:46.016  INFO 26187 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8443 (http) with context path ''
+2024-09-21 18:40:46.088 ERROR 26187 --- [main] o.s.c.gateway.route.CachingRouteLocator  : Refresh routes error !!!
+
+java.lang.IllegalStateException: Could not create URI object: Expected scheme-specific part at index 5: http:
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:527) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.Route$AbstractBuilder.uri(Route.java:193) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.Route.async(Route.java:88) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:119) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:489) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:422) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:432) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerComplete(FluxMergeSequential.java:328) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:552) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4490) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribeWith(Mono.java:4605) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4457) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4393) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4365) ~[reactor-core-3.4.28.jar:3.4.28]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:81) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:40) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:73) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:50) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:940) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.10.jar:2.7.10]
+	at com.pvt.gateway.GatewayApplicationKt.main(GatewayApplication.kt:13) ~[main/:na]
+Caused by: java.net.URISyntaxException: Expected scheme-specific part at index 5: http:
+	at java.base/java.net.URI$Parser.fail(URI.java:2913) ~[na:na]
+	at java.base/java.net.URI$Parser.failExpecting(URI.java:2919) ~[na:na]
+	at java.base/java.net.URI$Parser.parse(URI.java:3119) ~[na:na]
+	at java.base/java.net.URI.<init>(URI.java:685) ~[na:na]
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:523) ~[spring-web-5.3.26.jar:5.3.26]
+	... 53 common frames omitted
+
+2024-09-21 18:40:46.100  INFO 26187 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-21 18:40:46.109  INFO 26187 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-09-21 18:40:46.129 ERROR 26187 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Could not create URI object: Expected scheme-specific part at index 5: http:
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:527) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.Route$AbstractBuilder.uri(Route.java:193) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.Route.async(Route.java:88) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:119) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:489) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:422) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:432) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerComplete(FluxMergeSequential.java:328) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:552) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.InternalFluxOperator.subscribe(InternalFluxOperator.java:62) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxDefer.subscribe(FluxDefer.java:54) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.blockLast(Flux.java:2760) ~[reactor-core-3.4.28.jar:3.4.28]
+	at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.lambda$onApplicationEvent$0(WeightCalculatorWebFilter.java:133) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider.ifAvailable(DefaultListableBeanFactory.java:2046) ~[spring-beans-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.onApplicationEvent(WeightCalculatorWebFilter.java:133) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:73) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:50) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:940) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.10.jar:2.7.10]
+	at com.pvt.gateway.GatewayApplicationKt.main(GatewayApplication.kt:13) ~[main/:na]
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:99) ~[reactor-core-3.4.28.jar:3.4.28]
+		at reactor.core.publisher.Flux.blockLast(Flux.java:2761) ~[reactor-core-3.4.28.jar:3.4.28]
+		... 24 common frames omitted
+Caused by: java.net.URISyntaxException: Expected scheme-specific part at index 5: http:
+	at java.base/java.net.URI$Parser.fail(URI.java:2913) ~[na:na]
+	at java.base/java.net.URI$Parser.failExpecting(URI.java:2919) ~[na:na]
+	at java.base/java.net.URI$Parser.parse(URI.java:3119) ~[na:na]
+	at java.base/java.net.URI.<init>(URI.java:685) ~[na:na]
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:523) ~[spring-web-5.3.26.jar:5.3.26]
+	... 53 common frames omitted
+
+2024-09-21 18:40:46.139  INFO 26187 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:40:46.139  INFO 26187 --- [main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-09-21 18:40:46.141  INFO 26187 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-21 18:40:46.144  INFO 26187 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-21 18:46:36.819  INFO 28092 --- [main] com.pvt.gateway.GatewayApplicationKt     : Starting GatewayApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 28092 (/Users/macad/Documents/Project/microservice-git/microservice/gateway/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/gateway)
+2024-09-21 18:46:36.827  INFO 28092 --- [main] com.pvt.gateway.GatewayApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2024-09-21 18:46:37.625  INFO 28092 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-21 18:46:37.640  INFO 28092 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JPA repository interfaces.
+2024-09-21 18:46:37.784  INFO 28092 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=634ace50-63fd-326a-9562-4f33b8810d27
+2024-09-21 18:46:38.234  INFO 28092 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8443 (http)
+2024-09-21 18:46:38.245  INFO 28092 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-21 18:46:38.246  INFO 28092 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-21 18:46:38.481  INFO 28092 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-21 18:46:38.728  INFO 28092 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-21 18:46:38.793  INFO 28092 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-21 18:46:38.858  INFO 28092 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-21 18:46:39.035  INFO 28092 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-21 18:46:39.165  INFO 28092 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-21 18:46:39.375  INFO 28092 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-21 18:46:39.386  INFO 28092 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:46:40.109  INFO 28092 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2024-09-21 18:46:40.109  INFO 28092 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2024-09-21 18:46:40.109  INFO 28092 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2024-09-21 18:46:40.109  INFO 28092 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2024-09-21 18:46:40.109  INFO 28092 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2024-09-21 18:46:40.109  INFO 28092 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2024-09-21 18:46:40.109  INFO 28092 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2024-09-21 18:46:40.109  INFO 28092 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2024-09-21 18:46:40.109  INFO 28092 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2024-09-21 18:46:40.110  INFO 28092 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2024-09-21 18:46:40.110  INFO 28092 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2024-09-21 18:46:40.110  INFO 28092 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2024-09-21 18:46:40.110  INFO 28092 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2024-09-21 18:46:40.110  INFO 28092 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2024-09-21 18:46:40.389  INFO 28092 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8443 (http) with context path ''
+2024-09-21 18:46:40.463  INFO 28092 --- [main] com.pvt.gateway.GatewayApplicationKt     : Started GatewayApplicationKt in 4.39 seconds (JVM running for 4.933)
+2024-09-21 18:46:58.875  INFO 28092 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:46:58.877  INFO 28092 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-09-21 18:46:58.880  INFO 28092 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-21 18:46:58.883  INFO 28092 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-21 18:48:07.240  INFO 28576 --- [main] com.pvt.gateway.GatewayApplicationKt     : Starting GatewayApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 28576 (/Users/macad/Documents/Project/microservice-git/microservice/gateway/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/gateway)
+2024-09-21 18:48:07.242  INFO 28576 --- [main] com.pvt.gateway.GatewayApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2024-09-21 18:48:08.059  INFO 28576 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-21 18:48:08.074  INFO 28576 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JPA repository interfaces.
+2024-09-21 18:48:08.212  INFO 28576 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=634ace50-63fd-326a-9562-4f33b8810d27
+2024-09-21 18:48:08.573  INFO 28576 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8443 (http)
+2024-09-21 18:48:08.582  INFO 28576 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-21 18:48:08.582  INFO 28576 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-21 18:48:08.789  INFO 28576 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-21 18:48:09.029  INFO 28576 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-21 18:48:09.084  INFO 28576 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-21 18:48:09.139  INFO 28576 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-21 18:48:09.329  INFO 28576 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-21 18:48:09.442  INFO 28576 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-21 18:48:09.663  INFO 28576 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-21 18:48:09.673  INFO 28576 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:48:10.401  INFO 28576 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2024-09-21 18:48:10.401  INFO 28576 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2024-09-21 18:48:10.401  INFO 28576 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2024-09-21 18:48:10.401  INFO 28576 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2024-09-21 18:48:10.401  INFO 28576 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2024-09-21 18:48:10.401  INFO 28576 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2024-09-21 18:48:10.401  INFO 28576 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2024-09-21 18:48:10.401  INFO 28576 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2024-09-21 18:48:10.401  INFO 28576 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2024-09-21 18:48:10.401  INFO 28576 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2024-09-21 18:48:10.402  INFO 28576 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2024-09-21 18:48:10.402  INFO 28576 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2024-09-21 18:48:10.402  INFO 28576 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2024-09-21 18:48:10.402  INFO 28576 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2024-09-21 18:48:10.685  INFO 28576 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8443 (http) with context path ''
+2024-09-21 18:48:10.759  INFO 28576 --- [main] com.pvt.gateway.GatewayApplicationKt     : Started GatewayApplicationKt in 4.078 seconds (JVM running for 4.544)
+2024-09-21 18:48:15.698  INFO 28576 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:48:15.698  INFO 28576 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-09-21 18:48:15.700  INFO 28576 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-21 18:48:15.703  INFO 28576 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-21 18:48:30.206  INFO 28707 --- [main] com.pvt.gateway.GatewayApplicationKt     : Starting GatewayApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 28707 (/Users/macad/Documents/Project/microservice-git/microservice/gateway/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/gateway)
+2024-09-21 18:48:30.208  INFO 28707 --- [main] com.pvt.gateway.GatewayApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2024-09-21 18:48:30.929  INFO 28707 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-21 18:48:30.942  INFO 28707 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JPA repository interfaces.
+2024-09-21 18:48:31.068  INFO 28707 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=634ace50-63fd-326a-9562-4f33b8810d27
+2024-09-21 18:48:31.457  INFO 28707 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8443 (http)
+2024-09-21 18:48:31.483  INFO 28707 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-21 18:48:31.483  INFO 28707 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-21 18:48:31.669  INFO 28707 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-21 18:48:31.845  INFO 28707 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-21 18:48:31.891  INFO 28707 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-21 18:48:31.928  INFO 28707 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-21 18:48:32.058  INFO 28707 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-21 18:48:32.150  INFO 28707 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-21 18:48:32.352  INFO 28707 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-21 18:48:32.364  INFO 28707 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:48:33.037  INFO 28707 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2024-09-21 18:48:33.037  INFO 28707 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2024-09-21 18:48:33.037  INFO 28707 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2024-09-21 18:48:33.037  INFO 28707 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2024-09-21 18:48:33.037  INFO 28707 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2024-09-21 18:48:33.037  INFO 28707 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2024-09-21 18:48:33.037  INFO 28707 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2024-09-21 18:48:33.037  INFO 28707 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2024-09-21 18:48:33.037  INFO 28707 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2024-09-21 18:48:33.037  INFO 28707 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2024-09-21 18:48:33.037  INFO 28707 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2024-09-21 18:48:33.037  INFO 28707 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2024-09-21 18:48:33.037  INFO 28707 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2024-09-21 18:48:33.038  INFO 28707 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2024-09-21 18:48:33.289  INFO 28707 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8443 (http) with context path ''
+2024-09-21 18:48:33.363 ERROR 28707 --- [main] o.s.c.gateway.route.CachingRouteLocator  : Refresh routes error !!!
+
+java.lang.IllegalStateException: Could not create URI object: Expected scheme-specific part at index 5: http:
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:527) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.Route$AbstractBuilder.uri(Route.java:193) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.Route.async(Route.java:88) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:119) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:489) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:422) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:432) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerComplete(FluxMergeSequential.java:328) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:552) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4490) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribeWith(Mono.java:4605) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4457) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4393) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4365) ~[reactor-core-3.4.28.jar:3.4.28]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:81) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:40) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:73) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:50) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:940) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.10.jar:2.7.10]
+	at com.pvt.gateway.GatewayApplicationKt.main(GatewayApplication.kt:13) ~[main/:na]
+Caused by: java.net.URISyntaxException: Expected scheme-specific part at index 5: http:
+	at java.base/java.net.URI$Parser.fail(URI.java:2913) ~[na:na]
+	at java.base/java.net.URI$Parser.failExpecting(URI.java:2919) ~[na:na]
+	at java.base/java.net.URI$Parser.parse(URI.java:3119) ~[na:na]
+	at java.base/java.net.URI.<init>(URI.java:685) ~[na:na]
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:523) ~[spring-web-5.3.26.jar:5.3.26]
+	... 53 common frames omitted
+
+2024-09-21 18:48:33.379  INFO 28707 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-21 18:48:33.389  INFO 28707 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-09-21 18:48:33.410 ERROR 28707 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Could not create URI object: Expected scheme-specific part at index 5: http:
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:527) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.Route$AbstractBuilder.uri(Route.java:193) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.Route.async(Route.java:88) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:119) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:489) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:422) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:432) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerComplete(FluxMergeSequential.java:328) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:552) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.InternalFluxOperator.subscribe(InternalFluxOperator.java:62) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxDefer.subscribe(FluxDefer.java:54) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.blockLast(Flux.java:2760) ~[reactor-core-3.4.28.jar:3.4.28]
+	at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.lambda$onApplicationEvent$0(WeightCalculatorWebFilter.java:133) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider.ifAvailable(DefaultListableBeanFactory.java:2046) ~[spring-beans-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.onApplicationEvent(WeightCalculatorWebFilter.java:133) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:73) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:50) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:940) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.10.jar:2.7.10]
+	at com.pvt.gateway.GatewayApplicationKt.main(GatewayApplication.kt:13) ~[main/:na]
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:99) ~[reactor-core-3.4.28.jar:3.4.28]
+		at reactor.core.publisher.Flux.blockLast(Flux.java:2761) ~[reactor-core-3.4.28.jar:3.4.28]
+		... 24 common frames omitted
+Caused by: java.net.URISyntaxException: Expected scheme-specific part at index 5: http:
+	at java.base/java.net.URI$Parser.fail(URI.java:2913) ~[na:na]
+	at java.base/java.net.URI$Parser.failExpecting(URI.java:2919) ~[na:na]
+	at java.base/java.net.URI$Parser.parse(URI.java:3119) ~[na:na]
+	at java.base/java.net.URI.<init>(URI.java:685) ~[na:na]
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:523) ~[spring-web-5.3.26.jar:5.3.26]
+	... 53 common frames omitted
+
+2024-09-21 18:48:33.420  INFO 28707 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:48:33.420  INFO 28707 --- [main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-09-21 18:48:33.422  INFO 28707 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-21 18:48:33.425  INFO 28707 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-21 18:48:47.973  INFO 28803 --- [main] com.pvt.gateway.GatewayApplicationKt     : Starting GatewayApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 28803 (/Users/macad/Documents/Project/microservice-git/microservice/gateway/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/gateway)
+2024-09-21 18:48:47.980  INFO 28803 --- [main] com.pvt.gateway.GatewayApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2024-09-21 18:48:48.772  INFO 28803 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-21 18:48:48.788  INFO 28803 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JPA repository interfaces.
+2024-09-21 18:48:48.925  INFO 28803 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=634ace50-63fd-326a-9562-4f33b8810d27
+2024-09-21 18:48:49.295  INFO 28803 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8443 (http)
+2024-09-21 18:48:49.303  INFO 28803 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-21 18:48:49.303  INFO 28803 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-21 18:48:49.509  INFO 28803 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-21 18:48:49.723  INFO 28803 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-21 18:48:49.774  INFO 28803 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-21 18:48:49.817  INFO 28803 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-21 18:48:49.967  INFO 28803 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-21 18:48:50.066  INFO 28803 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-21 18:48:50.242  INFO 28803 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-21 18:48:50.250  INFO 28803 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:48:50.822  INFO 28803 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2024-09-21 18:48:50.822  INFO 28803 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2024-09-21 18:48:50.822  INFO 28803 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2024-09-21 18:48:50.823  INFO 28803 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2024-09-21 18:48:50.823  INFO 28803 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2024-09-21 18:48:50.823  INFO 28803 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2024-09-21 18:48:50.823  INFO 28803 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2024-09-21 18:48:50.823  INFO 28803 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2024-09-21 18:48:50.823  INFO 28803 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2024-09-21 18:48:50.823  INFO 28803 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2024-09-21 18:48:50.823  INFO 28803 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2024-09-21 18:48:50.823  INFO 28803 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2024-09-21 18:48:50.823  INFO 28803 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2024-09-21 18:48:50.823  INFO 28803 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2024-09-21 18:48:51.059  INFO 28803 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8443 (http) with context path ''
+2024-09-21 18:48:51.130 ERROR 28803 --- [main] o.s.c.gateway.route.CachingRouteLocator  : Refresh routes error !!!
+
+java.lang.IllegalStateException: Could not create URI object: Expected scheme-specific part at index 5: http:
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:527) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.Route$AbstractBuilder.uri(Route.java:193) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.Route.async(Route.java:88) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:119) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:489) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:422) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:432) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerComplete(FluxMergeSequential.java:328) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:552) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4490) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribeWith(Mono.java:4605) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4457) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4393) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4365) ~[reactor-core-3.4.28.jar:3.4.28]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:81) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:40) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:73) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:50) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:940) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.10.jar:2.7.10]
+	at com.pvt.gateway.GatewayApplicationKt.main(GatewayApplication.kt:13) ~[main/:na]
+Caused by: java.net.URISyntaxException: Expected scheme-specific part at index 5: http:
+	at java.base/java.net.URI$Parser.fail(URI.java:2913) ~[na:na]
+	at java.base/java.net.URI$Parser.failExpecting(URI.java:2919) ~[na:na]
+	at java.base/java.net.URI$Parser.parse(URI.java:3119) ~[na:na]
+	at java.base/java.net.URI.<init>(URI.java:685) ~[na:na]
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:523) ~[spring-web-5.3.26.jar:5.3.26]
+	... 53 common frames omitted
+
+2024-09-21 18:48:51.146  INFO 28803 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-21 18:48:51.155  INFO 28803 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-09-21 18:48:51.169 ERROR 28803 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Could not create URI object: Expected scheme-specific part at index 5: http:
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:527) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.Route$AbstractBuilder.uri(Route.java:193) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.Route.async(Route.java:88) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:119) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:489) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:422) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:432) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerComplete(FluxMergeSequential.java:328) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:552) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.InternalFluxOperator.subscribe(InternalFluxOperator.java:62) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxDefer.subscribe(FluxDefer.java:54) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.blockLast(Flux.java:2760) ~[reactor-core-3.4.28.jar:3.4.28]
+	at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.lambda$onApplicationEvent$0(WeightCalculatorWebFilter.java:133) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider.ifAvailable(DefaultListableBeanFactory.java:2046) ~[spring-beans-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.onApplicationEvent(WeightCalculatorWebFilter.java:133) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:73) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:50) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:940) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.10.jar:2.7.10]
+	at com.pvt.gateway.GatewayApplicationKt.main(GatewayApplication.kt:13) ~[main/:na]
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:99) ~[reactor-core-3.4.28.jar:3.4.28]
+		at reactor.core.publisher.Flux.blockLast(Flux.java:2761) ~[reactor-core-3.4.28.jar:3.4.28]
+		... 24 common frames omitted
+Caused by: java.net.URISyntaxException: Expected scheme-specific part at index 5: http:
+	at java.base/java.net.URI$Parser.fail(URI.java:2913) ~[na:na]
+	at java.base/java.net.URI$Parser.failExpecting(URI.java:2919) ~[na:na]
+	at java.base/java.net.URI$Parser.parse(URI.java:3119) ~[na:na]
+	at java.base/java.net.URI.<init>(URI.java:685) ~[na:na]
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:523) ~[spring-web-5.3.26.jar:5.3.26]
+	... 53 common frames omitted
+
+2024-09-21 18:48:51.178  INFO 28803 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:48:51.178  INFO 28803 --- [main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-09-21 18:48:51.179  INFO 28803 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-21 18:48:51.183  INFO 28803 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-21 18:49:39.945  INFO 29093 --- [main] com.pvt.gateway.GatewayApplicationKt     : Starting GatewayApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 29093 (/Users/macad/Documents/Project/microservice-git/microservice/gateway/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/gateway)
+2024-09-21 18:49:39.949  INFO 29093 --- [main] com.pvt.gateway.GatewayApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2024-09-21 18:49:40.793  INFO 29093 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-21 18:49:40.808  INFO 29093 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JPA repository interfaces.
+2024-09-21 18:49:40.945  INFO 29093 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=634ace50-63fd-326a-9562-4f33b8810d27
+2024-09-21 18:49:41.405  INFO 29093 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8443 (http)
+2024-09-21 18:49:41.416  INFO 29093 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-21 18:49:41.416  INFO 29093 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-21 18:49:41.647  INFO 29093 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-21 18:49:41.889  INFO 29093 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-21 18:49:41.949  INFO 29093 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-21 18:49:42.034  INFO 29093 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-21 18:49:42.236  INFO 29093 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-21 18:49:42.359  INFO 29093 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-21 18:49:42.576  INFO 29093 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-21 18:49:42.587  INFO 29093 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:49:43.181  WARN 29093 --- [main] onfigReactiveWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'nettyWriteResponseFilter' defined in class path resource [org/springframework/cloud/gateway/config/GatewayAutoConfiguration$NettyConfiguration.class]: Unsatisfied dependency expressed through method 'nettyWriteResponseFilter' parameter 0; nested exception is org.springframework.boot.context.properties.ConfigurationPropertiesBindException: Error creating bean with name 'gatewayProperties': Could not bind properties to 'GatewayProperties' : prefix=spring.cloud.gateway, ignoreInvalidFields=false, ignoreUnknownFields=true; nested exception is org.springframework.boot.context.properties.bind.BindException: Failed to bind properties under 'spring.cloud.gateway.routes[2].uri' to java.net.URI
+2024-09-21 18:49:43.195  INFO 29093 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:49:43.195  INFO 29093 --- [main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-09-21 18:49:43.198  INFO 29093 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-21 18:49:43.201  INFO 29093 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-21 18:49:43.203  INFO 29093 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-21 18:49:43.212  INFO 29093 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-09-21 18:49:43.231 ERROR 29093 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Failed to bind properties under 'spring.cloud.gateway.routes[2].uri' to java.net.URI:
+
+    Property: spring.cloud.gateway.routes[2].uri
+    Value: "channel_service:5502"
+    Origin: class path resource [application.yml] - 37:16
+    Reason: failed to convert java.lang.String to @javax.validation.constraints.NotNull java.net.URI (caused by java.lang.IllegalArgumentException: Invalid URI syntax: Illegal character in scheme name at index 7: channel_service:5502)
+
+Action:
+
+Update your application's configuration
+
+2024-09-21 18:50:05.683  INFO 29237 --- [main] com.pvt.gateway.GatewayApplicationKt     : Starting GatewayApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 29237 (/Users/macad/Documents/Project/microservice-git/microservice/gateway/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/gateway)
+2024-09-21 18:50:05.686  INFO 29237 --- [main] com.pvt.gateway.GatewayApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2024-09-21 18:50:06.552  INFO 29237 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-21 18:50:06.569  INFO 29237 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JPA repository interfaces.
+2024-09-21 18:50:06.722  INFO 29237 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=634ace50-63fd-326a-9562-4f33b8810d27
+2024-09-21 18:50:07.160  INFO 29237 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8443 (http)
+2024-09-21 18:50:07.172  INFO 29237 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-21 18:50:07.173  INFO 29237 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-21 18:50:07.373  INFO 29237 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-21 18:50:07.613  INFO 29237 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-21 18:50:07.669  INFO 29237 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-21 18:50:07.729  INFO 29237 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-21 18:50:07.904  INFO 29237 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-21 18:50:08.022  INFO 29237 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-21 18:50:08.229  INFO 29237 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-21 18:50:08.239  INFO 29237 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:50:08.937  INFO 29237 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2024-09-21 18:50:08.937  INFO 29237 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2024-09-21 18:50:08.937  INFO 29237 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2024-09-21 18:50:08.937  INFO 29237 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2024-09-21 18:50:08.937  INFO 29237 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2024-09-21 18:50:08.937  INFO 29237 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2024-09-21 18:50:08.938  INFO 29237 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2024-09-21 18:50:08.938  INFO 29237 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2024-09-21 18:50:08.938  INFO 29237 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2024-09-21 18:50:08.938  INFO 29237 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2024-09-21 18:50:08.938  INFO 29237 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2024-09-21 18:50:08.938  INFO 29237 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2024-09-21 18:50:08.938  INFO 29237 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2024-09-21 18:50:08.938  INFO 29237 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2024-09-21 18:50:09.206  INFO 29237 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8443 (http) with context path ''
+2024-09-21 18:50:09.287 ERROR 29237 --- [main] o.s.c.gateway.route.CachingRouteLocator  : Refresh routes error !!!
+
+java.lang.IllegalStateException: Could not create URI object: Expected scheme-specific part at index 5: http:
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:527) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.Route$AbstractBuilder.uri(Route.java:193) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.Route.async(Route.java:88) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:119) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:489) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:422) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:432) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerComplete(FluxMergeSequential.java:328) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:552) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4490) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribeWith(Mono.java:4605) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4457) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4393) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4365) ~[reactor-core-3.4.28.jar:3.4.28]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:81) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:40) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:73) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:50) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:940) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.10.jar:2.7.10]
+	at com.pvt.gateway.GatewayApplicationKt.main(GatewayApplication.kt:13) ~[main/:na]
+Caused by: java.net.URISyntaxException: Expected scheme-specific part at index 5: http:
+	at java.base/java.net.URI$Parser.fail(URI.java:2913) ~[na:na]
+	at java.base/java.net.URI$Parser.failExpecting(URI.java:2919) ~[na:na]
+	at java.base/java.net.URI$Parser.parse(URI.java:3119) ~[na:na]
+	at java.base/java.net.URI.<init>(URI.java:685) ~[na:na]
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:523) ~[spring-web-5.3.26.jar:5.3.26]
+	... 53 common frames omitted
+
+2024-09-21 18:50:09.303  INFO 29237 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-21 18:50:09.311  INFO 29237 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-09-21 18:50:09.328 ERROR 29237 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Could not create URI object: Expected scheme-specific part at index 5: http:
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:527) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.Route$AbstractBuilder.uri(Route.java:193) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.Route.async(Route.java:88) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:119) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:489) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:422) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:432) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerComplete(FluxMergeSequential.java:328) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:552) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.InternalFluxOperator.subscribe(InternalFluxOperator.java:62) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxDefer.subscribe(FluxDefer.java:54) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.blockLast(Flux.java:2760) ~[reactor-core-3.4.28.jar:3.4.28]
+	at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.lambda$onApplicationEvent$0(WeightCalculatorWebFilter.java:133) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider.ifAvailable(DefaultListableBeanFactory.java:2046) ~[spring-beans-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.onApplicationEvent(WeightCalculatorWebFilter.java:133) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:73) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:50) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:940) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.10.jar:2.7.10]
+	at com.pvt.gateway.GatewayApplicationKt.main(GatewayApplication.kt:13) ~[main/:na]
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:99) ~[reactor-core-3.4.28.jar:3.4.28]
+		at reactor.core.publisher.Flux.blockLast(Flux.java:2761) ~[reactor-core-3.4.28.jar:3.4.28]
+		... 24 common frames omitted
+Caused by: java.net.URISyntaxException: Expected scheme-specific part at index 5: http:
+	at java.base/java.net.URI$Parser.fail(URI.java:2913) ~[na:na]
+	at java.base/java.net.URI$Parser.failExpecting(URI.java:2919) ~[na:na]
+	at java.base/java.net.URI$Parser.parse(URI.java:3119) ~[na:na]
+	at java.base/java.net.URI.<init>(URI.java:685) ~[na:na]
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:523) ~[spring-web-5.3.26.jar:5.3.26]
+	... 53 common frames omitted
+
+2024-09-21 18:50:09.337  INFO 29237 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:50:09.337  INFO 29237 --- [main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-09-21 18:50:09.339  INFO 29237 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-21 18:50:09.342  INFO 29237 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-21 18:57:14.105  INFO 31540 --- [main] com.pvt.gateway.GatewayApplicationKt     : Starting GatewayApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 31540 (/Users/macad/Documents/Project/microservice-git/microservice/gateway/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/gateway)
+2024-09-21 18:57:14.109  INFO 31540 --- [main] com.pvt.gateway.GatewayApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2024-09-21 18:57:14.937  INFO 31540 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-21 18:57:14.954  INFO 31540 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JPA repository interfaces.
+2024-09-21 18:57:15.106  INFO 31540 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=634ace50-63fd-326a-9562-4f33b8810d27
+2024-09-21 18:57:15.583  INFO 31540 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8443 (http)
+2024-09-21 18:57:15.593  INFO 31540 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-21 18:57:15.594  INFO 31540 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-21 18:57:15.787  INFO 31540 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-21 18:57:16.013  INFO 31540 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-21 18:57:16.068  INFO 31540 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-21 18:57:16.127  INFO 31540 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-21 18:57:16.299  INFO 31540 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-21 18:57:16.423  INFO 31540 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-21 18:57:16.640  INFO 31540 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-21 18:57:16.650  INFO 31540 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:57:17.400  INFO 31540 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2024-09-21 18:57:17.400  INFO 31540 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2024-09-21 18:57:17.400  INFO 31540 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2024-09-21 18:57:17.400  INFO 31540 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2024-09-21 18:57:17.400  INFO 31540 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2024-09-21 18:57:17.400  INFO 31540 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2024-09-21 18:57:17.400  INFO 31540 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2024-09-21 18:57:17.400  INFO 31540 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2024-09-21 18:57:17.400  INFO 31540 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2024-09-21 18:57:17.400  INFO 31540 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2024-09-21 18:57:17.400  INFO 31540 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2024-09-21 18:57:17.400  INFO 31540 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2024-09-21 18:57:17.400  INFO 31540 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2024-09-21 18:57:17.401  INFO 31540 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2024-09-21 18:57:17.689  INFO 31540 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8443 (http) with context path ''
+2024-09-21 18:57:17.774  INFO 31540 --- [main] com.pvt.gateway.GatewayApplicationKt     : Started GatewayApplicationKt in 4.239 seconds (JVM running for 4.774)
+2024-09-21 18:58:08.283  INFO 31540 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:58:08.284  INFO 31540 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-09-21 18:58:08.287  INFO 31540 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-21 18:58:08.302  INFO 31540 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-21 18:58:15.473  INFO 31892 --- [main] com.pvt.gateway.GatewayApplicationKt     : Starting GatewayApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 31892 (/Users/macad/Documents/Project/microservice-git/microservice/gateway/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/gateway)
+2024-09-21 18:58:15.481  INFO 31892 --- [main] com.pvt.gateway.GatewayApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2024-09-21 18:58:16.248  INFO 31892 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-21 18:58:16.263  INFO 31892 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JPA repository interfaces.
+2024-09-21 18:58:16.411  INFO 31892 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=634ace50-63fd-326a-9562-4f33b8810d27
+2024-09-21 18:58:16.835  INFO 31892 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8443 (http)
+2024-09-21 18:58:16.846  INFO 31892 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-21 18:58:16.847  INFO 31892 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-21 18:58:17.044  INFO 31892 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-21 18:58:17.288  INFO 31892 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-21 18:58:17.351  INFO 31892 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-21 18:58:17.411  INFO 31892 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-21 18:58:17.591  INFO 31892 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-21 18:58:17.715  INFO 31892 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-21 18:58:17.912  INFO 31892 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-21 18:58:17.922  INFO 31892 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:58:18.606  INFO 31892 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2024-09-21 18:58:18.606  INFO 31892 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2024-09-21 18:58:18.606  INFO 31892 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2024-09-21 18:58:18.606  INFO 31892 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2024-09-21 18:58:18.607  INFO 31892 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2024-09-21 18:58:18.607  INFO 31892 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2024-09-21 18:58:18.607  INFO 31892 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2024-09-21 18:58:18.607  INFO 31892 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2024-09-21 18:58:18.607  INFO 31892 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2024-09-21 18:58:18.607  INFO 31892 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2024-09-21 18:58:18.607  INFO 31892 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2024-09-21 18:58:18.607  INFO 31892 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2024-09-21 18:58:18.607  INFO 31892 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2024-09-21 18:58:18.607  INFO 31892 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2024-09-21 18:58:18.856  INFO 31892 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8443 (http) with context path ''
+2024-09-21 18:58:18.932  INFO 31892 --- [main] com.pvt.gateway.GatewayApplicationKt     : Started GatewayApplicationKt in 3.942 seconds (JVM running for 4.405)
+2024-09-21 18:58:22.970  INFO 31892 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:58:22.971  INFO 31892 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-09-21 18:58:22.972  INFO 31892 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-21 18:58:22.975  INFO 31892 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-21 18:58:43.879  INFO 32046 --- [main] com.pvt.gateway.GatewayApplicationKt     : Starting GatewayApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 32046 (/Users/macad/Documents/Project/microservice-git/microservice/gateway/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/gateway)
+2024-09-21 18:58:43.883  INFO 32046 --- [main] com.pvt.gateway.GatewayApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2024-09-21 18:58:44.677  INFO 32046 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-21 18:58:44.692  INFO 32046 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JPA repository interfaces.
+2024-09-21 18:58:44.834  INFO 32046 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=634ace50-63fd-326a-9562-4f33b8810d27
+2024-09-21 18:58:45.265  INFO 32046 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8443 (http)
+2024-09-21 18:58:45.275  INFO 32046 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-21 18:58:45.275  INFO 32046 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-21 18:58:45.486  INFO 32046 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-21 18:58:45.697  INFO 32046 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-21 18:58:45.756  INFO 32046 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-21 18:58:45.808  INFO 32046 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-21 18:58:45.970  INFO 32046 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-21 18:58:46.082  INFO 32046 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-21 18:58:46.287  INFO 32046 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-21 18:58:46.297  INFO 32046 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 18:58:46.999  INFO 32046 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2024-09-21 18:58:46.999  INFO 32046 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2024-09-21 18:58:47.000  INFO 32046 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2024-09-21 18:58:47.000  INFO 32046 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2024-09-21 18:58:47.000  INFO 32046 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2024-09-21 18:58:47.000  INFO 32046 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2024-09-21 18:58:47.000  INFO 32046 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2024-09-21 18:58:47.000  INFO 32046 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2024-09-21 18:58:47.000  INFO 32046 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2024-09-21 18:58:47.000  INFO 32046 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2024-09-21 18:58:47.000  INFO 32046 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2024-09-21 18:58:47.000  INFO 32046 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2024-09-21 18:58:47.000  INFO 32046 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2024-09-21 18:58:47.000  INFO 32046 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2024-09-21 18:58:47.236  INFO 32046 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8443 (http) with context path ''
+2024-09-21 18:58:47.312  INFO 32046 --- [main] com.pvt.gateway.GatewayApplicationKt     : Started GatewayApplicationKt in 3.976 seconds (JVM running for 4.428)
+2024-09-21 19:00:08.889  INFO 32046 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 19:00:08.890  INFO 32046 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-09-21 19:00:08.892  INFO 32046 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-21 19:00:08.894  INFO 32046 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-21 19:00:15.520  INFO 32534 --- [main] com.pvt.gateway.GatewayApplicationKt     : Starting GatewayApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 32534 (/Users/macad/Documents/Project/microservice-git/microservice/gateway/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/gateway)
+2024-09-21 19:00:15.523  INFO 32534 --- [main] com.pvt.gateway.GatewayApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2024-09-21 19:00:16.369  INFO 32534 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-21 19:00:16.384  INFO 32534 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 6 ms. Found 0 JPA repository interfaces.
+2024-09-21 19:00:16.536  INFO 32534 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=634ace50-63fd-326a-9562-4f33b8810d27
+2024-09-21 19:00:16.978  INFO 32534 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8443 (http)
+2024-09-21 19:00:16.989  INFO 32534 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-21 19:00:16.990  INFO 32534 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-21 19:00:17.185  INFO 32534 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-21 19:00:17.443  INFO 32534 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-21 19:00:17.502  INFO 32534 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-21 19:00:17.563  INFO 32534 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-21 19:00:17.758  INFO 32534 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-21 19:00:17.892  INFO 32534 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-21 19:00:18.093  INFO 32534 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-21 19:00:18.103  INFO 32534 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 19:00:18.815  INFO 32534 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2024-09-21 19:00:18.815  INFO 32534 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2024-09-21 19:00:18.815  INFO 32534 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2024-09-21 19:00:18.815  INFO 32534 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2024-09-21 19:00:18.815  INFO 32534 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2024-09-21 19:00:18.815  INFO 32534 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2024-09-21 19:00:18.816  INFO 32534 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2024-09-21 19:00:18.816  INFO 32534 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2024-09-21 19:00:18.816  INFO 32534 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2024-09-21 19:00:18.816  INFO 32534 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2024-09-21 19:00:18.816  INFO 32534 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2024-09-21 19:00:18.816  INFO 32534 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2024-09-21 19:00:18.816  INFO 32534 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2024-09-21 19:00:18.816  INFO 32534 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2024-09-21 19:00:19.061  INFO 32534 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8443 (http) with context path ''
+2024-09-21 19:00:19.145  INFO 32534 --- [main] com.pvt.gateway.GatewayApplicationKt     : Started GatewayApplicationKt in 4.186 seconds (JVM running for 4.661)
+2024-09-21 19:00:23.774  INFO 32534 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 19:00:23.775  INFO 32534 --- [SpringApplicationShutdownHook] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-09-21 19:00:23.776  INFO 32534 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-21 19:00:23.779  INFO 32534 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-21 19:00:30.610  INFO 32621 --- [main] com.pvt.gateway.GatewayApplicationKt     : Starting GatewayApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 32621 (/Users/macad/Documents/Project/microservice-git/microservice/gateway/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/gateway)
+2024-09-21 19:00:30.613  INFO 32621 --- [main] com.pvt.gateway.GatewayApplicationKt     : No active profile set, falling back to 1 default profile: "default"
+2024-09-21 19:00:31.408  INFO 32621 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-21 19:00:31.422  INFO 32621 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 7 ms. Found 0 JPA repository interfaces.
+2024-09-21 19:00:31.577  INFO 32621 --- [main] o.s.cloud.context.scope.GenericScope     : BeanFactory id=634ace50-63fd-326a-9562-4f33b8810d27
+2024-09-21 19:00:31.962  INFO 32621 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8443 (http)
+2024-09-21 19:00:31.971  INFO 32621 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-21 19:00:31.971  INFO 32621 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-21 19:00:32.151  INFO 32621 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-21 19:00:32.347  INFO 32621 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-21 19:00:32.394  INFO 32621 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-21 19:00:32.433  INFO 32621 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-21 19:00:32.581  INFO 32621 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-21 19:00:32.680  INFO 32621 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.H2Dialect
+2024-09-21 19:00:32.863  INFO 32621 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-21 19:00:32.873  INFO 32621 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 19:00:33.520  INFO 32621 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [After]
+2024-09-21 19:00:33.521  INFO 32621 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Before]
+2024-09-21 19:00:33.521  INFO 32621 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Between]
+2024-09-21 19:00:33.521  INFO 32621 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Cookie]
+2024-09-21 19:00:33.521  INFO 32621 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Header]
+2024-09-21 19:00:33.521  INFO 32621 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Host]
+2024-09-21 19:00:33.521  INFO 32621 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Method]
+2024-09-21 19:00:33.521  INFO 32621 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Path]
+2024-09-21 19:00:33.521  INFO 32621 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Query]
+2024-09-21 19:00:33.521  INFO 32621 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [ReadBody]
+2024-09-21 19:00:33.521  INFO 32621 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [RemoteAddr]
+2024-09-21 19:00:33.521  INFO 32621 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [XForwardedRemoteAddr]
+2024-09-21 19:00:33.521  INFO 32621 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [Weight]
+2024-09-21 19:00:33.521  INFO 32621 --- [main] o.s.c.g.r.RouteDefinitionRouteLocator    : Loaded RoutePredicateFactory [CloudFoundryRouteService]
+2024-09-21 19:00:33.787  INFO 32621 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8443 (http) with context path ''
+2024-09-21 19:00:33.873 ERROR 32621 --- [main] o.s.c.gateway.route.CachingRouteLocator  : Refresh routes error !!!
+
+java.lang.IllegalStateException: Could not create URI object: Expected scheme-specific part at index 5: http:
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:527) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.Route$AbstractBuilder.uri(Route.java:193) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.Route.async(Route.java:88) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:119) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:489) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:422) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:432) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerComplete(FluxMergeSequential.java:328) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:552) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4490) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribeWith(Mono.java:4605) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4457) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4393) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Mono.subscribe(Mono.java:4365) ~[reactor-core-3.4.28.jar:3.4.28]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:81) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.CachingRouteLocator.onApplicationEvent(CachingRouteLocator.java:40) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:73) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:50) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:940) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.10.jar:2.7.10]
+	at com.pvt.gateway.GatewayApplicationKt.main(GatewayApplication.kt:13) ~[main/:na]
+Caused by: java.net.URISyntaxException: Expected scheme-specific part at index 5: http:
+	at java.base/java.net.URI$Parser.fail(URI.java:2913) ~[na:na]
+	at java.base/java.net.URI$Parser.failExpecting(URI.java:2919) ~[na:na]
+	at java.base/java.net.URI$Parser.parse(URI.java:3119) ~[na:na]
+	at java.base/java.net.URI.<init>(URI.java:685) ~[na:na]
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:523) ~[spring-web-5.3.26.jar:5.3.26]
+	... 53 common frames omitted
+
+2024-09-21 19:00:33.889  INFO 32621 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2024-09-21 19:00:33.899  INFO 32621 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2024-09-21 19:00:33.916 ERROR 32621 --- [main] o.s.boot.SpringApplication               : Application run failed
+
+java.lang.IllegalStateException: Could not create URI object: Expected scheme-specific part at index 5: http:
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:527) ~[spring-web-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.Route$AbstractBuilder.uri(Route.java:193) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.Route.async(Route.java:88) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteDefinitionRouteLocator.convertToRoute(RouteDefinitionRouteLocator.java:119) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at reactor.core.publisher.FluxMap$MapSubscriber.onNext(FluxMap.java:106) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.tryEmitScalar(FluxFlatMap.java:489) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxFlatMap$FlatMapMain.onNext(FluxFlatMap.java:422) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.drain(FluxMergeSequential.java:432) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.innerComplete(FluxMergeSequential.java:328) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialInner.onSubscribe(FluxMergeSequential.java:552) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onNext(FluxMergeSequential.java:237) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.slowPath(FluxIterable.java:335) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable$IterableSubscription.request(FluxIterable.java:294) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxMergeSequential$MergeSequentialMain.onSubscribe(FluxMergeSequential.java:198) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:201) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxIterable.subscribe(FluxIterable.java:83) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.InternalFluxOperator.subscribe(InternalFluxOperator.java:62) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.FluxDefer.subscribe(FluxDefer.java:54) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.subscribe(Flux.java:8642) ~[reactor-core-3.4.28.jar:3.4.28]
+	at reactor.core.publisher.Flux.blockLast(Flux.java:2760) ~[reactor-core-3.4.28.jar:3.4.28]
+	at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.lambda$onApplicationEvent$0(WeightCalculatorWebFilter.java:133) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.beans.factory.support.DefaultListableBeanFactory$DependencyObjectProvider.ifAvailable(DefaultListableBeanFactory.java:2046) ~[spring-beans-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.filter.WeightCalculatorWebFilter.onApplicationEvent(WeightCalculatorWebFilter.java:133) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.reset(RouteRefreshListener.java:73) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.cloud.gateway.route.RouteRefreshListener.onApplicationEvent(RouteRefreshListener.java:50) ~[spring-cloud-gateway-server-3.1.1.jar:3.1.1]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.doInvokeListener(SimpleApplicationEventMulticaster.java:176) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.invokeListener(SimpleApplicationEventMulticaster.java:169) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.event.SimpleApplicationEventMulticaster.multicastEvent(SimpleApplicationEventMulticaster.java:143) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:421) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.publishEvent(AbstractApplicationContext.java:378) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.finishRefresh(AbstractApplicationContext.java:940) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:586) ~[spring-context-5.3.26.jar:5.3.26]
+	at org.springframework.boot.web.reactive.context.ReactiveWebServerApplicationContext.refresh(ReactiveWebServerApplicationContext.java:66) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:731) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:408) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:307) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1303) ~[spring-boot-2.7.10.jar:2.7.10]
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1292) ~[spring-boot-2.7.10.jar:2.7.10]
+	at com.pvt.gateway.GatewayApplicationKt.main(GatewayApplication.kt:13) ~[main/:na]
+	Suppressed: java.lang.Exception: #block terminated with an error
+		at reactor.core.publisher.BlockingSingleSubscriber.blockingGet(BlockingSingleSubscriber.java:99) ~[reactor-core-3.4.28.jar:3.4.28]
+		at reactor.core.publisher.Flux.blockLast(Flux.java:2761) ~[reactor-core-3.4.28.jar:3.4.28]
+		... 24 common frames omitted
+Caused by: java.net.URISyntaxException: Expected scheme-specific part at index 5: http:
+	at java.base/java.net.URI$Parser.fail(URI.java:2913) ~[na:na]
+	at java.base/java.net.URI$Parser.failExpecting(URI.java:2919) ~[na:na]
+	at java.base/java.net.URI$Parser.parse(URI.java:3119) ~[na:na]
+	at java.base/java.net.URI.<init>(URI.java:685) ~[na:na]
+	at org.springframework.web.util.HierarchicalUriComponents.toUri(HierarchicalUriComponents.java:523) ~[spring-web-5.3.26.jar:5.3.26]
+	... 53 common frames omitted
+
+2024-09-21 19:00:33.924  INFO 32621 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-21 19:00:33.925  INFO 32621 --- [main] .SchemaDropperImpl$DelayedDropActionImpl : HHH000477: Starting delayed evictData of schema as part of SessionFactory shut-down'
+2024-09-21 19:00:33.926  INFO 32621 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-21 19:00:33.929  INFO 32621 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

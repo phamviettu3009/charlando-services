@@ -1,7 +1,7 @@
 package com.pvt.realtime_service.publisher
 
 import com.pvt.realtime_service.constants.RabbitMQ
-import com.pvt.realtime_service.models.dtos.DeviceFirebaseTokenDTO
+import com.pvt.realtime_service.models.dtos.DeviceTokenDTO
 import com.pvt.realtime_service.models.dtos.RabbitMessageDTO
 import com.pvt.realtime_service.models.dtos.UserResponseDTO
 import org.springframework.amqp.rabbit.core.RabbitTemplate
@@ -44,8 +44,8 @@ fun RabbitMQProducer.receiveUser(queueName: String): RabbitMessageDTO<List<UserR
         ?: throw ResponseStatusException(HttpStatus.GATEWAY_TIMEOUT)
 }
 
-fun RabbitMQProducer.receiveDeviceFirebaseTokenDTO(queueName: String): RabbitMessageDTO<List<DeviceFirebaseTokenDTO>> {
-    val responseType = object : ParameterizedTypeReference<RabbitMessageDTO<List<DeviceFirebaseTokenDTO>>>() {}
+fun RabbitMQProducer.receiveDeviceTokenDTO(queueName: String): RabbitMessageDTO<List<DeviceTokenDTO>> {
+    val responseType = object : ParameterizedTypeReference<RabbitMessageDTO<List<DeviceTokenDTO>>>() {}
     return rabbitTemplate.receiveAndConvert(queueName, 10000, responseType)
         ?: throw ResponseStatusException(HttpStatus.GATEWAY_TIMEOUT)
 }

@@ -11,45 +11,10 @@ import java.util.UUID
 import javax.servlet.http.HttpServletRequest
 
 @RestController
-@RequestMapping("/api/v1/friend")
+@RequestMapping("/api/v1/friends")
 class FriendController {
     @Autowired
     private lateinit var fiendService: FriendService
-
-    @PostMapping("/send-request-add-friend/{id}")
-    fun sendRequestAddFriend(request: HttpServletRequest, @PathVariable id: String): ResponseEntity<Any> {
-        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
-        val requestDTO = RequestDTO(jwtBody, id.asUUID())
-        return ResponseEntity(fiendService.sendRequestAddFriend(requestDTO), HttpStatus.OK)
-    }
-
-    @PostMapping("/unfriend/{id}")
-    fun unfriend(request: HttpServletRequest, @PathVariable id: String): ResponseEntity<Any> {
-        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
-        val requestDTO = RequestDTO(jwtBody, id.asUUID())
-        return ResponseEntity(fiendService.unFriend(requestDTO), HttpStatus.OK)
-    }
-
-    @PostMapping("/confirmation-add-friend/{id}")
-    fun confirmationAddFriend(request: HttpServletRequest, @PathVariable id: String): ResponseEntity<Any> {
-        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
-        val requestDTO = RequestDTO(jwtBody, id.asUUID())
-        return ResponseEntity(fiendService.confirmationAddFriend(requestDTO), HttpStatus.OK)
-    }
-
-    @PostMapping("/cancel-request-add-friend/{id}")
-    fun cancelRequestAddFriend(request: HttpServletRequest, @PathVariable id: String): ResponseEntity<Any> {
-        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
-        val requestDTO = RequestDTO(jwtBody, id.asUUID())
-        return ResponseEntity(fiendService.cancelRequestAddFriend(requestDTO), HttpStatus.OK)
-    }
-
-    @PostMapping("/reject-friend-request/{id}")
-    fun rejectFriendRequest(request: HttpServletRequest, @PathVariable id: String): ResponseEntity<Any> {
-        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
-        val requestDTO = RequestDTO(jwtBody, id.asUUID())
-        return ResponseEntity(fiendService.rejectFriendRequest(requestDTO), HttpStatus.OK)
-    }
 
     @GetMapping("")
     fun getFriends(
@@ -65,7 +30,42 @@ class FriendController {
         return ResponseEntity(fiendService.getFriends(requestDTO), HttpStatus.OK)
     }
 
-    @GetMapping("/channel/{id}/outside")
+    @PostMapping("/{id}/send-request-add-friend")
+    fun sendRequestAddFriend(request: HttpServletRequest, @PathVariable id: String): ResponseEntity<Any> {
+        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
+        val requestDTO = RequestDTO(jwtBody, Unit, id.asUUID())
+        return ResponseEntity(fiendService.sendRequestAddFriend(requestDTO), HttpStatus.OK)
+    }
+
+    @PostMapping("/{id}/unfriend")
+    fun unfriend(request: HttpServletRequest, @PathVariable id: String): ResponseEntity<Any> {
+        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
+        val requestDTO = RequestDTO(jwtBody, Unit, id.asUUID())
+        return ResponseEntity(fiendService.unFriend(requestDTO), HttpStatus.OK)
+    }
+
+    @PostMapping("/{id}/confirmation-add-friend")
+    fun confirmationAddFriend(request: HttpServletRequest, @PathVariable id: String): ResponseEntity<Any> {
+        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
+        val requestDTO = RequestDTO(jwtBody, Unit, id.asUUID())
+        return ResponseEntity(fiendService.confirmationAddFriend(requestDTO), HttpStatus.OK)
+    }
+
+    @PostMapping("/{id}/cancel-request-add-friend")
+    fun cancelRequestAddFriend(request: HttpServletRequest, @PathVariable id: String): ResponseEntity<Any> {
+        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
+        val requestDTO = RequestDTO(jwtBody, Unit, id.asUUID())
+        return ResponseEntity(fiendService.cancelRequestAddFriend(requestDTO), HttpStatus.OK)
+    }
+
+    @PostMapping("/{id}/reject-friend-request")
+    fun rejectFriendRequest(request: HttpServletRequest, @PathVariable id: String): ResponseEntity<Any> {
+        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
+        val requestDTO = RequestDTO(jwtBody, Unit, id.asUUID())
+        return ResponseEntity(fiendService.rejectFriendRequest(requestDTO), HttpStatus.OK)
+    }
+
+    @GetMapping("/channels/{id}/outside")
     fun getFriendsOutsideChannel(
         request: HttpServletRequest,
         @PathVariable id: String,
@@ -99,5 +99,12 @@ class FriendController {
         val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
         val requestDTO = RequestDTO(jwtBody, Unit)
         return ResponseEntity(fiendService.getNumberRequestAddFriend(requestDTO), HttpStatus.OK)
+    }
+
+    @GetMapping("/{id}/status")
+    fun getFriendStatus(request: HttpServletRequest, @PathVariable id: String) : ResponseEntity<Any> {
+        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
+        val requestDTO = RequestDTO(jwtBody, id.asUUID())
+        return ResponseEntity(fiendService.getFriendStatus(requestDTO), HttpStatus.OK)
     }
 }

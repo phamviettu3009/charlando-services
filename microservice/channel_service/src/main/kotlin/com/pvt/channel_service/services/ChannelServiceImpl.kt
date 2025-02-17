@@ -203,6 +203,14 @@ class ChannelServiceImpl(
         return channel.asResponseChannelDTO(channelModifierHashMap, messageModifierHashMap, messageReaderModifierHashMap, unreadCounterModifierHashMap, ownerID)
     }
 
+    private fun sendNotificationMessage(ownerID: UUID, receiverIDs: List<UUID>, channelEntity: ChannelEntity, message: String, deepLink: String) {
+        val title = userService.getUserByID(ownerID).fullName ?: "unknown"
+        val channelID = channelEntity.id.toString()
+        val payload = mapOf("title" to title, "body" to message, "deepLink" to deepLink)
+        val notificationMessage = NotificationMessageDTO(payload, receiverIDs)
+        rabbitMQProducer.sendMessage(notificationMessage, RabbitMQ.MSCMN_SEND_NOTIFICATION_MESSAGE.route())
+    }
+
     private fun sendRealtimeChannel(channelEntity: ChannelEntity) {
         val membersInChannel = memberService.findAllByChannelID(channelEntity.id)
         val userIDs = membersInChannel.map { it.userID }
@@ -324,6 +332,7 @@ class ChannelServiceImpl(
         memberRepository.saveAllAndFlush(users.map { it.toNewRecordMemberEntity(channelID = channel.id) } + ownerMember)
         createRecordLevelAccessForGroupChannel(channel.id, ownerID, userIDs)
         sendRealtimeChannel(channel)
+        sendNotificationMessage(ownerID, userIDs, channel, "Has added you to the ${channel.name} group", "app2lab://message-screen?channelID=${channel.id}")
         return convertResponseChannelDTO(channel, ownerID)
     }
 
@@ -333,6 +342,7 @@ class ChannelServiceImpl(
         val channelID = request.id ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
         val groupName = request.payload?.name
         val groupAvatar = request.payload?.avatar
+        var notificationMessage = ""
 
         val channel = channelRepository.findByIdAndTypeAndAuthStatus(channelID, Channel.Type.GROUP_TYPE).orElseThrow {
             throw ResponseStatusException(HttpStatus.BAD_REQUEST)
@@ -344,12 +354,22 @@ class ChannelServiceImpl(
 
         if (groupName != null && groupName.isNotEmpty()) {
             channel.name = groupName
+            notificationMessage = "Has changed the group name to $groupName"
         }
         if (groupAvatar != null && groupAvatar.isNotEmpty()) {
             channel.avatar = groupAvatar
+            if (notificationMessage.isEmpty()) {
+                notificationMessage = "Has changed the group avatar"
+            } else {
+                notificationMessage += "and group avatar"
+            }
         }
         val updated = channelRepository.saveAndFlush(channel)
         sendRealtimeChannel(updated)
+
+        val members = memberRepository.findAllByChannelID(channelID).filter { it.userID != ownerID }
+        val memberIDs = members.map { it.userID }
+        sendNotificationMessage(ownerID, memberIDs, channel, notificationMessage, "app2lab://message-screen?channelID=${channel.id}")
         return convertResponseChannelDTO(updated, ownerID)
     }
 
@@ -372,6 +392,7 @@ class ChannelServiceImpl(
         val userIDs = users.map { it.id }
         createRecordLevelAccessForGroupChannel(channel.id, ownerID, userIDs)
         sendRealtimeChannel(channel)
+        sendNotificationMessage(ownerID, userIDs, channel, "Has added you to the ${channel.name} group", "app2lab://message-screen?channelID=${channel.id}")
         return convertResponseChannelDTO(channel, ownerID)
     }
 
@@ -399,6 +420,7 @@ class ChannelServiceImpl(
         memberRepository.deleteAll(membersInGroup)
         revokeAccessChannelForMembers(channel.id, revokeMemberIDs)
         sendRealtimeRemoveChannel(channel.id, revokeMemberIDs)
+        sendNotificationMessage(ownerID, revokeMemberIDs, channel, "Has removed you from the ${channel.name} group", "app2lab://list-channel-screen")
         return convertResponseChannelDTO(channel, ownerID)
     }
 
@@ -454,6 +476,27 @@ class ChannelServiceImpl(
         }
 
         return mapOf("userID" to member.userID, "role" to member.role)
+    }
+
+    override fun getMembersInChannel(request: RequestDTO<ListRequestDTO>): ListResponseDTO<MemberResponseDTO> {
+        val ownerID = request.jwtBody.userID ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val channelID = request.id ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val listRequestParams = request.payload ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        if (listRequestParams.page == 0) throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val page = listRequestParams.page - 1
+        val sizePerPage = listRequestParams.sizePerPage
+        val pageRequest = PageRequest.of(page, sizePerPage)
+
+        val users = userRepository.findAllUserByChannelID(channelID = channelID, pageable = pageRequest)
+        val meta = Meta(
+            totalElements = users.totalElements,
+            totalPages = users.totalPages,
+            sizePerPage = users.pageable.pageSize,
+            currentPage = users.pageable.pageNumber + 1,
+            numberOfElements = users.numberOfElements,
+            last = users.isLast
+        )
+        return ListResponseDTO(users.content.map { it }, meta)
     }
 
     @Transactional

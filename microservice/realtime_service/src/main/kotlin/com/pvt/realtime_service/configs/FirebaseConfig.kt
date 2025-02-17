@@ -17,7 +17,7 @@ class FirebaseConfig {
         val refreshToken = ClassPathResource("firebase-service-account.json").inputStream
         val options: FirebaseOptions = FirebaseOptions.builder()
             .setCredentials(GoogleCredentials.fromStream(refreshToken))
-            .setProjectId("chatflow-428d7")
+            .setProjectId("charlando-b6c7f")
             .build()
         return FirebaseApp.initializeApp(options)
     }

@@ -20,4 +20,5 @@ interface ChannelService {
     fun setAdminRole(request: RequestDTO<GroupChannelMembers>): Any
     fun revokeAdminRole(request: RequestDTO<GroupChannelMembers>): Any
     fun setOwnerRole(request: RequestDTO<GroupChannelMember>): Any
+    fun getMembersInChannel(request: RequestDTO<ListRequestDTO>): ListResponseDTO<MemberResponseDTO>
 }

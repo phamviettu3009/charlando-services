@@ -9,17 +9,23 @@ plugins {
 }
 
 group = "com.pvt"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.6"
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_11
 }
 
 repositories {
+	flatDir {
+		dirs("lib")
+	}
 	mavenCentral()
 }
 
 dependencies {
+	implementation("com.eatthepath:fast-uuid:0.2.0")
+	implementation ("io.netty:netty-all:4.1.72.Final")
+	implementation(files("lib/pushy.jar"))
 	implementation("com.google.firebase:firebase-admin:9.2.0")
 	implementation("com.corundumstudio.socketio:netty-socketio:2.0.6")
 	implementation("org.springframework.boot:spring-boot-starter-amqp:2.7.8")

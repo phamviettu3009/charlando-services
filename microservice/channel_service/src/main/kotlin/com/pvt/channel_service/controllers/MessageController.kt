@@ -12,7 +12,7 @@ import java.util.*
 import javax.servlet.http.HttpServletRequest
 
 @RestController
-@RequestMapping("/api/v1/message")
+@RequestMapping("/api/v1/messages")
 class MessageController {
     @Autowired
     private lateinit var messageService: MessageService
@@ -20,7 +20,7 @@ class MessageController {
     @Autowired
     private lateinit var messageReactionService: MessageReactionService
 
-    @PostMapping("/channel/{id}")
+    @PostMapping("/channels/{id}")
     fun createMessage(
         request: HttpServletRequest,
         @PathVariable id: String,
@@ -42,7 +42,7 @@ class MessageController {
         return ResponseEntity(messageReactionService.createMessageReaction(requestDTO), HttpStatus.OK)
     }
 
-    @GetMapping("/channel/{id}")
+    @GetMapping("/channels/{id}")
     fun getMessages(
         request: HttpServletRequest,
         @PathVariable id: String,

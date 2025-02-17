@@ -1,6 +1,6 @@
 logging:
   file:
-    name: app.log
+    name: app_gateway.log
 
 server:
   error:
@@ -20,44 +20,44 @@ spring:
     gateway:
       routes:
         - id: auth_service
-          uri: http://localhost:5500
+          uri: http://auth-service:5500
           predicates:
             - Path=/api/v1/auth/**
           filters:
             - AuthFilter
 
         - id: resource_service
-          uri: http://localhost:5501
+          uri: http://resource-service:5501
           predicates:
-            - Path=/api/v1/resource/**
-          filters:
-            - AuthFilter
-
-        - id: friend_service
-          uri: http://localhost:5502
-          predicates:
-            - Path=/api/v1/friend/**
+            - Path=/api/v1/resources/**
           filters:
             - AuthFilter
 
         - id: channel_service
-          uri: http://localhost:5502
+          uri: http://channel-service:5502
           predicates:
-            - Path=/api/v1/channel/**
+            - Path=/api/v1/channels/**
+          filters:
+            - AuthFilter
+
+        - id: friend_service
+          uri: http://channel-service:5502
+          predicates:
+            - Path=/api/v1/friends/**
           filters:
             - AuthFilter
 
         - id: message_service
-          uri: http://localhost:5502
+          uri: http://channel-service:5502
           predicates:
-            - Path=/api/v1/message/**
+            - Path=/api/v1/messages/**
           filters:
             - AuthFilter
 
         - id: user_service
-          uri: http://localhost:5502
+          uri: http://channel-service:5502
           predicates:
-            - Path=/api/v1/user/**
+            - Path=/api/v1/users/**
           filters:
             - AuthFilter
 
@@ -66,7 +66,14 @@ spring:
       globalcors:
         corsConfigurations:
           '[/**]':
-            allowedOrigins: "*"
-            allowedMethods: "*"
+            allowedOrigins:
+              - "http://localhost:5173"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - PATCH
             allowedHeaders: "*"
+            allowCredentials: true
 

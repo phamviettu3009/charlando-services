@@ -1,0 +1,146 @@
+2024-09-08 14:47:49.275  INFO 98609 --- [main] c.p.a.AuthServiceApplicationKt           : Starting AuthServiceApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 98609 (/Users/macad/Documents/Project/microservice-git/microservice/auth_service/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/auth_service)
+2024-09-08 14:47:49.284  INFO 98609 --- [main] c.p.a.AuthServiceApplicationKt           : No active profile set, falling back to 1 default profile: "default"
+2024-09-08 14:47:50.127  INFO 98609 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-08 14:47:50.223  INFO 98609 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 85 ms. Found 10 JPA repository interfaces.
+2024-09-08 14:47:50.736  INFO 98609 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5500 (http)
+2024-09-08 14:47:50.747  INFO 98609 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-08 14:47:50.747  INFO 98609 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-08 14:47:50.842  INFO 98609 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-08 14:47:50.842  INFO 98609 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1480 ms
+2024-09-08 14:47:51.048  INFO 98609 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-08 14:47:51.103  INFO 98609 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-08 14:47:51.290  INFO 98609 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-08 14:47:51.408  INFO 98609 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-08 14:47:52.188  INFO 98609 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-08 14:47:52.209  INFO 98609 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+2024-09-08 14:47:52.690  INFO 98609 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-08 14:47:52.700  INFO 98609 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-08 14:47:53.900  WARN 98609 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-08 14:47:54.319  INFO 98609 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5500 (http) with context path ''
+2024-09-08 14:47:54.321  INFO 98609 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2024-09-08 14:47:54.451  INFO 98609 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#12a0d249:0/SimpleConnection@80b70fd [delegate=amqp://guest@127.0.0.1:5672/, localPort= 52448]
+2024-09-08 14:47:54.540  INFO 98609 --- [main] c.p.a.AuthServiceApplicationKt           : Started AuthServiceApplicationKt in 5.663 seconds (JVM running for 6.065)
+2024-09-08 14:48:04.804  INFO 98609 --- [http-nio-0.0.0.0-5500-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-08 14:48:04.805  INFO 98609 --- [http-nio-0.0.0.0-5500-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-08 14:48:04.806  INFO 98609 --- [http-nio-0.0.0.0-5500-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2024-09-08 14:48:04.820  INFO 98609 --- [http-nio-0.0.0.0-5500-exec-1] c.p.a.u.components.LoggingInterceptor    : Received request: POST /api/v1/auth/login-with-email from 127.0.0.1
+2024-09-08 14:48:05.450  INFO 98609 --- [http-nio-0.0.0.0-5500-exec-1] c.p.a.u.components.LoggingInterceptor    : Sent response: POST /api/v1/auth/login-with-email with status 200 and exception null
+2024-09-08 15:02:24.091  INFO 98609 --- [http-nio-0.0.0.0-5500-exec-3] c.p.a.u.components.LoggingInterceptor    : Received request: POST /api/v1/auth/login-with-email from 127.0.0.1
+2024-09-08 15:02:24.353  INFO 98609 --- [http-nio-0.0.0.0-5500-exec-3] c.p.a.u.components.LoggingInterceptor    : Sent response: POST /api/v1/auth/login-with-email with status 200 and exception null
+2024-09-08 15:10:59.201  INFO 98609 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:10:59.202  INFO 98609 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:10:59.204  INFO 98609 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:10:59.202  INFO 98609 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:10:59.204  INFO 98609 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:10:59.222  INFO 98609 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:10:59.222  INFO 98609 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:10:59.222  INFO 98609 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:10:59.222  INFO 98609 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:10:59.223  INFO 98609 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:10:59.238  INFO 98609 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:10:59.238  INFO 98609 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:10:59.238  INFO 98609 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:10:59.238  INFO 98609 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:10:59.238  INFO 98609 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:10:59.244  INFO 98609 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-08 15:10:59.246  INFO 98609 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-08 15:10:59.256  INFO 98609 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-08 15:11:02.975  INFO 6711 --- [main] c.p.a.AuthServiceApplicationKt           : Starting AuthServiceApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 6711 (/Users/macad/Documents/Project/microservice-git/microservice/auth_service/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/auth_service)
+2024-09-08 15:11:02.978  INFO 6711 --- [main] c.p.a.AuthServiceApplicationKt           : No active profile set, falling back to 1 default profile: "default"
+2024-09-08 15:11:04.170  INFO 6711 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-08 15:11:04.293  INFO 6711 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 110 ms. Found 10 JPA repository interfaces.
+2024-09-08 15:11:04.852  INFO 6711 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5500 (http)
+2024-09-08 15:11:04.862  INFO 6711 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-08 15:11:04.863  INFO 6711 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-08 15:11:04.951  INFO 6711 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-08 15:11:04.951  INFO 6711 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1884 ms
+2024-09-08 15:11:05.159  INFO 6711 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-08 15:11:05.210  INFO 6711 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-08 15:11:05.387  INFO 6711 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-08 15:11:05.480  INFO 6711 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-08 15:11:06.308  INFO 6711 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-08 15:11:06.326  INFO 6711 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+2024-09-08 15:11:06.798  INFO 6711 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-08 15:11:06.807  INFO 6711 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-08 15:11:07.954  WARN 6711 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-08 15:11:08.306  INFO 6711 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5500 (http) with context path ''
+2024-09-08 15:11:08.308  INFO 6711 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2024-09-08 15:11:08.443  INFO 6711 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#c6c84fa:0/SimpleConnection@80b70fd [delegate=amqp://guest@127.0.0.1:5672/, localPort= 62250]
+2024-09-08 15:11:08.512  INFO 6711 --- [main] c.p.a.AuthServiceApplicationKt           : Started AuthServiceApplicationKt in 6.111 seconds (JVM running for 6.532)
+2024-09-08 15:11:32.889  INFO 6711 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:11:32.890  INFO 6711 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:11:32.891  INFO 6711 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:11:32.892  INFO 6711 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:11:32.892  INFO 6711 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:11:33.572  INFO 6711 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:11:33.572  INFO 6711 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:11:33.573  INFO 6711 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:11:33.573  INFO 6711 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:11:33.575  INFO 6711 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:11:33.597  INFO 6711 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:11:33.597  INFO 6711 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:11:33.598  INFO 6711 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:11:33.598  INFO 6711 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:11:33.598  INFO 6711 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:11:33.604  INFO 6711 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-08 15:11:33.606  INFO 6711 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-08 15:11:34.103  INFO 6711 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2024-09-08 15:11:37.579  INFO 6907 --- [main] c.p.a.AuthServiceApplicationKt           : Starting AuthServiceApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 6907 (/Users/macad/Documents/Project/microservice-git/microservice/auth_service/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/auth_service)
+2024-09-08 15:11:37.584  INFO 6907 --- [main] c.p.a.AuthServiceApplicationKt           : No active profile set, falling back to 1 default profile: "default"
+2024-09-08 15:11:38.429  INFO 6907 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2024-09-08 15:11:38.541  INFO 6907 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 100 ms. Found 10 JPA repository interfaces.
+2024-09-08 15:11:39.182  INFO 6907 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5500 (http)
+2024-09-08 15:11:39.195  INFO 6907 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-09-08 15:11:39.196  INFO 6907 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-09-08 15:11:39.302  INFO 6907 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-09-08 15:11:39.302  INFO 6907 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1647 ms
+2024-09-08 15:11:39.554  INFO 6907 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2024-09-08 15:11:39.616  INFO 6907 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.15.Final
+2024-09-08 15:11:39.837  INFO 6907 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2024-09-08 15:11:39.956  INFO 6907 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2024-09-08 15:11:40.723  INFO 6907 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2024-09-08 15:11:40.745  INFO 6907 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.PostgreSQL95Dialect
+2024-09-08 15:11:41.263  INFO 6907 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2024-09-08 15:11:41.273  INFO 6907 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2024-09-08 15:11:42.837  WARN 6907 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2024-09-08 15:11:43.305  INFO 6907 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5500 (http) with context path ''
+2024-09-08 15:11:43.307  INFO 6907 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2024-09-08 15:11:43.359  INFO 6907 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#7323c38c:0/SimpleConnection@5dc8448b [delegate=amqp://guest@127.0.0.1:5672/, localPort= 62511]
+2024-09-08 15:11:43.466  INFO 6907 --- [main] c.p.a.AuthServiceApplicationKt           : Started AuthServiceApplicationKt in 6.301 seconds (JVM running for 6.723)
+2024-09-08 15:31:17.157  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2024-09-08 15:31:17.160  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2024-09-08 15:31:17.170  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms
+2024-09-08 15:31:17.191  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-1] c.p.a.u.components.LoggingInterceptor    : Received request: POST /api/v1/auth/login-with-email from 127.0.0.1
+2024-09-08 15:31:17.957  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-1] c.p.a.u.components.LoggingInterceptor    : Sent response: POST /api/v1/auth/login-with-email with status 200 and exception null
+2024-09-08 15:37:13.872  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-3] c.p.a.u.components.LoggingInterceptor    : Received request: POST /api/v1/auth/login-with-email from 127.0.0.1
+2024-09-08 15:37:14.219  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-3] c.p.a.u.components.LoggingInterceptor    : Sent response: POST /api/v1/auth/login-with-email with status 200 and exception null
+2024-09-08 15:37:23.691  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-4] c.p.a.u.components.LoggingInterceptor    : Received request: POST /api/v1/auth/login-with-email from 127.0.0.1
+2024-09-08 15:37:23.998  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-4] c.p.a.u.components.LoggingInterceptor    : Sent response: POST /api/v1/auth/login-with-email with status 200 and exception null
+2024-09-08 15:38:08.777  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-6] c.p.a.u.components.LoggingInterceptor    : Received request: POST /api/v1/auth/login-with-email from 127.0.0.1
+2024-09-08 15:38:09.082  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-6] c.p.a.u.components.LoggingInterceptor    : Sent response: POST /api/v1/auth/login-with-email with status 200 and exception null
+2024-09-08 15:38:13.636  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-7] c.p.a.u.components.LoggingInterceptor    : Received request: POST /api/v1/auth/login-with-email from 127.0.0.1
+2024-09-08 15:38:13.944  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-7] c.p.a.u.components.LoggingInterceptor    : Sent response: POST /api/v1/auth/login-with-email with status 200 and exception null
+2024-09-08 15:39:31.673  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-9] c.p.a.u.components.LoggingInterceptor    : Received request: POST /api/v1/auth/login-with-email from 127.0.0.1
+2024-09-08 15:39:31.984  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-9] c.p.a.u.components.LoggingInterceptor    : Sent response: POST /api/v1/auth/login-with-email with status 200 and exception null
+2024-09-08 15:40:49.515  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-1] c.p.a.u.components.LoggingInterceptor    : Received request: POST /api/v1/auth/login-with-email from 127.0.0.1
+2024-09-08 15:40:49.823  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-1] c.p.a.u.components.LoggingInterceptor    : Sent response: POST /api/v1/auth/login-with-email with status 200 and exception null
+2024-09-08 15:40:58.486  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-2] c.p.a.u.components.LoggingInterceptor    : Received request: POST /api/v1/auth/login-with-email from 127.0.0.1
+2024-09-08 15:40:58.791  INFO 6907 --- [http-nio-0.0.0.0-5500-exec-2] c.p.a.u.components.LoggingInterceptor    : Sent response: POST /api/v1/auth/login-with-email with status 200 and exception null
+2024-09-08 15:44:24.510  INFO 6907 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:44:24.511  INFO 6907 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:44:24.512  INFO 6907 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:44:24.513  INFO 6907 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:44:24.514  INFO 6907 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-09-08 15:44:25.326  INFO 6907 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:44:25.326  INFO 6907 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#4-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:44:25.327  INFO 6907 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#3-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:44:25.326  INFO 6907 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:44:25.327  INFO 6907 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-09-08 15:44:25.353  INFO 6907 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:44:25.353  INFO 6907 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:44:25.353  INFO 6907 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:44:25.353  INFO 6907 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:44:25.353  INFO 6907 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-09-08 15:44:25.362  INFO 6907 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2024-09-08 15:44:25.365  INFO 6907 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2024-09-08 15:44:25.375  INFO 6907 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.

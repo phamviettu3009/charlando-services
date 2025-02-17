@@ -20,5 +20,6 @@ data class ResponseMessageDTO(
     var messageReactions: List<MessageReactionDTO>?,
     val user: User2DTO?,
     val sync: Boolean,
-    val syncID: UUID?
+    val syncID: UUID?,
+    val urlsPreview: List<String>
 )

@@ -135,6 +135,19 @@ class RabbitMQConfig {
     }
 
     @Bean
+    fun wakeUpDevicesMSCQueue(): Queue {
+        return Queue(RabbitMQ.MSCMN_WAKE_UP_DEVICES.queue())
+    }
+
+    @Bean
+    fun wakeUpDevicesMSCBinding(): Binding {
+        return BindingBuilder
+            .bind(wakeUpDevicesMSCQueue())
+            .to(exchange())
+            .with(RabbitMQ.MSCMN_WAKE_UP_DEVICES.route())
+    }
+
+    @Bean
     fun converter(): MessageConverter {
         return Jackson2JsonMessageConverter()
     }

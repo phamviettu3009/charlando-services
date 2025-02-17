@@ -7,13 +7,14 @@ import com.pvt.channel_service.models.dtos.UserResponseDTO
 import java.util.UUID
 
 interface FriendService {
-    fun sendRequestAddFriend(request: RequestDTO<UUID>): Any
-    fun unFriend(request: RequestDTO<UUID>): Any
-    fun confirmationAddFriend(request: RequestDTO<UUID>): Any
-    fun cancelRequestAddFriend(request: RequestDTO<UUID>): Any
-    fun rejectFriendRequest(request: RequestDTO<UUID>): Any
+    fun sendRequestAddFriend(request: RequestDTO<Unit>): Any
+    fun unFriend(request: RequestDTO<Unit>): Any
+    fun confirmationAddFriend(request: RequestDTO<Unit>): Any
+    fun cancelRequestAddFriend(request: RequestDTO<Unit>): Any
+    fun rejectFriendRequest(request: RequestDTO<Unit>): Any
     fun getFriends(request: RequestDTO<ListRequestDTO>): ListResponseDTO<UserResponseDTO>
     fun getFriendsOutsideChannel(request: RequestDTO<ListRequestDTO>): ListResponseDTO<UserResponseDTO>
     fun getListRequestAddFriend(request: RequestDTO<ListRequestDTO>): ListResponseDTO<UserResponseDTO>
     fun getNumberRequestAddFriend(request: RequestDTO<Unit>): Long
+    fun getFriendStatus(request: RequestDTO<UUID>): Any
 }

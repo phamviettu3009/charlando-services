@@ -211,18 +211,8 @@ class AuthenticationServiceImpl(
             val hashedPassword: String = HashString.hashString(password, salt)
             val verifyCode = VerificationCode.generateVerificationCode()
 
-            val avatar = "b1b696bb-ddb9-4ad9-89c3-f39f81f14157" // empty_avatar (common)
-            val user = UserEntity(id = UUID.randomUUID(), fullName = userName, avatar = avatar)
+            val user = UserEntity(id = UUID.randomUUID(), fullName = userName)
             val userCreated = userService.createUser(user)
-
-            val recordLevelAccessPayload = RecordLevelAccessPayloadDTO(
-                accessContent = "/resource/get/$avatar",
-                method = "GET",
-                recordStatus = "public",
-                ownerID = userCreated.id,
-                userAccessIDs = listOf()
-            )
-            authorizationService.createRecordLevelAccess(recordLevelAccessPayload)
 
             val authentication = AuthenticationEntity(
                 userName = userName,

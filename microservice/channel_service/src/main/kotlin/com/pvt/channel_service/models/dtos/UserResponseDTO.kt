@@ -6,5 +6,6 @@ data class UserResponseDTO(
     var id: UUID,
     var fullName: String?,
     var avatar: String?,
-    var online: Boolean
+    var online: Boolean,
+    var coverPhoto: String?
 )

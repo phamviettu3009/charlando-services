@@ -14,33 +14,13 @@ data class UserEntity(
     var id: UUID = UUID.randomUUID(),
 
     @Column(name = "full_name")
-    var fullName: String? = "",
-
-    @Column(name = "gender")
-    var gender: String? = null,
-
-    @Column(name = "date_of_birth")
-    var dateOfBirth: Date? = null,
-
-    @Column(name = "phone")
-    var phone: String? = null,
-
-    @Column(name = "avatar")
-    var avatar: String? = null,
-
-    @Column(name = "online")
-    var online: Boolean? = false,
+    var fullName: String? = ""
 )
 
 fun UserEntity.asUserDTO(): UserDTO {
     return UserDTO(
         id = id,
-        fullName = fullName,
-        gender = gender,
-        dateOfBirth = dateOfBirth,
-        phone = phone,
-        avatar = avatar,
-        online = online
+        fullName = fullName
     )
 }
 

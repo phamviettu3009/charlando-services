@@ -10,7 +10,8 @@ import org.springframework.stereotype.Service
 @Service
 class MessageServiceImpl(
     val socketIOService: SocketIOService,
-    val firebaseMessagingService: FirebaseMessagingService
+    val firebaseMessagingService: FirebaseMessagingService,
+    val callService: CallService
 ): MessageService {
     @RabbitListener(queues = [RabbitMQ.Listener.MSCMN_SEND_REALTIME_MESSAGE])
     override fun sendMessage(data: RabbitMessageDTO<RealtimeMessageDTO>) {
@@ -27,5 +28,13 @@ class MessageServiceImpl(
         val receivers = data.message.receiverIDs
 
         firebaseMessagingService.sendNotification(message, receivers)
+    }
+
+    @RabbitListener(queues = [RabbitMQ.Listener.MSCMN_WAKE_UP_DEVICES])
+    override fun wakeUpDevices(data: RabbitMessageDTO<NotificationMessageDTO>) {
+        val message = data.message?.message ?: throw Exception("Message not found!")
+        val receivers = data.message.receiverIDs
+
+        callService.wakeUpDevices(message, receivers)
     }
 }

@@ -66,7 +66,10 @@ data class MessageEntity(
     var consecutiveMessages: Boolean = false,
 
     @Column(name = "type")
-    var type: Int
+    var type: Int,
+
+    @Column(name = "urls_preview")
+    var urlsPreview: String? = null
 ) {
     private fun <T> contentDisplay(ownerID: UUID, content: T?): T? {
         if (recordStatus == Message.RecordStatus.DELETE_FOR_ALL) return null
@@ -114,7 +117,8 @@ data class MessageEntity(
             messageReactions = contentDisplay(ownerID, reactionsModifier[messageIDKey]),
             user = userModifier[makerIDKey],
             sync = true,
-            syncID = syncID
+            syncID = syncID,
+            urlsPreview = urlsPreview?.split(",") ?: listOf()
         )
     }
 

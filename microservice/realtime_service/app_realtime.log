@@ -1,0 +1,69 @@
+2024-07-22 14:56:09.666  INFO 18168 --- [main] c.p.r.RealtimeServiceApplicationKt       : Starting RealtimeServiceApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 18168 (/Users/macad/Documents/Project/microservice-git/microservice/realtime_service/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/realtime_service)
+2024-07-22 14:56:09.675  INFO 18168 --- [main] c.p.r.RealtimeServiceApplicationKt       : No active profile set, falling back to 1 default profile: "default"
+2024-07-22 14:56:10.714  INFO 18168 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5503 (http)
+2024-07-22 14:56:10.724  INFO 18168 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-22 14:56:10.724  INFO 18168 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-07-22 14:56:10.824  INFO 18168 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-22 14:56:10.824  INFO 18168 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1085 ms
+2024-07-22 14:56:11.219  INFO 18168 --- [main] c.e.pushy.apns.ApnsClientBuilder         : Native SSL provider not available; will use JDK SSL provider.
+2024-07-22 14:56:12.221  INFO 18168 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5503 (http) with context path ''
+2024-07-22 14:56:12.222  INFO 18168 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2024-07-22 14:56:12.328  INFO 18168 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#76544c0a:0/SimpleConnection@3babcaed [delegate=amqp://guest@127.0.0.1:5672/, localPort= 50542]
+2024-07-22 14:56:12.400  INFO 18168 --- [main] c.p.r.RealtimeServiceApplicationKt       : Started RealtimeServiceApplicationKt in 3.395 seconds (JVM running for 3.953)
+2024-07-22 14:56:12.402  INFO 18168 --- [main] c.c.socketio.SocketIOServer              : Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2024-07-22 14:56:12.466  INFO 18168 --- [nioEventLoopGroup-3-1] c.c.socketio.SocketIOServer              : SocketIO server started at port: 5504
+2024-07-22 14:56:26.936  INFO 18168 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-07-22 14:56:26.937  INFO 18168 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-07-22 14:56:26.938  INFO 18168 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-07-22 14:56:27.437  INFO 18168 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-07-22 14:56:27.438  INFO 18168 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-07-22 14:56:27.438  INFO 18168 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-07-22 14:56:27.461  INFO 18168 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-07-22 14:56:27.461  INFO 18168 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-07-22 14:56:27.461  INFO 18168 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-07-22 15:36:08.681  INFO 25996 --- [main] c.p.r.RealtimeServiceApplicationKt       : Starting RealtimeServiceApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 25996 (/Users/macad/Documents/Project/microservice-git/microservice/realtime_service/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/realtime_service)
+2024-07-22 15:36:08.685  INFO 25996 --- [main] c.p.r.RealtimeServiceApplicationKt       : No active profile set, falling back to 1 default profile: "default"
+2024-07-22 15:36:09.727  INFO 25996 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5503 (http)
+2024-07-22 15:36:09.737  INFO 25996 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-22 15:36:09.738  INFO 25996 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-07-22 15:36:09.835  INFO 25996 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-22 15:36:09.836  INFO 25996 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1088 ms
+2024-07-22 15:36:10.211  INFO 25996 --- [main] c.e.pushy.apns.ApnsClientBuilder         : Native SSL provider not available; will use JDK SSL provider.
+2024-07-22 15:36:11.067  INFO 25996 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5503 (http) with context path ''
+2024-07-22 15:36:11.069  INFO 25996 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2024-07-22 15:36:11.243  INFO 25996 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#4d9754a8:0/SimpleConnection@362a561e [delegate=amqp://guest@127.0.0.1:5672/, localPort= 51079]
+2024-07-22 15:36:11.316  INFO 25996 --- [main] c.p.r.RealtimeServiceApplicationKt       : Started RealtimeServiceApplicationKt in 3.059 seconds (JVM running for 3.612)
+2024-07-22 15:36:11.319  INFO 25996 --- [main] c.c.socketio.SocketIOServer              : Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2024-07-22 15:36:11.378  INFO 25996 --- [nioEventLoopGroup-3-1] c.c.socketio.SocketIOServer              : SocketIO server started at port: 5504
+2024-07-22 15:36:18.010  INFO 25996 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-07-22 15:36:18.011  INFO 25996 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-07-22 15:36:18.011  INFO 25996 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-07-22 15:36:18.315  INFO 25996 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-07-22 15:36:18.315  INFO 25996 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-07-22 15:36:18.330  INFO 25996 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-07-22 15:36:18.351  INFO 25996 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-07-22 15:36:18.351  INFO 25996 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-07-22 15:36:18.352  INFO 25996 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-07-22 16:03:12.160  INFO 31028 --- [main] c.p.r.RealtimeServiceApplicationKt       : Starting RealtimeServiceApplicationKt using Java 11.0.17 on PhamVietTu.local with PID 31028 (/Users/macad/Documents/Project/microservice-git/microservice/realtime_service/build/classes/kotlin/main started by macad in /Users/macad/Documents/Project/microservice-git/microservice/realtime_service)
+2024-07-22 16:03:12.167  INFO 31028 --- [main] c.p.r.RealtimeServiceApplicationKt       : No active profile set, falling back to 1 default profile: "default"
+2024-07-22 16:03:13.315  INFO 31028 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 5503 (http)
+2024-07-22 16:03:13.325  INFO 31028 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-07-22 16:03:13.325  INFO 31028 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.73]
+2024-07-22 16:03:13.431  INFO 31028 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-07-22 16:03:13.431  INFO 31028 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 1167 ms
+2024-07-22 16:03:13.854  INFO 31028 --- [main] c.e.pushy.apns.ApnsClientBuilder         : Native SSL provider not available; will use JDK SSL provider.
+2024-07-22 16:03:14.723  INFO 31028 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 5503 (http) with context path ''
+2024-07-22 16:03:14.725  INFO 31028 --- [main] o.s.a.r.c.CachingConnectionFactory       : Attempting to connect to: [localhost:5672]
+2024-07-22 16:03:14.912  INFO 31028 --- [main] o.s.a.r.c.CachingConnectionFactory       : Created new connection: rabbitConnectionFactory#5e99b9c:0/SimpleConnection@4d43a1b7 [delegate=amqp://guest@127.0.0.1:5672/, localPort= 51281]
+2024-07-22 16:03:14.972  INFO 31028 --- [main] c.p.r.RealtimeServiceApplicationKt       : Started RealtimeServiceApplicationKt in 3.743 seconds (JVM running for 4.283)
+2024-07-22 16:03:14.974  INFO 31028 --- [main] c.c.socketio.SocketIOServer              : Session store / pubsub factory used: MemoryStoreFactory (local session store only)
+2024-07-22 16:03:15.029  INFO 31028 --- [nioEventLoopGroup-3-1] c.c.socketio.SocketIOServer              : SocketIO server started at port: 5504
+2024-07-22 16:03:22.766  INFO 31028 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-07-22 16:03:22.767  INFO 31028 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-07-22 16:03:22.767  INFO 31028 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] o.s.a.r.l.SimpleMessageListenerContainer : Waiting for workers to finish.
+2024-07-22 16:03:22.978  INFO 31028 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#0-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-07-22 16:03:22.981  INFO 31028 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#1-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-07-22 16:03:22.981  INFO 31028 --- [org.springframework.amqp.rabbit.RabbitListenerEndpointContainer#2-2] o.s.a.r.l.SimpleMessageListenerContainer : Successfully waited for workers to finish.
+2024-07-22 16:03:23.004  INFO 31028 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-07-22 16:03:23.004  INFO 31028 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped
+2024-07-22 16:03:23.004  INFO 31028 --- [SpringApplicationShutdownHook] o.s.a.r.l.SimpleMessageListenerContainer : Shutdown ignored - container is already stopped

@@ -63,7 +63,7 @@ class SocketIOServiceImpl(
             val typing: TypingDTO = gson.fromJson(data, TypingDTO::class.java)
             val channelID = typing.channelID
 
-            val users = onlineService.typing(typing)
+            val users = onlineService.typing(typing).filter { it.id != userID }
             for (user in users) {
                 val sessionID: UUID = SocketIOSessionIDStore.findByUserID(user.id) ?: continue
                 val responseJson = gson.toJson(typing.asTypingResponseDTO(user))

@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "com.pvt"
-version = "0.0.1-SNAPSHOT"
+version = "0.0.5"
 
 java {
 	sourceCompatibility = JavaVersion.VERSION_11

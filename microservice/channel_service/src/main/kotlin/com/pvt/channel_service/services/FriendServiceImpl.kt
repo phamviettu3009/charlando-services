@@ -40,10 +40,18 @@ class FriendServiceImpl: FriendService {
         return friendRepository.findByUserIDAndFriendID(userID, friendID)
     }
 
+    private fun sendNotificationMessage(ownerID: UUID, receiverID: UUID, message: String, deepLink: String) {
+        val title = userService.getUserByID(ownerID).fullName ?: "unknown"
+
+        val payload = mapOf("title" to title, "body" to message, "deepLink" to deepLink)
+        val notificationMessage = NotificationMessageDTO(payload, listOf(receiverID))
+        rabbitMQProducer.sendMessage(notificationMessage, RabbitMQ.MSCMN_SEND_NOTIFICATION_MESSAGE.route())
+    }
+
     @Transactional
-    override fun sendRequestAddFriend(request: RequestDTO<UUID>): Any {
+    override fun sendRequestAddFriend(request: RequestDTO<Unit>): Any {
         val ownerID = request.jwtBody.userID ?: throw ResponseStatusException(HttpStatus.EXPECTATION_FAILED)
-        val friendID = request.payload ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val friendID = request.id ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
         val user = userService.findCMNUserByID(friendID) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
         if (friendID == ownerID) throw ResponseStatusException(HttpStatus.BAD_REQUEST)
 
@@ -75,14 +83,15 @@ class FriendServiceImpl: FriendService {
         val realtimeMessage = RealtimeMessageDTO(user.asUserResponseDTO(), endpoint, user.id)
         rabbitMQProducer.sendMessage(realtimeMessage, RabbitMQ.MSCMN_SEND_REALTIME_MESSAGE.route())
         getNumberRequestAddFriend(userID = user.id)
+        sendNotificationMessage(ownerID, friendID, "Has sent a friend request", "app2lab://user-info-screen?userID=$ownerID")
 
         return mapOf("userID" to user.id, "status" to Friend.RecordStatus.WAIT_FOR_CONFIRMATION)
     }
 
     @Transactional
-    override fun unFriend(request: RequestDTO<UUID>): Any {
+    override fun unFriend(request: RequestDTO<Unit>): Any {
         val ownerID = request.jwtBody.userID ?: throw ResponseStatusException(HttpStatus.EXPECTATION_FAILED)
-        val friendID = request.payload ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val friendID = request.id ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
         val user = userService.findCMNUserByID(friendID) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
         if (friendID == ownerID) throw ResponseStatusException(HttpStatus.BAD_REQUEST)
 
@@ -106,9 +115,9 @@ class FriendServiceImpl: FriendService {
     }
 
     @Transactional
-    override fun confirmationAddFriend(request: RequestDTO<UUID>): Any {
+    override fun confirmationAddFriend(request: RequestDTO<Unit>): Any {
         val ownerID = request.jwtBody.userID ?: throw ResponseStatusException(HttpStatus.EXPECTATION_FAILED)
-        val friendID = request.payload ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val friendID = request.id ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
         val user = userService.findCMNUserByID(friendID) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
         if (friendID == ownerID) throw ResponseStatusException(HttpStatus.BAD_REQUEST)
 
@@ -129,13 +138,14 @@ class FriendServiceImpl: FriendService {
         friendRepository.saveAll(listOf(owner, friend))
         channelService.createSingleChannel(ownerID, friendID)
         getNumberRequestAddFriend(userID = ownerID)
+        sendNotificationMessage(ownerID, friendID, "Has accepted the friend request", "app2lab://user-info-screen?userID=$ownerID")
 
         return mapOf("userID" to user.id, "status" to Friend.RecordStatus.FRIEND)
     }
 
-    override fun cancelRequestAddFriend(request: RequestDTO<UUID>): Any {
+    override fun cancelRequestAddFriend(request: RequestDTO<Unit>): Any {
         val ownerID = request.jwtBody.userID ?: throw ResponseStatusException(HttpStatus.EXPECTATION_FAILED)
-        val friendID = request.payload ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val friendID = request.id ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
         val user = userService.findCMNUserByID(friendID) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
         if (friendID == ownerID) throw ResponseStatusException(HttpStatus.BAD_REQUEST)
 
@@ -163,9 +173,9 @@ class FriendServiceImpl: FriendService {
         return mapOf("userID" to user.id, "status" to Friend.RecordStatus.UNFRIEND)
     }
 
-    override fun rejectFriendRequest(request: RequestDTO<UUID>): Any {
+    override fun rejectFriendRequest(request: RequestDTO<Unit>): Any {
         val ownerID = request.jwtBody.userID ?: throw ResponseStatusException(HttpStatus.EXPECTATION_FAILED)
-        val friendID = request.payload ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val friendID = request.id ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
         val user = userService.findCMNUserByID(friendID) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND)
         if (friendID == ownerID) throw ResponseStatusException(HttpStatus.BAD_REQUEST)
 
@@ -265,6 +275,17 @@ class FriendServiceImpl: FriendService {
     override fun getNumberRequestAddFriend(request: RequestDTO<Unit>): Long {
         val ownerID = request.jwtBody.userID ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
         return getNumberRequestAddFriend(userID = ownerID)
+    }
+
+    override fun getFriendStatus(request: RequestDTO<UUID>): Any {
+        val ownerID = request.jwtBody.userID ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val friendID = request.id ?: throw ResponseStatusException(HttpStatus.BAD_REQUEST)
+        val friendRecord = friendRepository.findByUserIDAndFriendID(userID = ownerID, friendID = friendID).orElse(null)
+        return if (friendRecord.recordStatus == Friend.RecordStatus.FRIEND) {
+            mapOf("isFriend" to true)
+        } else {
+            mapOf("isFriend" to false)
+        }
     }
 
     fun getNumberRequestAddFriend(userID: UUID): Long {

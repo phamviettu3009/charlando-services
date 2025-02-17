@@ -3,7 +3,7 @@ package com.pvt.auth_service.services
 import com.pvt.auth_service.constants.RabbitMQ
 import com.pvt.auth_service.models.dtos.FirebaseDeviceToken
 import com.pvt.auth_service.models.dtos.RabbitMessageDTO
-import com.pvt.auth_service.models.entitys.asDeviceFirebaseToken
+import com.pvt.auth_service.models.entitys.asDeviceToken
 import com.pvt.auth_service.publisher.RabbitMQProducer
 import com.pvt.auth_service.repositories.DeviceRepository
 import org.springframework.amqp.rabbit.annotation.RabbitListener
@@ -23,7 +23,7 @@ class DeviceServiceImpl(var deviceRepository: DeviceRepository): DeviceService {
         try {
             var userIDs = message.message ?: listOf()
             var devices = deviceRepository.findAllDeviceByUserIDs(ids = userIDs)
-            var deviceFirebaseTokens = devices.map { it.asDeviceFirebaseToken() }
+            var deviceFirebaseTokens = devices.map { it.asDeviceToken() }
 
             rabbitMQProducer.sendMessage(deviceFirebaseTokens, RabbitMQ.MSCMN_GET_DEVICE.callbackRoute())
         } catch (e: Exception) {

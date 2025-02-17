@@ -22,7 +22,7 @@ class UserServiceImpl(val userRepository: UserRepository): UserService {
     @Transactional
     override fun createUser(user: UserEntity): UserEntity {
         return userRepository.saveAndFlush(
-            UserEntity(id = UUID.randomUUID(), fullName = user.fullName, avatar = user.avatar)
+            UserEntity(id = UUID.randomUUID(), fullName = user.fullName)
         )
     }
 

@@ -4,7 +4,7 @@ import com.pvt.auth_service.constants.AuthStatus
 import com.pvt.auth_service.models.dtos.DeviceDTO
 import com.pvt.auth_service.models.dtos.DeviceDetailConverter
 import com.pvt.auth_service.models.dtos.DeviceDetailDTO
-import com.pvt.auth_service.models.dtos.DeviceFirebaseTokenDTO
+import com.pvt.auth_service.models.dtos.DeviceTokenDTO
 import org.hibernate.annotations.ColumnTransformer
 import org.hibernate.annotations.CreationTimestamp
 import org.hibernate.annotations.GenericGenerator
@@ -78,7 +78,10 @@ data class DeviceEntity(
     var mostRecentLogoutTime: Date? = null,
 
     @Column(name = "firebase_token")
-    var firebaseToken: String? = null
+    var firebaseToken: String? = null,
+
+    @Column(name = "pushkit_token")
+    var pushkitToken: String? = null,
 )
 
 fun DeviceEntity.asDeviceDTO(): DeviceDTO {
@@ -94,6 +97,6 @@ fun DeviceEntity.asDeviceDTO(): DeviceDTO {
     )
 }
 
-fun DeviceEntity.asDeviceFirebaseToken(): DeviceFirebaseTokenDTO {
-    return DeviceFirebaseTokenDTO(fcmtoken = firebaseToken, userID = userID!!)
+fun DeviceEntity.asDeviceToken(): DeviceTokenDTO {
+    return DeviceTokenDTO(fcmtoken = firebaseToken, pushkitToken = pushkitToken, userID = userID!!)
 }

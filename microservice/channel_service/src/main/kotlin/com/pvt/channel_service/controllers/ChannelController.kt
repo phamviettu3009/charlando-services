@@ -1,6 +1,7 @@
 package com.pvt.channel_service.controllers
 
 import com.pvt.channel_service.models.dtos.*
+import com.pvt.channel_service.services.CallService
 import com.pvt.channel_service.services.ChannelService
 import com.pvt.channel_service.utils.extension.asUUID
 import org.springframework.beans.factory.annotation.Autowired
@@ -11,10 +12,13 @@ import java.util.*
 import javax.servlet.http.HttpServletRequest
 
 @RestController
-@RequestMapping("/api/v1/channel")
+@RequestMapping("/api/v1/channels")
 class ChannelController {
     @Autowired
     private lateinit var channelService: ChannelService
+
+    @Autowired
+    private lateinit var callService: CallService
 
     @GetMapping("/{id}")
     fun getChannel(
@@ -50,7 +54,7 @@ class ChannelController {
         return ResponseEntity(channelService.createGroupChannel(requestDTO), HttpStatus.OK)
     }
 
-    @PutMapping("/group/{id}")
+    @PutMapping("/{id}/group")
     fun updateGroupChannel(
         request: HttpServletRequest,
         @RequestBody groupChannelUpdateRequestDTO: GroupChannelUpdateRequestDTO,
@@ -61,7 +65,7 @@ class ChannelController {
         return ResponseEntity(channelService.updateGroupChannel(requestDTO), HttpStatus.OK)
     }
 
-    @PostMapping("/group/{id}/add-members")
+    @PostMapping("/{id}/group/add-members")
     fun addMemberToGroup(
         request: HttpServletRequest,
         @RequestBody groupChannelMembersDTO: GroupChannelMembers,
@@ -72,7 +76,7 @@ class ChannelController {
         return ResponseEntity(channelService.addMembersToGroupChannel(requestDTO), HttpStatus.OK)
     }
 
-    @PostMapping("/group/{id}/remove-members")
+    @PostMapping("/{id}/group/remove-members")
     fun removeMemberGroup(
         request: HttpServletRequest,
         @RequestBody groupChannelMembersDTO: GroupChannelMembers,
@@ -83,7 +87,7 @@ class ChannelController {
         return ResponseEntity(channelService.removeMembersInGroupChannel(requestDTO), HttpStatus.OK)
     }
 
-    @PostMapping("/group/{id}/leave-group")
+    @PostMapping("/{id}/group/leave-group")
     fun leaveGroupChannel(
         request: HttpServletRequest,
         @PathVariable id: String
@@ -93,7 +97,7 @@ class ChannelController {
         return ResponseEntity(channelService.leaveGroupChannel(requestDTO), HttpStatus.OK)
     }
 
-    @GetMapping("/group/{id}/my-role")
+    @GetMapping("/{id}/group/my-role")
     fun getRole(
         request: HttpServletRequest,
         @PathVariable id: String
@@ -103,7 +107,7 @@ class ChannelController {
         return ResponseEntity(channelService.getRole(requestDTO), HttpStatus.OK)
     }
 
-    @PostMapping("/group/{id}/set-admin-role")
+    @PostMapping("/{id}/group/set-admin-role")
     fun setAdminRole(
         request: HttpServletRequest,
         @RequestBody groupChannelMembersDTO: GroupChannelMembers,
@@ -114,7 +118,7 @@ class ChannelController {
         return ResponseEntity(channelService.setAdminRole(requestDTO), HttpStatus.OK)
     }
 
-    @PostMapping("/group/{id}/revoke-admin-role")
+    @PostMapping("/{id}/group/revoke-admin-role")
     fun revokeAdminRole(
         request: HttpServletRequest,
         @RequestBody groupChannelMembersDTO: GroupChannelMembers,
@@ -125,7 +129,7 @@ class ChannelController {
         return ResponseEntity(channelService.revokeAdminRole(requestDTO), HttpStatus.OK)
     }
 
-    @PostMapping("/group/{id}/set-owner-role")
+    @PostMapping("/{id}/group/set-owner-role")
     fun setOwnerRole(
         request: HttpServletRequest,
         @RequestBody groupChannelMemberDTO: GroupChannelMember,
@@ -134,5 +138,30 @@ class ChannelController {
         val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
         val requestDTO = RequestDTO(jwtBody, groupChannelMemberDTO, id = id.asUUID())
         return ResponseEntity(channelService.setOwnerRole(requestDTO), HttpStatus.OK)
+    }
+
+    @GetMapping("/{id}/members")
+    fun getUsersInChannel(
+        request: HttpServletRequest,
+        @PathVariable id: String,
+        @RequestParam(defaultValue = "1") page: Int,
+        @RequestParam(defaultValue = "20") sizePerPage: Int,
+        @RequestParam(defaultValue = "") sortBy: String,
+        @RequestParam(defaultValue = "") keyword: String
+    ): ResponseEntity<ListResponseDTO<MemberResponseDTO>> {
+        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
+        val listRequestParams = ListRequestDTO(page, sizePerPage, sortBy, keyword)
+        val requestDTO = RequestDTO(jwtBody, listRequestParams, id.asUUID())
+        return ResponseEntity(channelService.getMembersInChannel(requestDTO), HttpStatus.OK)
+    }
+
+    @PostMapping("/{id}/video-call")
+    fun videoCall(
+        request: HttpServletRequest,
+        @PathVariable id: String
+    ): ResponseEntity<Any> {
+        val jwtBody = request.getAttribute("jwtBody") as JWTBodyDTO
+        val requestDTO = RequestDTO(jwtBody, Unit, id = id.asUUID())
+        return ResponseEntity(callService.makeCall(requestDTO), HttpStatus.OK)
     }
 }

@@ -3,7 +3,9 @@ package com.pvt.channel_service.utils.converter
 import java.time.Duration
 import java.time.LocalDateTime
 import java.time.ZoneId
+import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
+import java.time.format.DateTimeParseException
 import java.util.*
 
 object DateTimeConverter {
@@ -48,5 +50,16 @@ object DateTimeConverter {
         }
 
         return false
+    }
+
+    fun convertIsoStringToDate(isoString: String): Date {
+        val dateTimeFormatter = DateTimeFormatter.ISO_OFFSET_DATE_TIME
+
+        return try {
+            val zonedDateTime = ZonedDateTime.parse(isoString, dateTimeFormatter)
+            Date.from(zonedDateTime.toInstant())
+        } catch (e: DateTimeParseException) {
+            throw IllegalArgumentException("Invalid date format: $isoString")
+        }
     }
 }
